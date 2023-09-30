@@ -47,7 +47,7 @@ void PcapParser::parseFrame(std::string path) {
         //add this frame to vector of frames
         _frames.push_back(thisFrame);
     }
-    printData();
+    //printData();
 }
 
 void PcapParser::getHexDump(const u_char* data, size_t pLen) {
@@ -156,17 +156,22 @@ void PcapParser::serializeYaml() {
     YAML::Node local;
     local.push_back(local_item);
 
-    
+    YAML::Emitter output;
+    output << YAML::BeginMap
+        << YAML::Key << "name"
+        << YAML::Value << "PKS2023/2024"
+        << YAML::Key << "pcap_name"
+        << YAML::Value << "place_holder.pcap";
 
-    YAML::Node root;
-    root["name"] = "PKS2023/2024";
-    root["pcap_name"] = "placehoilder.pcap";
+    output << YAML::Key << "packets" << YAML::Value << YAML::BeginSeq;;
+    
     for (auto packet : _frames) {
-        YAML::Node packetItem;
-        packetItem["frame_number"] = packet.index;
-        packetItem["len_frame_pcap"] = packet.capLen;
-        packetItem["len_frame_medium"] = packet.capLen;
-        packetItem["frame_type"] = getFrameType(packet.typeSize);
+        output << YAML::BeginMap;
+        //output << YAML::BeginSeq;
+        //output << YAML::BeginMap;
+        output << YAML::Key << "frame_number" << YAML::Value << packet.index;
+        output << YAML::Key << "len_frame_pcap" << YAML::Value << packet.capLen;
+        output << YAML::Key << "len_frame_wire" << YAML::Value << packet.capLen;
 
         std::stringstream sBuffer;
         for (auto srcByte : packet.srcMac) {
@@ -176,7 +181,7 @@ void PcapParser::serializeYaml() {
             if(srcByte != packet.srcMac.at(packet.srcMac.size()-1))
                 sBuffer << ":";
         }
-        packetItem["src_mac"] = sBuffer.str();
+        output << YAML::Key << "src_mac" << YAML::Value << sBuffer.str();
 
         sBuffer.str("");
         sBuffer.clear();
@@ -187,32 +192,32 @@ void PcapParser::serializeYaml() {
             if (srcByte != packet.destMac.at(packet.destMac.size() - 1))
                 sBuffer << ":";
         }
-        packetItem["dst_mac"] = sBuffer.str();
+        output << YAML::Key << "dst_mac" << YAML::Value << sBuffer.str();
 
         sBuffer.str("");
         sBuffer.clear();
-        sBuffer << "|";
         for (size_t i = 0; i < packet.capLen; i++) {
             // next line after every 16 octets
-            if ((i % 16) == 0)
+            if ((i % 16) == 0 && i !=0)
                 sBuffer << std::endl;
+
             char  hex_string[20];
             sprintf_s(hex_string, "%.2X", packet.hexDump[i]); //convert number to hex
             sBuffer << hex_string << " ";
         }
-        packetItem["message"] =  "\n  this is\n  a real multiline\n  message";
-        packetItem["hexa_frame"] = sBuffer.str();
-       
-
-
-        root["packets"].push_back(packetItem);
+        sBuffer << "\n";
+        output << YAML::Key << "hexa_frame";
+        output << YAML::Value << YAML::Literal << sBuffer.str();
+        output << YAML::EndMap;
     }
+    output << YAML::EndSeq;
+    output << YAML::EndMap;
 
-    //example
-   /* root["action_counts"]["version"] = "0.3";
-    root["action_counts"]["subtree"].push_back(subtree_item);*/
-
-    std::ofstream fout("test.yaml");
-    fout << root;
-
+    fstream file0;
+    file0.open("info.yaml", ios_base::out);
+    if (file0.is_open())
+    {
+        file0 << output.c_str();
+        file0.close();
+    }
 }
