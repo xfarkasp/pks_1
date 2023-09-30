@@ -179,15 +179,17 @@ void PcapParser::serializeYaml() {
         sBuffer.str("");
         sBuffer.clear();
         for (size_t i = 0; i < packet.capLen; i++) {
-            // next line after every 16 octets
-            if ((i % 16) == 0)
-                sBuffer << std::endl;
-
             char  hex_string[20];
             sprintf_s(hex_string, "%.2X", packet.hexDump[i]); //convert number to hex
-            sBuffer << hex_string << " ";
-        }
+            sBuffer << hex_string;
 
+            // next line after every 16 octets
+            if (((i + 1) % 16) == 0 && i != 0) {
+                sBuffer << std::endl;
+            }
+            else
+                sBuffer << " ";
+        }
         output << YAML::Key << "hexa_frame" << YAML::Value << YAML::Literal << sBuffer.str().erase(sBuffer.str().size() - 1);
         output << YAML::EndMap;
     }
