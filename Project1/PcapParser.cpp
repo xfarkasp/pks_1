@@ -141,7 +141,6 @@ void PcapParser::printData() {
 }
 
 void PcapParser::serializeYaml() {
-
     YAML::Emitter output;
     output << YAML::BeginMap
         << YAML::Key << "name"
@@ -149,7 +148,7 @@ void PcapParser::serializeYaml() {
         << YAML::Key << "pcap_name"
         << YAML::Value << _fileName.erase(0, _fileName.find_last_of("\\") + 1);
 
-    output << YAML::Key << "packets" << YAML::Value << YAML::BeginSeq;;
+    output << YAML::Key << "packets" << YAML::Value << YAML::BeginSeq;
     
     for (auto packet : _frames) {
         output << YAML::BeginMap;
@@ -187,10 +186,13 @@ void PcapParser::serializeYaml() {
             if (((i + 1) % 16) == 0 && i != 0) {
                 sBuffer << std::endl;
             }
-            else
-                sBuffer << " ";
+            else {
+                if(i != packet.capLen - 1)
+                    sBuffer << " ";
+            }  
         }
-        output << YAML::Key << "hexa_frame" << YAML::Value << YAML::Literal << sBuffer.str().erase(sBuffer.str().size() - 1);
+        sBuffer << endl;
+        output << YAML::Key << "hexa_frame" << YAML::Value << YAML::Literal << sBuffer.str();
         output << YAML::EndMap;
     }
     output << YAML::EndSeq;
