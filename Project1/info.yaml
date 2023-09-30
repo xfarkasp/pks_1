@@ -1,110 +1,121 @@
-name: PKS2023/2024
-pcap_name: place_holder.pcap
+name: PKS2023/24
+pcap_name: trace-1.pcap
 packets:
   - frame_number: 1
     len_frame_pcap: 42
-    len_frame_wire: 42
+    len_frame_medium: 42
+    frame_type: ETHERNET II
     src_mac: 00:D0:59:A9:3D:68
-    dst_mac: FFFFFFFFFFFF
+    dst_mac: FF:FF:FF:FF:FF:FF
     hexa_frame: |
+      
       00 06 25 DA AF 73 00 D0 59 A9 3D 68 08 00 45 00 
       00 28 00 FC 40 00 80 06 C2 3E C0 A8 01 69 80 77 
-      F5 0C 04 22 00 50 65 14 9C 1F 
-      
+      F5 0C 04 22 00 50 65 14 9C 1F
   - frame_number: 2
     len_frame_pcap: 60
-    len_frame_wire: 60
+    len_frame_medium: 60
+    frame_type: ETHERNET II
     src_mac: 00:06:25:DA:AF:73
     dst_mac: 00:D0:59:A9:3D:68
     hexa_frame: |
+      
       00 06 25 DA AF 73 00 D0 59 A9 3D 68 08 00 45 00 
       00 28 00 FC 40 00 80 06 C2 3E C0 A8 01 69 80 77 
       F5 0C 04 22 00 50 65 14 9C 1F AC A5 52 83 50 10 
-      FA F0 78 7F 00 00 3C 68 33 3E 41 6D 
-      
+      FA F0 78 7F 00 00 3C 68 33 3E 41 6D
   - frame_number: 3
     len_frame_pcap: 62
-    len_frame_wire: 62
+    len_frame_medium: 62
+    frame_type: ETHERNET II
     src_mac: 00:D0:59:A9:3D:68
     dst_mac: 00:06:25:DA:AF:73
     hexa_frame: |
+      
       00 06 25 DA AF 73 00 D0 59 A9 3D 68 08 00 45 00 
       00 28 00 FC 40 00 80 06 C2 3E C0 A8 01 69 80 77 
       F5 0C 04 22 00 50 65 14 9C 1F AC A5 52 83 50 10 
-      FA F0 78 7F 00 00 3C 68 33 3E 41 6D 65 6E 
-      
+      FA F0 78 7F 00 00 3C 68 33 3E 41 6D 65 6E
   - frame_number: 4
     len_frame_pcap: 62
-    len_frame_wire: 62
+    len_frame_medium: 62
+    frame_type: ETHERNET II
     src_mac: 00:D0:59:A9:3D:68
     dst_mac: 00:06:25:DA:AF:73
     hexa_frame: |
+      
       00 06 25 DA AF 73 00 D0 59 A9 3D 68 08 00 45 00 
       00 28 00 FC 40 00 80 06 C2 3E C0 A8 01 69 80 77 
       F5 0C 04 22 00 50 65 14 9C 1F AC A5 52 83 50 10 
-      FA F0 78 7F 00 00 3C 68 33 3E 41 6D 65 6E 
-      
+      FA F0 78 7F 00 00 3C 68 33 3E 41 6D 65 6E
   - frame_number: 5
     len_frame_pcap: 62
-    len_frame_wire: 62
+    len_frame_medium: 62
+    frame_type: ETHERNET II
     src_mac: 00:D0:59:A9:3D:68
     dst_mac: 00:06:25:DA:AF:73
     hexa_frame: |
+      
       00 06 25 DA AF 73 00 D0 59 A9 3D 68 08 00 45 00 
       00 28 00 FC 40 00 80 06 C2 3E C0 A8 01 69 80 77 
       F5 0C 04 22 00 50 65 14 9C 1F AC A5 52 83 50 10 
-      FA F0 78 7F 00 00 3C 68 33 3E 41 6D 65 6E 
-      
+      FA F0 78 7F 00 00 3C 68 33 3E 41 6D 65 6E
   - frame_number: 6
     len_frame_pcap: 60
-    len_frame_wire: 60
+    len_frame_medium: 60
+    frame_type: ETHERNET II
     src_mac: 00:80:AD:73:8D:CE
-    dst_mac: FFFFFFFFFFFF
+    dst_mac: FF:FF:FF:FF:FF:FF
     hexa_frame: |
+      
       00 06 25 DA AF 73 00 D0 59 A9 3D 68 08 00 45 00 
       00 28 00 FC 40 00 80 06 C2 3E C0 A8 01 69 80 77 
       F5 0C 04 22 00 50 65 14 9C 1F AC A5 52 83 50 10 
-      FA F0 78 7F 00 00 3C 68 33 3E 41 6D 
-      
+      FA F0 78 7F 00 00 3C 68 33 3E 41 6D
   - frame_number: 7
     len_frame_pcap: 62
-    len_frame_wire: 62
+    len_frame_medium: 62
+    frame_type: ETHERNET II
     src_mac: 00:D0:59:A9:3D:68
     dst_mac: 00:06:25:DA:AF:73
     hexa_frame: |
+      
       00 06 25 DA AF 73 00 D0 59 A9 3D 68 08 00 45 00 
       00 28 00 FC 40 00 80 06 C2 3E C0 A8 01 69 80 77 
       F5 0C 04 22 00 50 65 14 9C 1F AC A5 52 83 50 10 
-      FA F0 78 7F 00 00 3C 68 33 3E 41 6D 65 6E 
-      
+      FA F0 78 7F 00 00 3C 68 33 3E 41 6D 65 6E
   - frame_number: 8
     len_frame_pcap: 62
-    len_frame_wire: 62
+    len_frame_medium: 62
+    frame_type: ETHERNET II
     src_mac: 00:06:25:DA:AF:73
     dst_mac: 00:D0:59:A9:3D:68
     hexa_frame: |
+      
       00 06 25 DA AF 73 00 D0 59 A9 3D 68 08 00 45 00 
       00 28 00 FC 40 00 80 06 C2 3E C0 A8 01 69 80 77 
       F5 0C 04 22 00 50 65 14 9C 1F AC A5 52 83 50 10 
-      FA F0 78 7F 00 00 3C 68 33 3E 41 6D 65 6E 
-      
+      FA F0 78 7F 00 00 3C 68 33 3E 41 6D 65 6E
   - frame_number: 9
     len_frame_pcap: 54
-    len_frame_wire: 54
+    len_frame_medium: 54
+    frame_type: ETHERNET II
     src_mac: 00:D0:59:A9:3D:68
     dst_mac: 00:06:25:DA:AF:73
     hexa_frame: |
+      
       00 06 25 DA AF 73 00 D0 59 A9 3D 68 08 00 45 00 
       00 28 00 FC 40 00 80 06 C2 3E C0 A8 01 69 80 77 
       F5 0C 04 22 00 50 65 14 9C 1F AC A5 52 83 50 10 
-      FA F0 78 7F 00 00 
-      
+      FA F0 78 7F 00 00
   - frame_number: 10
     len_frame_pcap: 686
-    len_frame_wire: 686
+    len_frame_medium: 686
+    frame_type: ETHERNET II
     src_mac: 00:D0:59:A9:3D:68
     dst_mac: 00:06:25:DA:AF:73
     hexa_frame: |
+      
       00 06 25 DA AF 73 00 D0 59 A9 3D 68 08 00 45 00 
       00 28 00 FC 40 00 80 06 C2 3E C0 A8 01 69 80 77 
       F5 0C 04 22 00 50 65 14 9C 1F AC A5 52 83 50 10 
@@ -147,25 +158,27 @@ packets:
       20 63 72 69 6D 65 20 73 68 61 6C 6C 20 68 61 76 
       65 20 62 65 65 6E 20 63 6F 6D 6D 69 74 74 65 64 
       2C 20 77 68 69 63 68 0A 64 69 73 74 72 69 63 74 
-      20 73 68 61 6C 6C 20 68 61 76 65 20 62 65 
-      
+      20 73 68 61 6C 6C 20 68 61 76 65 20 62 65
   - frame_number: 11
     len_frame_pcap: 60
-    len_frame_wire: 60
+    len_frame_medium: 60
+    frame_type: ETHERNET II
     src_mac: 00:06:25:DA:AF:73
     dst_mac: 00:D0:59:A9:3D:68
     hexa_frame: |
+      
       00 06 25 DA AF 73 00 D0 59 A9 3D 68 08 00 45 00 
       00 28 00 FC 40 00 80 06 C2 3E C0 A8 01 69 80 77 
       F5 0C 04 22 00 50 65 14 9C 1F AC A5 52 83 50 10 
-      FA F0 78 7F 00 00 3C 68 33 3E 41 6D 
-      
+      FA F0 78 7F 00 00 3C 68 33 3E 41 6D
   - frame_number: 12
     len_frame_pcap: 1514
-    len_frame_wire: 1514
+    len_frame_medium: 1514
+    frame_type: ETHERNET II
     src_mac: 00:06:25:DA:AF:73
     dst_mac: 00:D0:59:A9:3D:68
     hexa_frame: |
+      
       00 06 25 DA AF 73 00 D0 59 A9 3D 68 08 00 45 00 
       00 28 00 FC 40 00 80 06 C2 3E C0 A8 01 69 80 77 
       F5 0C 04 22 00 50 65 14 9C 1F AC A5 52 83 50 10 
@@ -260,14 +273,15 @@ packets:
       6E 75 73 75 61 6C 20 70 75 6E 69 73 68 6D 65 6E 
       74 73 20 69 6E 66 6C 69 63 74 65 64 2E 0A 0A 3C 
       2F 70 3E 3C 70 3E 3C 61 20 6E 61 6D 65 3D 22 39 
-      22 3E 3C 73 74 72 6F 6E 67 3E 
-      
+      22 3E 3C 73 74 72 6F 6E 67 3E
   - frame_number: 13
     len_frame_pcap: 1514
-    len_frame_wire: 1514
+    len_frame_medium: 1514
+    frame_type: ETHERNET II
     src_mac: 00:06:25:DA:AF:73
     dst_mac: 00:D0:59:A9:3D:68
     hexa_frame: |
+      
       00 06 25 DA AF 73 00 D0 59 A9 3D 68 08 00 45 00 
       00 28 00 FC 40 00 80 06 C2 3E C0 A8 01 69 80 77 
       F5 0C 04 22 00 50 65 14 9C 1F AC A5 52 83 50 10 
@@ -362,25 +376,27 @@ packets:
       6E 75 73 75 61 6C 20 70 75 6E 69 73 68 6D 65 6E 
       74 73 20 69 6E 66 6C 69 63 74 65 64 2E 0A 0A 3C 
       2F 70 3E 3C 70 3E 3C 61 20 6E 61 6D 65 3D 22 39 
-      22 3E 3C 73 74 72 6F 6E 67 3E 
-      
+      22 3E 3C 73 74 72 6F 6E 67 3E
   - frame_number: 14
     len_frame_pcap: 54
-    len_frame_wire: 54
+    len_frame_medium: 54
+    frame_type: ETHERNET II
     src_mac: 00:D0:59:A9:3D:68
     dst_mac: 00:06:25:DA:AF:73
     hexa_frame: |
+      
       00 06 25 DA AF 73 00 D0 59 A9 3D 68 08 00 45 00 
       00 28 00 FC 40 00 80 06 C2 3E C0 A8 01 69 80 77 
       F5 0C 04 22 00 50 65 14 9C 1F AC A5 52 83 50 10 
-      FA F0 78 7F 00 00 
-      
+      FA F0 78 7F 00 00
   - frame_number: 15
     len_frame_pcap: 1514
-    len_frame_wire: 1514
+    len_frame_medium: 1514
+    frame_type: ETHERNET II
     src_mac: 00:06:25:DA:AF:73
     dst_mac: 00:D0:59:A9:3D:68
     hexa_frame: |
+      
       00 06 25 DA AF 73 00 D0 59 A9 3D 68 08 00 45 00 
       00 28 00 FC 40 00 80 06 C2 3E C0 A8 01 69 80 77 
       F5 0C 04 22 00 50 65 14 9C 1F AC A5 52 83 50 10 
@@ -475,14 +491,15 @@ packets:
       6E 75 73 75 61 6C 20 70 75 6E 69 73 68 6D 65 6E 
       74 73 20 69 6E 66 6C 69 63 74 65 64 2E 0A 0A 3C 
       2F 70 3E 3C 70 3E 3C 61 20 6E 61 6D 65 3D 22 39 
-      22 3E 3C 73 74 72 6F 6E 67 3E 
-      
+      22 3E 3C 73 74 72 6F 6E 67 3E
   - frame_number: 16
     len_frame_pcap: 489
-    len_frame_wire: 489
+    len_frame_medium: 489
+    frame_type: ETHERNET II
     src_mac: 00:06:25:DA:AF:73
     dst_mac: 00:D0:59:A9:3D:68
     hexa_frame: |
+      
       00 06 25 DA AF 73 00 D0 59 A9 3D 68 08 00 45 00 
       00 28 00 FC 40 00 80 06 C2 3E C0 A8 01 69 80 77 
       F5 0C 04 22 00 50 65 14 9C 1F AC A5 52 83 50 10 
@@ -513,16 +530,16 @@ packets:
       73 74 61 74 65 73 20 72 65 73 70 65 63 74 69 76 
       65 6C 79 2C 20 6F 72 20 74 6F 20 74 68 65 20 70 
       65 6F 70 6C 65 2E 3C 2F 70 3E 0A 3C 2F 62 6F 64 
-      79 3E 3C 2F 68 74 6D 6C 3E 
-      
+      79 3E 3C 2F 68 74 6D 6C 3E
   - frame_number: 17
     len_frame_pcap: 54
-    len_frame_wire: 54
+    len_frame_medium: 54
+    frame_type: ETHERNET II
     src_mac: 00:D0:59:A9:3D:68
     dst_mac: 00:06:25:DA:AF:73
     hexa_frame: |
+      
       00 06 25 DA AF 73 00 D0 59 A9 3D 68 08 00 45 00 
       00 28 00 FC 40 00 80 06 C2 3E C0 A8 01 69 80 77 
       F5 0C 04 22 00 50 65 14 9C 1F AC A5 52 83 50 10 
-      FA F0 78 7F 00 00 
-      
+      FA F0 78 7F 00 00

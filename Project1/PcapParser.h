@@ -80,5 +80,6 @@ class PcapParser {
 
         private:
             std::vector<Frame> _frames;
+            std::string _fileName;
 
 };
