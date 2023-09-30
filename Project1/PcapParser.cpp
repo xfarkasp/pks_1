@@ -18,30 +18,39 @@ void PcapParser::parseFrame(std::string path) {
     {
         Frame thisFrame;
         stringstream frameBuffer;
-        thisFrame.hexDump = data;
         thisFrame.index = ++packetCount;
         thisFrame.capLen = header->caplen;
         thisFrame.wireLen = header->len;
         std::vector<unsigned int> destAdress;
         std::vector<unsigned int> srcAdress;
 
+        std::vector<unsigned int> hexFrame;
+        for (size_t i = 0; i < header->caplen; i++)
+            hexFrame.push_back(data[i]);
+
+        thisFrame.hexFrame = hexFrame;
+
         for (size_t i = 0; i < ETH_TYPE_END; i++)
-        { 
+        {
             //pushback dest mac bytes to vector
             if (FRAME_OFF_SETS::DEST_MAC_START <= i && i < FRAME_OFF_SETS::DEST_MAC_END)
-                destAdress.push_back(data[i]);
+                destAdress.push_back(hexFrame[i]);
 
             //pushback source mac bytes to vector
             if (FRAME_OFF_SETS::SOURCE_MAC_START <= i && i < FRAME_OFF_SETS::SOURCE_MAC_END)
-                srcAdress.push_back(data[i]);
+                srcAdress.push_back(hexFrame[i]);
 
             //get size of ethernet type bytes
-            if (ETH_TYPE_START <= i && i < ETH_TYPE_END)
-                frameBuffer << data[i];
-        }
+            if (ETH_TYPE_START <= i && i < ETH_TYPE_END) {
+                printf_s("%.2x", hexFrame[i]);
 
+                char  hex_string[20];
+                sprintf_s(hex_string, "%.2X", hexFrame[i]); //convert number to hex
+                frameBuffer << hex_string;
+            }
+        }
         //put data to frame struct
-        thisFrame.typeSize = frameBuffer.hex;
+        thisFrame.typeSize = stoi(frameBuffer.str(), 0, 16);
         thisFrame.destMac = destAdress;
         thisFrame.srcMac = srcAdress;
 
@@ -51,9 +60,9 @@ void PcapParser::parseFrame(std::string path) {
     //printData();
 }
 
-void PcapParser::getHexDump(const u_char* data, size_t pLen) {
+void PcapParser::getHexDump(std::vector<unsigned int> data) {
     std::cout << "hexa_frame: ";
-    for (size_t i = 0; i < pLen; i++){
+    for (size_t i = 0; i < data.size(); i++) {
         // next line after every 16 octets
         if ((i % 16) == 0)
             std::cout << std::endl;
@@ -62,12 +71,23 @@ void PcapParser::getHexDump(const u_char* data, size_t pLen) {
     cout << endl << endl;
 }
 
-std::string PcapParser::getFrameType(int typeSize) {
+std::string PcapParser::getFrameType(int typeSize, std::vector<unsigned int> data) {
     if (typeSize >= PcapParser::ETHERNET_II_MIN) {
         return "ETHERNET II";
     }
     else if (typeSize <= PcapParser::IEEE_802_3_MAX) {
-        return "IEE 802.3";
+        char  hex_string[20];
+        sprintf_s(hex_string, "%.2X", data[14]); //convert number to hex
+
+        switch (stoi(hex_string, 0, 16))
+        {
+        case IEEE_802_3_SNAP:
+            return "IEEE 802.3 LLC & SNAP";
+        case IEEE_802_3_RAW:
+            return "IEEE 802.3 RAW";
+        default:
+            return "IEEE 802.3 LLC";
+        }
     }
     return "undefined";
 }
@@ -121,7 +141,7 @@ void PcapParser::printData() {
         std::cout << "len_frame_pcap: " << frame.capLen << std::endl;
         std::cout << "len_frame_medium: " << frame.wireLen << std::endl;
         std::cout << "frame_type: ";
-        std::cout << getFrameType(frame.typeSize) << endl;
+        std::cout << getFrameType(frame.typeSize, frame.hexFrame) << endl;
 
         std::cout << "src_mac: ";
         for(auto byte : frame.srcMac)
@@ -136,7 +156,7 @@ void PcapParser::printData() {
         std::cout << std::endl;
 
         //prints the hexdump in hexadecimal format formated 16 bytes per line
-        getHexDump(frame.hexDump, frame.capLen);
+        getHexDump(frame.hexFrame);
     }
 }
 
@@ -155,7 +175,7 @@ void PcapParser::serializeYaml() {
         output << YAML::Key << "frame_number" << YAML::Value << packet.index;
         output << YAML::Key << "len_frame_pcap" << YAML::Value << packet.capLen;
         output << YAML::Key << "len_frame_medium" << YAML::Value << packet.capLen;
-        output << YAML::Key << "frame_type" << YAML::Value << getFrameType(packet.typeSize);
+        output << YAML::Key << "frame_type" << YAML::Value << getFrameType(packet.typeSize, packet.hexFrame);
 
         std::stringstream sBuffer;
         for (auto srcByte : packet.srcMac) {
@@ -179,7 +199,7 @@ void PcapParser::serializeYaml() {
         sBuffer.clear();
         for (size_t i = 0; i < packet.capLen; i++) {
             char  hex_string[20];
-            sprintf_s(hex_string, "%.2X", packet.hexDump[i]); //convert number to hex
+            sprintf_s(hex_string, "%.2X", packet.hexFrame[i]); //convert number to hex
             sBuffer << hex_string;
 
             // next line after every 16 octets

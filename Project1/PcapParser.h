@@ -10,7 +10,7 @@ struct Frame {
     size_t index;
     unsigned int capLen;
     unsigned int wireLen;
-    const u_char* hexDump;
+    std::vector<unsigned int> hexFrame;
     std::vector<unsigned int> destMac;
     std::vector<unsigned int> srcMac;
     int typeSize;
@@ -19,8 +19,8 @@ struct Frame {
 class PcapParser {
 	public:
         void parseFrame(std::string path);
-		static void getHexDump(const u_char* data, size_t pLen);
-        std::string getFrameType(int typeSize);
+		static void getHexDump(std::vector<unsigned int> data);
+        std::string getFrameType(int typeSize, std::vector<unsigned int>);
         static std::string getName(int typeSize);
         void printData();
         void serializeYaml();
@@ -38,6 +38,8 @@ class PcapParser {
         enum FRAME_TYPE {
             ETHERNET_II_MIN = 1536,
             IEEE_802_3_MAX = 1500,
+            IEEE_802_3_SNAP = 0xAA,
+            IEEE_802_3_RAW = 0xFF,
         };
 
         enum ETH_TYPE {
@@ -81,5 +83,4 @@ class PcapParser {
         private:
             std::vector<Frame> _frames;
             std::string _fileName;
-
 };
