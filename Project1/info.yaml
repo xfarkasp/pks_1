@@ -113,6 +113,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: A8:97:DC:9B:AD:17
     dst_mac: 01:00:0C:CC:CC:CD
+    pid: PVSTP+
     hexa_frame: |
       01 00 0C CC CC CD A8 97 DC 9B AD 17 00 32 AA AA
       03 00 00 0C 01 0B 00 00 02 02 7E 80 5D A8 97 DC
@@ -126,6 +127,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: D0:67:E5:A4:5D:AA
     dst_mac: 01:00:0C:CC:CC:CC
+    pid: CDP
     hexa_frame: |
       01 00 0C CC CC CC D0 67 E5 A4 5D AA 00 62 AA AA
       03 00 00 0C 20 00 02 B4 AC 5F 00 01 00 1B 43 4E
@@ -142,6 +144,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: D0:67:E5:A4:5D:AA
     dst_mac: 01:00:0C:CC:CC:CC
+    pid: CDP
     hexa_frame: |
       01 00 0C CC CC CC D0 67 E5 A4 5D AA 00 62 AA AA
       03 00 00 0C 20 00 01 B4 AD 5F 00 01 00 1B 43 4E
@@ -702,6 +705,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: A8:97:DC:9B:AD:17
     dst_mac: 01:00:0C:CC:CC:CD
+    pid: PVSTP+
     hexa_frame: |
       01 00 0C CC CC CD A8 97 DC 9B AD 17 00 32 AA AA
       03 00 00 0C 01 0B 00 00 02 02 7E 80 5D A8 97 DC
@@ -715,6 +719,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: 54:E6:FC:F8:53:58
     dst_mac: 09:00:07:FF:FF:FF
+    pid: Appletalk
     hexa_frame: |
       09 00 07 FF FF FF 54 E6 FC F8 53 58 00 1C AA AA
       03 08 00 07 80 9B 00 14 00 00 00 00 FF 56 FF DD
@@ -886,6 +891,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: 54:E6:FC:F8:53:58
     dst_mac: 09:00:07:FF:FF:FF
+    pid: Appletalk
     hexa_frame: |
       09 00 07 FF FF FF 54 E6 FC F8 53 58 00 1C AA AA
       03 08 00 07 80 9B 00 14 00 00 00 00 FF 56 FF DD
@@ -1487,6 +1493,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: A8:97:DC:9B:AD:17
     dst_mac: 01:00:0C:CC:CC:CD
+    pid: PVSTP+
     hexa_frame: |
       01 00 0C CC CC CD A8 97 DC 9B AD 17 00 32 AA AA
       03 00 00 0C 01 0B 00 00 02 02 7E 80 5D A8 97 DC
@@ -1542,6 +1549,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: 54:E6:FC:F8:53:58
     dst_mac: 09:00:07:FF:FF:FF
+    pid: Appletalk
     hexa_frame: |
       09 00 07 FF FF FF 54 E6 FC F8 53 58 00 1C AA AA
       03 08 00 07 80 9B 00 14 00 00 00 00 FF 56 FF DD
@@ -1662,6 +1670,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: 9C:57:AD:32:97:18
     dst_mac: 01:00:0C:CC:CC:CC
+    pid: DTP
     hexa_frame: |
       01 00 0C CC CC CC 9C 57 AD 32 97 18 00 22 AA AA
       03 00 00 0C 20 04 01 00 01 00 05 00 00 02 00 05
@@ -2187,6 +2196,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: A8:97:DC:9B:AD:17
     dst_mac: 01:00:0C:CC:CC:CD
+    pid: PVSTP+
     hexa_frame: |
       01 00 0C CC CC CD A8 97 DC 9B AD 17 00 32 AA AA
       03 00 00 0C 01 0B 00 00 02 02 7E 80 5D A8 97 DC
@@ -2636,6 +2646,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: A8:97:DC:9B:AD:17
     dst_mac: 01:00:0C:CC:CC:CD
+    pid: PVSTP+
     hexa_frame: |
       01 00 0C CC CC CD A8 97 DC 9B AD 17 00 32 AA AA
       03 00 00 0C 01 0B 00 00 02 02 7E 80 5D A8 97 DC
@@ -3857,6 +3868,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: A8:97:DC:9B:AD:17
     dst_mac: 01:00:0C:CC:CC:CD
+    pid: PVSTP+
     hexa_frame: |
       01 00 0C CC CC CD A8 97 DC 9B AD 17 00 32 AA AA
       03 00 00 0C 01 0B 00 00 02 02 7E 80 5D A8 97 DC
@@ -4373,6 +4385,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: A8:97:DC:9B:AD:17
     dst_mac: 01:00:0C:CC:CC:CD
+    pid: PVSTP+
     hexa_frame: |
       01 00 0C CC CC CD A8 97 DC 9B AD 17 00 32 AA AA
       03 00 00 0C 01 0B 00 00 02 02 7E 80 5D A8 97 DC
@@ -20952,6 +20965,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: A8:97:DC:9B:AD:17
     dst_mac: 01:00:0C:CC:CC:CD
+    pid: PVSTP+
     hexa_frame: |
       01 00 0C CC CC CD A8 97 DC 9B AD 17 00 32 AA AA
       03 00 00 0C 01 0B 00 00 02 02 7E 80 5D A8 97 DC
@@ -21710,6 +21724,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: A8:97:DC:9B:AD:17
     dst_mac: 01:00:0C:CC:CC:CD
+    pid: PVSTP+
     hexa_frame: |
       01 00 0C CC CC CD A8 97 DC 9B AD 17 00 32 AA AA
       03 00 00 0C 01 0B 00 00 02 02 7E 80 5D A8 97 DC
@@ -23003,6 +23018,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: A8:97:DC:9B:AD:17
     dst_mac: 01:00:0C:CC:CC:CD
+    pid: PVSTP+
     hexa_frame: |
       01 00 0C CC CC CD A8 97 DC 9B AD 17 00 32 AA AA
       03 00 00 0C 01 0B 00 00 02 02 7E 80 5D A8 97 DC
@@ -25014,6 +25030,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: 9C:57:AD:32:97:18
     dst_mac: 01:00:0C:CC:CC:CC
+    pid: CDP
     hexa_frame: |
       01 00 0C CC CC CC 9C 57 AD 32 97 18 01 D7 AA AA
       03 00 00 0C 20 00 02 B4 01 FF 00 01 00 23 32 50
@@ -25053,6 +25070,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: 9C:57:AD:32:97:18
     dst_mac: 01:00:0C:CC:CC:CC
+    pid: CDP
     hexa_frame: |
       01 00 0C CC CC CC 9C 57 AD 32 97 18 01 98 AA AA
       03 00 00 0C 20 00 01 B4 61 80 00 01 00 23 32 50
@@ -25128,6 +25146,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: A8:97:DC:9B:AD:17
     dst_mac: 01:00:0C:CC:CC:CD
+    pid: PVSTP+
     hexa_frame: |
       01 00 0C CC CC CD A8 97 DC 9B AD 17 00 32 AA AA
       03 00 00 0C 01 0B 00 00 02 02 7E 80 5D A8 97 DC
@@ -25704,6 +25723,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: A8:97:DC:9B:AD:17
     dst_mac: 01:00:0C:CC:CC:CD
+    pid: PVSTP+
     hexa_frame: |
       01 00 0C CC CC CD A8 97 DC 9B AD 17 00 32 AA AA
       03 00 00 0C 01 0B 00 00 02 02 7E 80 5D A8 97 DC
@@ -26637,6 +26657,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: A8:97:DC:9B:AD:17
     dst_mac: 01:00:0C:CC:CC:CD
+    pid: PVSTP+
     hexa_frame: |
       01 00 0C CC CC CD A8 97 DC 9B AD 17 00 32 AA AA
       03 00 00 0C 01 0B 00 00 02 02 7E 80 5D A8 97 DC
@@ -27873,6 +27894,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: A8:97:DC:9B:AD:17
     dst_mac: 01:00:0C:CC:CC:CD
+    pid: PVSTP+
     hexa_frame: |
       01 00 0C CC CC CD A8 97 DC 9B AD 17 00 32 AA AA
       03 00 00 0C 01 0B 00 00 02 02 7E 80 5D A8 97 DC
@@ -28780,6 +28802,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: A8:97:DC:9B:AD:17
     dst_mac: 01:00:0C:CC:CC:CD
+    pid: PVSTP+
     hexa_frame: |
       01 00 0C CC CC CD A8 97 DC 9B AD 17 00 32 AA AA
       03 00 00 0C 01 0B 00 00 02 02 7E 80 5D A8 97 DC
@@ -29011,6 +29034,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: 00:16:46:00:19:65
     dst_mac: 01:00:0C:CC:CC:CC
+    pid: CDP
     hexa_frame: |
       01 00 0C CC CC CC 00 16 46 00 19 65 00 74 AA AA
       03 00 00 0C 20 00 02 B4 74 EE 00 01 00 13 53 49
@@ -30236,6 +30260,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: A8:97:DC:9B:AD:17
     dst_mac: 01:00:0C:CC:CC:CD
+    pid: PVSTP+
     hexa_frame: |
       01 00 0C CC CC CD A8 97 DC 9B AD 17 00 32 AA AA
       03 00 00 0C 01 0B 00 00 02 02 7E 80 5D A8 97 DC
@@ -30261,6 +30286,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: D0:67:E5:A4:5D:AA
     dst_mac: 01:00:0C:CC:CC:CC
+    pid: CDP
     hexa_frame: |
       01 00 0C CC CC CC D0 67 E5 A4 5D AA 00 62 AA AA
       03 00 00 0C 20 00 02 B4 AC 5F 00 01 00 1B 43 4E
@@ -30277,6 +30303,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: D0:67:E5:A4:5D:AA
     dst_mac: 01:00:0C:CC:CC:CC
+    pid: CDP
     hexa_frame: |
       01 00 0C CC CC CC D0 67 E5 A4 5D AA 00 62 AA AA
       03 00 00 0C 20 00 01 B4 AD 5F 00 01 00 1B 43 4E
@@ -31279,6 +31306,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: A8:97:DC:9B:AD:17
     dst_mac: 01:00:0C:CC:CC:CD
+    pid: PVSTP+
     hexa_frame: |
       01 00 0C CC CC CD A8 97 DC 9B AD 17 00 32 AA AA
       03 00 00 0C 01 0B 00 00 02 02 7E 80 5D A8 97 DC
@@ -31916,6 +31944,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: A8:97:DC:9B:AD:17
     dst_mac: 01:00:0C:CC:CC:CD
+    pid: PVSTP+
     hexa_frame: |
       01 00 0C CC CC CD A8 97 DC 9B AD 17 00 32 AA AA
       03 00 00 0C 01 0B 00 00 02 02 7E 80 5D A8 97 DC
@@ -32220,6 +32249,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: 9C:57:AD:32:97:18
     dst_mac: 01:00:0C:CC:CC:CC
+    pid: DTP
     hexa_frame: |
       01 00 0C CC CC CC 9C 57 AD 32 97 18 00 22 AA AA
       03 00 00 0C 20 04 01 00 01 00 05 00 00 02 00 05
@@ -32546,6 +32576,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: A8:97:DC:9B:AD:17
     dst_mac: 01:00:0C:CC:CC:CD
+    pid: PVSTP+
     hexa_frame: |
       01 00 0C CC CC CD A8 97 DC 9B AD 17 00 32 AA AA
       03 00 00 0C 01 0B 00 00 02 02 7E 80 5D A8 97 DC
@@ -33291,6 +33322,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: A8:97:DC:9B:AD:17
     dst_mac: 01:00:0C:CC:CC:CD
+    pid: PVSTP+
     hexa_frame: |
       01 00 0C CC CC CD A8 97 DC 9B AD 17 00 32 AA AA
       03 00 00 0C 01 0B 00 00 02 02 7E 80 5D A8 97 DC
@@ -33884,6 +33916,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: A8:97:DC:9B:AD:17
     dst_mac: 01:00:0C:CC:CC:CD
+    pid: PVSTP+
     hexa_frame: |
       01 00 0C CC CC CD A8 97 DC 9B AD 17 00 32 AA AA
       03 00 00 0C 01 0B 00 00 02 02 7E 80 5D A8 97 DC
@@ -34471,6 +34504,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: A8:97:DC:9B:AD:17
     dst_mac: 01:00:0C:CC:CC:CD
+    pid: PVSTP+
     hexa_frame: |
       01 00 0C CC CC CD A8 97 DC 9B AD 17 00 32 AA AA
       03 00 00 0C 01 0B 00 00 02 02 7E 80 5D A8 97 DC
@@ -35491,6 +35525,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: A8:97:DC:9B:AD:17
     dst_mac: 01:00:0C:CC:CC:CD
+    pid: PVSTP+
     hexa_frame: |
       01 00 0C CC CC CD A8 97 DC 9B AD 17 00 32 AA AA
       03 00 00 0C 01 0B 00 00 02 02 7E 80 5D A8 97 DC
@@ -36158,6 +36193,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: A8:97:DC:9B:AD:17
     dst_mac: 01:00:0C:CC:CC:CD
+    pid: PVSTP+
     hexa_frame: |
       01 00 0C CC CC CD A8 97 DC 9B AD 17 00 32 AA AA
       03 00 00 0C 01 0B 00 00 02 02 7E 80 5D A8 97 DC
@@ -36741,6 +36777,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: A8:97:DC:9B:AD:17
     dst_mac: 01:00:0C:CC:CC:CD
+    pid: PVSTP+
     hexa_frame: |
       01 00 0C CC CC CD A8 97 DC 9B AD 17 00 32 AA AA
       03 00 00 0C 01 0B 00 00 02 02 7E 80 5D A8 97 DC
@@ -37205,6 +37242,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: A8:97:DC:9B:AD:17
     dst_mac: 01:00:0C:CC:CC:CD
+    pid: PVSTP+
     hexa_frame: |
       01 00 0C CC CC CD A8 97 DC 9B AD 17 00 32 AA AA
       03 00 00 0C 01 0B 00 00 02 02 7E 80 5D A8 97 DC
@@ -37831,6 +37869,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: A8:97:DC:9B:AD:17
     dst_mac: 01:00:0C:CC:CC:CD
+    pid: PVSTP+
     hexa_frame: |
       01 00 0C CC CC CD A8 97 DC 9B AD 17 00 32 AA AA
       03 00 00 0C 01 0B 00 00 02 02 7E 80 5D A8 97 DC
@@ -37976,6 +38015,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: 00:0B:46:50:AE:3B
     dst_mac: 01:00:0C:CC:CC:CC
+    pid: CDP
     hexa_frame: |
       01 00 0C CC CC CC 00 0B 46 50 AE 3B 00 74 AA AA
       03 00 00 0C 20 00 02 B4 52 B7 00 01 00 13 53 49
@@ -39079,6 +39119,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: A8:97:DC:9B:AD:17
     dst_mac: 01:00:0C:CC:CC:CD
+    pid: PVSTP+
     hexa_frame: |
       01 00 0C CC CC CD A8 97 DC 9B AD 17 00 32 AA AA
       03 00 00 0C 01 0B 00 00 02 02 7E 80 5D A8 97 DC
@@ -48778,6 +48819,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: A8:97:DC:9B:AD:17
     dst_mac: 01:00:0C:CC:CC:CD
+    pid: PVSTP+
     hexa_frame: |
       01 00 0C CC CC CD A8 97 DC 9B AD 17 00 32 AA AA
       03 00 00 0C 01 0B 00 00 02 02 7E 80 5D A8 97 DC
@@ -49829,6 +49871,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: A8:97:DC:9B:AD:17
     dst_mac: 01:00:0C:CC:CC:CD
+    pid: PVSTP+
     hexa_frame: |
       01 00 0C CC CC CD A8 97 DC 9B AD 17 00 32 AA AA
       03 00 00 0C 01 0B 00 00 02 02 7E 80 5D A8 97 DC
@@ -50433,6 +50476,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: A8:97:DC:9B:AD:17
     dst_mac: 01:00:0C:CC:CC:CD
+    pid: PVSTP+
     hexa_frame: |
       01 00 0C CC CC CD A8 97 DC 9B AD 17 00 32 AA AA
       03 00 00 0C 01 0B 00 00 02 02 7E 80 5D A8 97 DC
@@ -50446,6 +50490,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: D0:67:E5:A4:5D:AA
     dst_mac: 01:00:0C:CC:CC:CC
+    pid: CDP
     hexa_frame: |
       01 00 0C CC CC CC D0 67 E5 A4 5D AA 00 62 AA AA
       03 00 00 0C 20 00 02 B4 AC 5F 00 01 00 1B 43 4E
@@ -50462,6 +50507,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: D0:67:E5:A4:5D:AA
     dst_mac: 01:00:0C:CC:CC:CC
+    pid: CDP
     hexa_frame: |
       01 00 0C CC CC CC D0 67 E5 A4 5D AA 00 62 AA AA
       03 00 00 0C 20 00 01 B4 AD 5F 00 01 00 1B 43 4E
@@ -51476,6 +51522,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: A8:97:DC:9B:AD:17
     dst_mac: 01:00:0C:CC:CC:CD
+    pid: PVSTP+
     hexa_frame: |
       01 00 0C CC CC CD A8 97 DC 9B AD 17 00 32 AA AA
       03 00 00 0C 01 0B 00 00 02 02 7E 80 5D A8 97 DC
@@ -52629,6 +52676,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: A8:97:DC:9B:AD:17
     dst_mac: 01:00:0C:CC:CC:CD
+    pid: PVSTP+
     hexa_frame: |
       01 00 0C CC CC CD A8 97 DC 9B AD 17 00 32 AA AA
       03 00 00 0C 01 0B 00 00 02 02 7E 80 5D A8 97 DC
@@ -52714,6 +52762,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: 9C:57:AD:32:97:18
     dst_mac: 01:00:0C:CC:CC:CC
+    pid: DTP
     hexa_frame: |
       01 00 0C CC CC CC 9C 57 AD 32 97 18 00 22 AA AA
       03 00 00 0C 20 04 01 00 01 00 05 00 00 02 00 05
@@ -61770,6 +61819,7 @@ packets:
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: 54:E6:FC:F8:53:58
     dst_mac: 09:00:07:FF:FF:FF
+    pid: Appletalk
     hexa_frame: |
       09 00 07 FF FF FF 54 E6 FC F8 53 58 00 1C AA AA
       03 08 00 07 80 9B 00 14 00 00 00 00 FF 56 FF DD

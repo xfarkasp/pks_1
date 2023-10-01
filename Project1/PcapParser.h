@@ -20,7 +20,7 @@ class PcapParser {
 	public:
         void parseFrame(std::string path);
 		static void getHexDump(std::vector<unsigned int> data);
-        std::string getFrameType(int typeSize, std::vector<unsigned int>);
+        std::vector<std::string> getFrameType(int typeSize, std::vector<unsigned int>);
         static std::string getName(int typeSize);
         void printData();
         void serializeYaml();

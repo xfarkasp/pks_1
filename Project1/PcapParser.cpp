@@ -42,8 +42,6 @@ void PcapParser::parseFrame(std::string path) {
 
             //get size of ethernet type bytes
             if (ETH_TYPE_START <= i && i < ETH_TYPE_END) {
-                printf_s("%.2x", hexFrame[i]);
-
                 char  hex_string[20];
                 sprintf_s(hex_string, "%.2X", hexFrame[i]); //convert number to hex
                 frameBuffer << hex_string;
@@ -71,48 +69,98 @@ void PcapParser::getHexDump(std::vector<unsigned int> data) {
     cout << endl << endl;
 }
 
-std::string PcapParser::getFrameType(int typeSize, std::vector<unsigned int> data) {
+std::vector<std::string> PcapParser::getFrameType(int typeSize, std::vector<unsigned int> data) {
+    std::vector<std::string> frameTypes;
     if (typeSize >= PcapParser::ETHERNET_II_MIN) {
-        return "ETHERNET II";
+        frameTypes.push_back("ETHERNET II");
+        return frameTypes;
     }
     else if (typeSize <= PcapParser::IEEE_802_3_MAX) {
+        std::stringstream sBuffer;
         char  hex_string[20];
         sprintf_s(hex_string, "%.2X", data[14]); //convert number to hex
 
         switch (stoi(hex_string, 0, 16))
         {
         case IEEE_802_3_SNAP:
-            return "IEEE 802.3 LLC & SNAP";
+            frameTypes.push_back("IEEE 802.3 LLC & SNAP");
+            for (size_t i = 20; i < 22; i++) {
+                sprintf_s(hex_string, "%.2X", data[i]);
+                sBuffer << hex_string;
+            }
+            frameTypes.push_back(getName(stoi(sBuffer.str(), 0, 16)));
+            return frameTypes;
         case IEEE_802_3_RAW:
-            return "IEEE 802.3 RAW";
+            frameTypes.push_back("IEEE 802.3 RAW");
         default:
-            return "IEEE 802.3 LLC";
+            frameTypes.push_back("IEEE 802.3 LLC");
         }
     }
-    return "undefined";
+    frameTypes.push_back("undefined");
+    return frameTypes;
 }
 
 std::string PcapParser::getName(int typeSize) {
     switch (typeSize)
     {
+    //saps
+    case 0x00:
+        return "Null SAP";
+    case 0x02:
+        return "LLC Sublayer Management / Individual";
+    case 0x03:
+        return "LLC Sublayer Management / Group";
+    case 0x06:
+        return "IP (DoD Internet Protocol)";
+    case 0x0E:
+        return "PROWAY (IEC 955) Network Management, Maintenance and Installation";
+    case 0x42:
+        return "STP";
+    case 0x4E:
+        return "MMS (Manufacturing Message Service) EIA-RS 511";
+    case 0x5E:
+        return "ISI IP";
+    case 0x7E:
+        return "X.25 PLP (ISO 8208)";
+    case 0x8E:
+        return "PROWAY (IEC 955) Active Station List Maintenance";
+    case 0xAA:
+        return "SNAP (Sub-Network Access Protocol/ non-IEEE SAPS)";
+    case 0xE0:
+        return "IPX (Novell NetWare)";
+    case 0xF4:
+        return "LAN Management";
+    case 0xFE:
+        return "ISO Network Layer Protocols";
+    case 0xFF:
+        return "Global DSAP";
+    //pids
+    case 0x010B:
+        return "PVSTP+";
     case 0x0200:
         return "XEROX PUB";
     case 0x0201:
         return "PUP Addr Trans";
+    case 0x0208:
+        return "RIP";
     case 0x0800:
-        return "IPv4";
+        return "IP (IPv4)";
     case 0x0801:
         return "X.75 Internet";
     case 0x0805:
         return "X.25 Level 3";
     case 0x0806:
-        return "ARP";
+        return "ARP (Adress Resolution Protocol)";
+    case 0x2000:
+        return "CDP";
+    case 0x2004:
+        return "DTP";
     case 0x08035:
         return "RARP";
     case 0x0809B:
         return "Appletalk";
     case 0x080F3:
-        return "AppleTalk AARP";
+        return "AppleTalk AARP (Kinetics)";
     case 0x8100:
         return "IEE 802.1Q VLAN-tagged frames";
     case 0x8137:
@@ -129,9 +177,12 @@ std::string PcapParser::getName(int typeSize) {
         return "PPoE Discovery Stage";
     case 0x8864:
         return "PPoE Session Stage";
+    case 0x88CC:
+        return "Link Layer Discovery Protocol (LLDP)";
+    case 0x9000:
+        return "Loopback";
     default:
         return "not defined";
-        break;
     }
 }
 
@@ -141,7 +192,7 @@ void PcapParser::printData() {
         std::cout << "len_frame_pcap: " << frame.capLen << std::endl;
         std::cout << "len_frame_medium: " << frame.wireLen << std::endl;
         std::cout << "frame_type: ";
-        std::cout << getFrameType(frame.typeSize, frame.hexFrame) << endl;
+        std::cout << (getFrameType(frame.typeSize, frame.hexFrame))[0] << endl;
 
         std::cout << "src_mac: ";
         for(auto byte : frame.srcMac)
@@ -175,7 +226,8 @@ void PcapParser::serializeYaml() {
         output << YAML::Key << "frame_number" << YAML::Value << packet.index;
         output << YAML::Key << "len_frame_pcap" << YAML::Value << packet.capLen;
         output << YAML::Key << "len_frame_medium" << YAML::Value << packet.capLen;
-        output << YAML::Key << "frame_type" << YAML::Value << getFrameType(packet.typeSize, packet.hexFrame);
+        std::vector<std::string> frameTypes = getFrameType(packet.typeSize, packet.hexFrame);
+        output << YAML::Key << "frame_type" << YAML::Value << frameTypes.at(0);
 
         std::stringstream sBuffer;
         for (auto srcByte : packet.srcMac) {
@@ -195,6 +247,9 @@ void PcapParser::serializeYaml() {
         }
         output << YAML::Key << "dst_mac" << YAML::Value << sBuffer.str().erase(sBuffer.str().size() - 1);
 
+        if(frameTypes.size() == 2 && frameTypes.at(0) == "IEEE 802.3 LLC & SNAP")
+            output << YAML::Key << "pid" << YAML::Value <<  frameTypes.at(1);
+
         sBuffer.str("");
         sBuffer.clear();
         for (size_t i = 0; i < packet.capLen; i++) {
@@ -211,7 +266,8 @@ void PcapParser::serializeYaml() {
                     sBuffer << " ";
             }  
         }
-        sBuffer << endl;
+        if((sBuffer.str()).at(((sBuffer.str()).size()-1) != '\n'))
+            sBuffer << endl;
         output << YAML::Key << "hexa_frame" << YAML::Value << YAML::Literal << sBuffer.str();
         output << YAML::EndMap;
     }
