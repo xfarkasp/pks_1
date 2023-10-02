@@ -279,8 +279,8 @@ packets:
     len_frame_medium: 94
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: 00:16:47:02:24:1A
-    dst_mac: 01:00:0C:00:00:00
-    pid: LLC Sublayer Management / Group
+    dst_mac: 01:00:0C:CC:CC:CC
+    pid: DTP
     hexa_frame: |
       01 00 0C 00 00 00 00 16 47 02 24 1A 00 4C AA AA
       03 00 00 0C 00 03 00 00 00 00 01 00 0C CC CC CC
@@ -3753,8 +3753,8 @@ packets:
     len_frame_medium: 94
     frame_type: IEEE 802.3 LLC & SNAP
     src_mac: 00:16:47:02:24:1A
-    dst_mac: 01:00:0C:00:00:00
-    pid: LLC Sublayer Management / Group
+    dst_mac: 01:00:0C:CC:CC:CC
+    pid: DTP
     hexa_frame: |
       01 00 0C 00 00 00 00 16 47 02 24 1A 00 4C AA AA
       03 00 00 0C 00 03 00 00 00 00 01 00 0C CC CC CC

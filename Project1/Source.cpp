@@ -7,11 +7,9 @@
 #include "PcapParser.h"
 #include <sstream>
 
-using namespace std;
-
 int main(int argc, char* argv[])
 {
-    string file;
+    std::string file;
     if (argc == 1) {
         std::cout << "Enter pcap file name: ";
         std::cin >> file;

@@ -74,21 +74,54 @@ void PcapParser::parseFrame(std::string path) {
 
             thisFrame.hexFrame = hexFrame;
 
-            for (size_t i = 0; i < ETH_TYPE_END; i++)
-            {
-                //pushback dest mac bytes to vector
-                if (FRAME_OFF_SETS::DEST_MAC_START <= i && i < FRAME_OFF_SETS::DEST_MAC_END)
-                    destAdress.push_back(hexFrame[i]);
+            //check isl frame
+            std::stringstream islStream;
+            for (int i = 0; i < 6; i++) {
+                char  hex_string[20];
+                sprintf_s(hex_string, "%.2X", hexFrame[i]); //convert number to hex
+                islStream << hex_string;
+            }
 
-                //pushback source mac bytes to vector
-                if (FRAME_OFF_SETS::SOURCE_MAC_START <= i && i < FRAME_OFF_SETS::SOURCE_MAC_END)
-                    srcAdress.push_back(hexFrame[i]);
+            if (islStream.str() == "01000C000000") {
+                thisFrame.isISL = true;
 
-                //get size of ethernet type bytes
-                if (ETH_TYPE_START <= i && i < ETH_TYPE_END) {
-                    char  hex_string[20];
-                    sprintf_s(hex_string, "%.2X", hexFrame[i]); //convert number to hex
-                    frameBuffer << hex_string;
+                for (size_t i = ISL_DEST_MAC_START; i < ISL_ETH_TYPE_END; i++)
+                {
+
+                    //pushback dest mac bytes to vector
+                    if (FRAME_OFF_SETS::ISL_DEST_MAC_START <= i && i < FRAME_OFF_SETS::ISL_DEST_MAC_END)
+                        destAdress.push_back(hexFrame[i]);
+
+                    //pushback source mac bytes to vector
+                    if (FRAME_OFF_SETS::ISL_SRC_MAC_START <= i && i < FRAME_OFF_SETS::ISL_SRC_MAC_END)
+                        srcAdress.push_back(hexFrame[i]);
+
+                    //get size of ethernet type bytes
+                    if (ISL_ETH_TYPE_START <= i && i < ISL_ETH_TYPE_END) {
+                        char  hex_string[20];
+                        sprintf_s(hex_string, "%.2X", hexFrame[i]); //convert number to hex
+                        frameBuffer << hex_string;
+                    }
+                }
+
+            }
+            else {
+                for (size_t i = 0; i < ETH_TYPE_END; i++)
+                {
+                    //pushback dest mac bytes to vector
+                    if (FRAME_OFF_SETS::DEST_MAC_START <= i && i < FRAME_OFF_SETS::DEST_MAC_END)
+                        destAdress.push_back(hexFrame[i]);
+
+                    //pushback source mac bytes to vector
+                    if (FRAME_OFF_SETS::SOURCE_MAC_START <= i && i < FRAME_OFF_SETS::SOURCE_MAC_END)
+                        srcAdress.push_back(hexFrame[i]);
+
+                    //get size of ethernet type bytes
+                    if (ETH_TYPE_START <= i && i < ETH_TYPE_END) {
+                        char  hex_string[20];
+                        sprintf_s(hex_string, "%.2X", hexFrame[i]); //convert number to hex
+                        frameBuffer << hex_string;
+                    }
                 }
             }
             //put data to frame struct
@@ -107,7 +140,7 @@ void PcapParser::parseFrame(std::string path) {
     }
 }
 
-std::vector<std::string> PcapParser::getFrameType(int typeSize, std::vector<unsigned int> data) {
+std::vector<std::string> PcapParser::getFrameType(int typeSize, std::vector<unsigned int> data, bool ISL) {
     std::vector<std::string> frameTypes;
     if (typeSize >= PcapParser::ETHERNET_II_MIN) {
         frameTypes.push_back("ETHERNET II");
@@ -116,16 +149,28 @@ std::vector<std::string> PcapParser::getFrameType(int typeSize, std::vector<unsi
     else if (typeSize <= PcapParser::IEEE_802_3_MAX) {
         std::stringstream sBuffer;
         char  hex_string[20];
-        sprintf_s(hex_string, "%.2X", data[14]); //convert number to hex
+        if(!ISL)
+            sprintf_s(hex_string, "%.2X", data[ETH_TYPE_END]); //convert number to hex
+        else
+            sprintf_s(hex_string, "%.2X", data[ISL_ETH_TYPE_END]); //convert number to hex
 
         switch (unsigned int typeSize = stoi(hex_string, 0, 16))
         {
         case IEEE_802_3_SNAP:
             frameTypes.push_back("IEEE 802.3 LLC & SNAP");
-            for (size_t i = SNAP_PID_START; i <= SNAP_PID_END; i++) {
-                sprintf_s(hex_string, "%.2X", data[i]);
-                sBuffer << hex_string;
+            if (!ISL){
+                for (size_t i = SNAP_PID_START; i <= SNAP_PID_END; i++) {
+                    sprintf_s(hex_string, "%.2X", data[i]);
+                    sBuffer << hex_string;
+                }
             }
+            else {
+                for (size_t i = ISL_SNAP_PID_START; i <= ISL_SNAP_PID_END; i++) {
+                    sprintf_s(hex_string, "%.2X", data[i]);
+                    sBuffer << hex_string;
+                }
+            }
+
             frameTypes.push_back(_protocolMap[stoi(sBuffer.str(), 0, 16)]);
             return frameTypes;
         case IEEE_802_3_RAW:
@@ -147,7 +192,7 @@ void PcapParser::printData() {
         std::cout << "len_frame_pcap: " << frame.capLen << std::endl;
         std::cout << "len_frame_medium: " << frame.wireLen << std::endl;
         std::cout << "frame_type: ";
-        std::cout << (getFrameType(frame.typeSize, frame.hexFrame))[0] << endl;
+        std::cout << (getFrameType(frame.typeSize, frame.hexFrame, frame.isISL))[0] << endl;
 
         std::cout << "src_mac: ";
         for(auto byte : frame.srcMac)
@@ -187,7 +232,7 @@ void PcapParser::serializeYaml() {
         output << YAML::Key << "frame_number" << YAML::Value << packet.index;
         output << YAML::Key << "len_frame_pcap" << YAML::Value << packet.capLen;
         output << YAML::Key << "len_frame_medium" << YAML::Value << packet.wireLen;
-        std::vector<std::string> frameTypes = getFrameType(packet.typeSize, packet.hexFrame);
+        std::vector<std::string> frameTypes = getFrameType(packet.typeSize, packet.hexFrame, packet.isISL);
         output << YAML::Key << "frame_type" << YAML::Value << frameTypes.at(0);
 
         std::stringstream sBuffer;

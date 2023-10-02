@@ -14,6 +14,7 @@ struct Frame {
     std::vector<unsigned int> destMac;
     std::vector<unsigned int> srcMac;
     int typeSize;
+    bool isISL = false;
 };
 
 class PcapParser {
@@ -24,7 +25,7 @@ class PcapParser {
     
     private:
         void setProtocolMap();  //sets the protocol maping from external file
-        std::vector<std::string> getFrameType(int typeSize, std::vector<unsigned int>);
+        std::vector<std::string> getFrameType(int typeSize, std::vector<unsigned int>, bool ISL);
 
     private:
         enum FRAME_OFF_SETS {
@@ -36,6 +37,16 @@ class PcapParser {
             ETH_TYPE_END = 14,
             SNAP_PID_START = 20,
             SNAP_PID_END = 21,
+            //ISL frame
+            ISL_DEST_MAC_START = 26,
+            ISL_DEST_MAC_END = 32,
+            ISL_SRC_MAC_START = 32,
+            ISL_SRC_MAC_END = 38,
+            ISL_ETH_TYPE_START = 38,
+            ISL_ETH_TYPE_END = 40,
+            ISL_SNAP_PID_START = 46,
+            ISL_SNAP_PID_END = 47,
+
         };
 
         enum FRAME_TYPE {
