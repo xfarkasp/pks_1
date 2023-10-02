@@ -24,6 +24,7 @@ class PcapParser {
         static std::string getName(int typeSize);
         void printData();
         void serializeYaml();
+        void setProtocolMap();
 
     private:
         enum FRAME_OFF_SETS {
@@ -89,4 +90,5 @@ class PcapParser {
         private:
             std::vector<Frame> _frames;
             std::string _fileName;
+            std::map<unsigned int, std::string> _protocolMap;
 };

@@ -3,6 +3,29 @@
 
 using namespace std;
 
+void PcapParser::setProtocolMap() {
+    std::fstream protocolFile;
+    std::string protocolFilePath = "C:\\Users\\lordp\\source\\repos\\Project1\\Project1\\protocols.txt";
+
+    protocolFile.open(protocolFilePath, ios::in); //open a file to perform read operation using file object
+    if (protocolFile.is_open()) {   //checking whether the file is open
+        std::string fileStr;
+        while (getline(protocolFile, fileStr)) { //read data from file object and put it into string.
+            std::stringstream sBuffer;
+            std::vector<std::string> splitString;
+
+            sBuffer << fileStr;
+            while (getline(sBuffer, fileStr, ':')) {
+                splitString.push_back(fileStr);
+            }
+            if (splitString.size() != 0) {
+                _protocolMap.insert({ stoi(splitString.at(0), 0, 16), splitString.at(1)});
+            }
+        }
+        protocolFile.close(); //close the file object.
+    }
+}
+
 void PcapParser::parseFrame(std::string path) {
     _fileName = path;
     char errBuff[PCAP_ERRBUF_SIZE];
