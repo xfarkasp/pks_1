@@ -5,24 +5,37 @@ using namespace std;
 
 void PcapParser::setProtocolMap() {
     std::fstream protocolFile;
-    std::string protocolFilePath = "C:\\Users\\lordp\\source\\repos\\Project1\\Project1\\protocols.txt";
+    std::string protocolFilePath = "Protocols\\L2.txt";
+    try {
+        protocolFile.open(protocolFilePath, ios::in); 
 
-    protocolFile.open(protocolFilePath, ios::in); //open a file to perform read operation using file object
-    if (protocolFile.is_open()) {   //checking whether the file is open
-        std::string fileStr;
-        while (getline(protocolFile, fileStr)) { //read data from file object and put it into string.
-            std::stringstream sBuffer;
-            std::vector<std::string> splitString;
+        if (protocolFile.is_open()) {
+            std::string fileStr;
+            while (getline(protocolFile, fileStr)) {
+                std::stringstream sBuffer;
+                std::vector<std::string> splitString;
 
-            sBuffer << fileStr;
-            while (getline(sBuffer, fileStr, ':')) {
-                splitString.push_back(fileStr);
+                sBuffer << fileStr;
+                //split input format to 2 parts devided by ':' and map value with protocol name
+                while (getline(sBuffer, fileStr, ':')) {
+                    splitString.push_back(fileStr);
+                }
+                if (splitString.size() != 0) {
+                    _protocolMap.insert({ stoi(splitString.at(0), 0, 16), splitString.at(1) });
+                }
             }
-            if (splitString.size() != 0) {
-                _protocolMap.insert({ stoi(splitString.at(0), 0, 16), splitString.at(1)});
-            }
+            protocolFile.close(); //close protocol file
         }
-        protocolFile.close(); //close the file object.
+        else
+            throw -1;
+    }
+    catch (int error) {
+        std::cout << "error opening file, terminating" << endl;
+        exit(0);
+    }
+    catch (...) {
+        std::cout << "something went wrong, terminating" << endl;
+        exit(0);
     }
 }
 
@@ -32,55 +45,66 @@ void PcapParser::parseFrame(std::string path) {
     setProtocolMap();   
     char errBuff[PCAP_ERRBUF_SIZE];
 
-    pcap_t* pcap = pcap_open_offline(path.c_str(), errBuff);
-
-    struct pcap_pkthdr* header; //header structure from libpcap
-
-    const u_char* data;
-
-    size_t packetCount = 0;
-    while (int returnValue = pcap_next_ex(pcap, &header, &data) >= 0)
+    if (pcap_t* pcap = pcap_open_offline(path.c_str(), errBuff))
     {
-        Frame thisFrame;
-        stringstream frameBuffer;
-        thisFrame.index = ++packetCount;
-        thisFrame.capLen = header->caplen;
-        thisFrame.wireLen = header->len + 4;
-        std::vector<unsigned int> destAdress;
-        std::vector<unsigned int> srcAdress;
+        struct pcap_pkthdr* header; //header structure from libpcap
 
-        std::vector<unsigned int> hexFrame;
-        for (size_t i = 0; i < header->caplen; i++)
-            hexFrame.push_back(data[i]);
+        const u_char* data;
 
-        thisFrame.hexFrame = hexFrame;
+        size_t packetCount = 0;
 
-        for (size_t i = 0; i < ETH_TYPE_END; i++)
+        while (int returnValue = pcap_next_ex(pcap, &header, &data) >= 0)
         {
-            //pushback dest mac bytes to vector
-            if (FRAME_OFF_SETS::DEST_MAC_START <= i && i < FRAME_OFF_SETS::DEST_MAC_END)
-                destAdress.push_back(hexFrame[i]);
+            Frame thisFrame;
+            stringstream frameBuffer;
+            thisFrame.index = ++packetCount;
+            thisFrame.capLen = header->caplen;
+            //if pcap len smaller than 60, padding was not detected, set length to min frame lengts
+            if(header->len < 60)
+                thisFrame.wireLen = 64;
+            else
+                thisFrame.wireLen = (header->len) + 4; // +4 FCS
 
-            //pushback source mac bytes to vector
-            if (FRAME_OFF_SETS::SOURCE_MAC_START <= i && i < FRAME_OFF_SETS::SOURCE_MAC_END)
-                srcAdress.push_back(hexFrame[i]);
+            std::vector<unsigned int> destAdress;
+            std::vector<unsigned int> srcAdress;
 
-            //get size of ethernet type bytes
-            if (ETH_TYPE_START <= i && i < ETH_TYPE_END) {
-                char  hex_string[20];
-                sprintf_s(hex_string, "%.2X", hexFrame[i]); //convert number to hex
-                frameBuffer << hex_string;
+            std::vector<unsigned int> hexFrame;
+            for (size_t i = 0; i < header->caplen; i++)
+                hexFrame.push_back(data[i]);
+
+            thisFrame.hexFrame = hexFrame;
+
+            for (size_t i = 0; i < ETH_TYPE_END; i++)
+            {
+                //pushback dest mac bytes to vector
+                if (FRAME_OFF_SETS::DEST_MAC_START <= i && i < FRAME_OFF_SETS::DEST_MAC_END)
+                    destAdress.push_back(hexFrame[i]);
+
+                //pushback source mac bytes to vector
+                if (FRAME_OFF_SETS::SOURCE_MAC_START <= i && i < FRAME_OFF_SETS::SOURCE_MAC_END)
+                    srcAdress.push_back(hexFrame[i]);
+
+                //get size of ethernet type bytes
+                if (ETH_TYPE_START <= i && i < ETH_TYPE_END) {
+                    char  hex_string[20];
+                    sprintf_s(hex_string, "%.2X", hexFrame[i]); //convert number to hex
+                    frameBuffer << hex_string;
+                }
             }
-        }
-        //put data to frame struct
-        thisFrame.typeSize = stoi(frameBuffer.str(), 0, 16);
-        thisFrame.destMac = destAdress;
-        thisFrame.srcMac = srcAdress;
+            //put data to frame struct
+            thisFrame.typeSize = stoi(frameBuffer.str(), 0, 16);
+            thisFrame.destMac = destAdress;
+            thisFrame.srcMac = srcAdress;
 
-        //add this frame to vector of frames
-        _frames.push_back(thisFrame);
+            //add this frame to vector of frames
+            _frames.push_back(thisFrame);
+        }
+        //printData();
     }
-    //printData();
+    else {
+        std::cout << "can not open pcap file, terminating!" << std::endl;
+        exit(0);
+    }
 }
 
 std::vector<std::string> PcapParser::getFrameType(int typeSize, std::vector<unsigned int> data) {
@@ -98,7 +122,7 @@ std::vector<std::string> PcapParser::getFrameType(int typeSize, std::vector<unsi
         {
         case IEEE_802_3_SNAP:
             frameTypes.push_back("IEEE 802.3 LLC & SNAP");
-            for (size_t i = 20; i < 22; i++) {
+            for (size_t i = SNAP_PID_START; i <= SNAP_PID_END; i++) {
                 sprintf_s(hex_string, "%.2X", data[i]);
                 sBuffer << hex_string;
             }
@@ -106,6 +130,7 @@ std::vector<std::string> PcapParser::getFrameType(int typeSize, std::vector<unsi
             return frameTypes;
         case IEEE_802_3_RAW:
             frameTypes.push_back("IEEE 802.3 RAW");
+            return frameTypes;
         default:
             frameTypes.push_back("IEEE 802.3 LLC");
             frameTypes.push_back(_protocolMap[typeSize]);
@@ -161,7 +186,7 @@ void PcapParser::serializeYaml() {
         output << YAML::BeginMap;
         output << YAML::Key << "frame_number" << YAML::Value << packet.index;
         output << YAML::Key << "len_frame_pcap" << YAML::Value << packet.capLen;
-        output << YAML::Key << "len_frame_medium" << YAML::Value << packet.capLen;
+        output << YAML::Key << "len_frame_medium" << YAML::Value << packet.wireLen;
         std::vector<std::string> frameTypes = getFrameType(packet.typeSize, packet.hexFrame);
         output << YAML::Key << "frame_type" << YAML::Value << frameTypes.at(0);
 
@@ -187,7 +212,7 @@ void PcapParser::serializeYaml() {
             if(frameTypes.at(0) == "IEEE 802.3 LLC & SNAP")
                 output << YAML::Key << "pid" << YAML::Value << frameTypes.at(1);
             else if(frameTypes.at(0) == "IEEE 802.3 LLC")
-                output << YAML::Key << "pid" << YAML::Value << frameTypes.at(1);
+                output << YAML::Key << "sap" << YAML::Value << frameTypes.at(1);
         }
             
         sBuffer.str("");
@@ -215,11 +240,12 @@ void PcapParser::serializeYaml() {
     output << YAML::EndSeq;
     output << YAML::EndMap;
 
-    fstream file0;
-    file0.open("info.yaml", ios_base::out);
-    if (file0.is_open())
+    fstream yamlFile;
+    yamlFile.open("yaml_output//" + _fileName.erase(_fileName.find('.'), _fileName.size() - 1) + "-output.yaml", ios_base::out);
+    if (yamlFile.is_open())
     {
-        file0 << output.c_str();
-        file0.close();
+        yamlFile << output.c_str();
+        yamlFile.close();
     }
+    std::cout << "succesfuly serialized pcap " + _fileName << std::endl;
 }

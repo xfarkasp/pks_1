@@ -34,6 +34,8 @@ class PcapParser {
             SOURCE_MAC_END = 12,
             ETH_TYPE_START = 12,
             ETH_TYPE_END = 14,
+            SNAP_PID_START = 20,
+            SNAP_PID_END = 21,
         };
 
         enum FRAME_TYPE {
