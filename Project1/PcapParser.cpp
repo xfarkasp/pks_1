@@ -27,7 +27,9 @@ void PcapParser::setProtocolMap() {
 }
 
 void PcapParser::parseFrame(std::string path) {
-    _fileName = path;
+    _fileName = path;   //sets file current file path as member
+
+    setProtocolMap();   
     char errBuff[PCAP_ERRBUF_SIZE];
 
     pcap_t* pcap = pcap_open_offline(path.c_str(), errBuff);
@@ -43,7 +45,7 @@ void PcapParser::parseFrame(std::string path) {
         stringstream frameBuffer;
         thisFrame.index = ++packetCount;
         thisFrame.capLen = header->caplen;
-        thisFrame.wireLen = header->len;
+        thisFrame.wireLen = header->len + 4;
         std::vector<unsigned int> destAdress;
         std::vector<unsigned int> srcAdress;
 
@@ -81,17 +83,6 @@ void PcapParser::parseFrame(std::string path) {
     //printData();
 }
 
-void PcapParser::getHexDump(std::vector<unsigned int> data) {
-    std::cout << "hexa_frame: ";
-    for (size_t i = 0; i < data.size(); i++) {
-        // next line after every 16 octets
-        if ((i % 16) == 0)
-            std::cout << std::endl;
-        printf("%.2x ", data[i]);// Print each octet as hex (x), make sure there is always two characters (.2)
-    }
-    cout << endl << endl;
-}
-
 std::vector<std::string> PcapParser::getFrameType(int typeSize, std::vector<unsigned int> data) {
     std::vector<std::string> frameTypes;
     if (typeSize >= PcapParser::ETHERNET_II_MIN) {
@@ -103,7 +94,7 @@ std::vector<std::string> PcapParser::getFrameType(int typeSize, std::vector<unsi
         char  hex_string[20];
         sprintf_s(hex_string, "%.2X", data[14]); //convert number to hex
 
-        switch (stoi(hex_string, 0, 16))
+        switch (unsigned int typeSize = stoi(hex_string, 0, 16))
         {
         case IEEE_802_3_SNAP:
             frameTypes.push_back("IEEE 802.3 LLC & SNAP");
@@ -111,102 +102,18 @@ std::vector<std::string> PcapParser::getFrameType(int typeSize, std::vector<unsi
                 sprintf_s(hex_string, "%.2X", data[i]);
                 sBuffer << hex_string;
             }
-            frameTypes.push_back(getName(stoi(sBuffer.str(), 0, 16)));
+            frameTypes.push_back(_protocolMap[stoi(sBuffer.str(), 0, 16)]);
             return frameTypes;
         case IEEE_802_3_RAW:
             frameTypes.push_back("IEEE 802.3 RAW");
         default:
             frameTypes.push_back("IEEE 802.3 LLC");
+            frameTypes.push_back(_protocolMap[typeSize]);
+            return frameTypes;
         }
     }
     frameTypes.push_back("undefined");
     return frameTypes;
-}
-
-std::string PcapParser::getName(int typeSize) {
-    switch (typeSize)
-    {
-    //saps
-    case 0x00:
-        return "Null SAP";
-    case 0x02:
-        return "LLC Sublayer Management / Individual";
-    case 0x03:
-        return "LLC Sublayer Management / Group";
-    case 0x06:
-        return "IP (DoD Internet Protocol)";
-    case 0x0E:
-        return "PROWAY (IEC 955) Network Management, Maintenance and Installation";
-    case 0x42:
-        return "STP";
-    case 0x4E:
-        return "MMS (Manufacturing Message Service) EIA-RS 511";
-    case 0x5E:
-        return "ISI IP";
-    case 0x7E:
-        return "X.25 PLP (ISO 8208)";
-    case 0x8E:
-        return "PROWAY (IEC 955) Active Station List Maintenance";
-    case 0xAA:
-        return "SNAP (Sub-Network Access Protocol/ non-IEEE SAPS)";
-    case 0xE0:
-        return "IPX (Novell NetWare)";
-    case 0xF4:
-        return "LAN Management";
-    case 0xFE:
-        return "ISO Network Layer Protocols";
-    case 0xFF:
-        return "Global DSAP";
-    //pids
-    case 0x010B:
-        return "PVSTP+";
-    case 0x0200:
-        return "XEROX PUB";
-    case 0x0201:
-        return "PUP Addr Trans";
-    case 0x0208:
-        return "RIP";
-    case 0x0800:
-        return "IP (IPv4)";
-    case 0x0801:
-        return "X.75 Internet";
-    case 0x0805:
-        return "X.25 Level 3";
-    case 0x0806:
-        return "ARP (Adress Resolution Protocol)";
-    case 0x2000:
-        return "CDP";
-    case 0x2004:
-        return "DTP";
-    case 0x08035:
-        return "RARP";
-    case 0x0809B:
-        return "Appletalk";
-    case 0x080F3:
-        return "AppleTalk AARP (Kinetics)";
-    case 0x8100:
-        return "IEE 802.1Q VLAN-tagged frames";
-    case 0x8137:
-        return "Novell IPX";
-    case 0x86DD:
-        return "IPv6";
-    case 0x880B:
-        return "PPP";
-    case 0x8847:
-        return "MPLS";
-    case 0x8848:
-        return "MPLS with upstream-assigned label";
-    case 0x8863:
-        return "PPoE Discovery Stage";
-    case 0x8864:
-        return "PPoE Session Stage";
-    case 0x88CC:
-        return "Link Layer Discovery Protocol (LLDP)";
-    case 0x9000:
-        return "Loopback";
-    default:
-        return "not defined";
-    }
 }
 
 void PcapParser::printData() {
@@ -229,8 +136,14 @@ void PcapParser::printData() {
 
         std::cout << std::endl;
 
-        //prints the hexdump in hexadecimal format formated 16 bytes per line
-        getHexDump(frame.hexFrame);
+        std::cout << "hexa_frame: ";
+        for (size_t i = 0; i < frame.hexFrame.size(); i++) {
+            // next line after every 16 octets
+            if ((i % 16) == 0)
+                std::cout << std::endl;
+            printf("%.2x ", frame.hexFrame[i]);// Print each octet as hex (x), make sure there is always two characters (.2)
+        }
+        cout << endl << endl;
     }
 }
 
@@ -270,9 +183,13 @@ void PcapParser::serializeYaml() {
         }
         output << YAML::Key << "dst_mac" << YAML::Value << sBuffer.str().erase(sBuffer.str().size() - 1);
 
-        if(frameTypes.size() == 2 && frameTypes.at(0) == "IEEE 802.3 LLC & SNAP")
-            output << YAML::Key << "pid" << YAML::Value <<  frameTypes.at(1);
-
+        if (frameTypes.size() == 2) {
+            if(frameTypes.at(0) == "IEEE 802.3 LLC & SNAP")
+                output << YAML::Key << "pid" << YAML::Value << frameTypes.at(1);
+            else if(frameTypes.at(0) == "IEEE 802.3 LLC")
+                output << YAML::Key << "pid" << YAML::Value << frameTypes.at(1);
+        }
+            
         sBuffer.str("");
         sBuffer.clear();
         for (size_t i = 0; i < packet.capLen; i++) {
@@ -289,8 +206,9 @@ void PcapParser::serializeYaml() {
                     sBuffer << " ";
             }  
         }
-        if((sBuffer.str()).at(((sBuffer.str()).size()-1) != '\n'))
+        if((sBuffer.str()).at(((sBuffer.str()).size()-1)) != '\n')
             sBuffer << endl;
+
         output << YAML::Key << "hexa_frame" << YAML::Value << YAML::Literal << sBuffer.str();
         output << YAML::EndMap;
     }
