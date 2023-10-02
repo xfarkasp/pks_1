@@ -10,18 +10,18 @@ void PcapParser::setProtocolMap() {
         protocolFile.open(protocolFilePath, ios::in); 
 
         if (protocolFile.is_open()) {
-            std::string fileStr;
-            while (getline(protocolFile, fileStr)) {
+            std::string fileStr; //read lines from file to this string
+            while (getline(protocolFile, fileStr)) { //read lines from file
                 std::stringstream sBuffer;
                 std::vector<std::string> splitString;
-
+                //stream line from file to stringstream
                 sBuffer << fileStr;
                 //split input format to 2 parts devided by ':' and map value with protocol name
                 while (getline(sBuffer, fileStr, ':')) {
                     splitString.push_back(fileStr);
                 }
                 if (splitString.size() != 0) {
-                    _protocolMap.insert({ stoi(splitString.at(0), 0, 16), splitString.at(1) });
+                    _protocolMap.insert({ stoi(splitString.at(0), 0, 16), splitString.at(1) }); //add to map protocol value and name
                 }
             }
             protocolFile.close(); //close protocol file
@@ -42,23 +42,26 @@ void PcapParser::setProtocolMap() {
 void PcapParser::parseFrame(std::string path) {
     _fileName = path;   //sets file current file path as member
 
-    setProtocolMap();   
-    char errBuff[PCAP_ERRBUF_SIZE];
+    setProtocolMap();  //call method to map protocols from file
 
-    if (pcap_t* pcap = pcap_open_offline(path.c_str(), errBuff))
+    char errBuff[PCAP_ERRBUF_SIZE]; //error buffer for readinf pcap file
+
+    if (pcap_t* pcap = pcap_open_offline(path.c_str(), errBuff)) //read file content to pcap_t pointer
     {
         struct pcap_pkthdr* header; //header structure from libpcap
 
-        const u_char* data;
+        const u_char* data; // pointer to hex dump
 
         size_t packetCount = 0;
 
-        while (int returnValue = pcap_next_ex(pcap, &header, &data) >= 0)
+        while (int returnValue = pcap_next_ex(pcap, &header, &data) >= 0) //read next frame in memory
         {
             Frame thisFrame;
             stringstream frameBuffer;
+
             thisFrame.index = ++packetCount;
             thisFrame.capLen = header->caplen;
+
             //if pcap len smaller than 60, padding was not detected, set length to min frame lengts
             if(header->len < 60)
                 thisFrame.wireLen = 64;
@@ -68,26 +71,25 @@ void PcapParser::parseFrame(std::string path) {
             std::vector<unsigned int> destAdress;
             std::vector<unsigned int> srcAdress;
 
+            //put hexa frame bytes to vector
             std::vector<unsigned int> hexFrame;
             for (size_t i = 0; i < header->caplen; i++)
                 hexFrame.push_back(data[i]);
 
             thisFrame.hexFrame = hexFrame;
 
-            //check isl frame
+            //check ISL frame
             std::stringstream islStream;
             for (int i = 0; i < 6; i++) {
                 char  hex_string[20];
-                sprintf_s(hex_string, "%.2X", hexFrame[i]); //convert number to hex
+                sprintf_s(hex_string, "%.2X", hexFrame[i]); //convert byte from frame to hexa
                 islStream << hex_string;
             }
 
             if (islStream.str() == "01000C000000") {
                 thisFrame.isISL = true;
-
                 for (size_t i = ISL_DEST_MAC_START; i < ISL_ETH_TYPE_END; i++)
                 {
-
                     //pushback dest mac bytes to vector
                     if (FRAME_OFF_SETS::ISL_DEST_MAC_START <= i && i < FRAME_OFF_SETS::ISL_DEST_MAC_END)
                         destAdress.push_back(hexFrame[i]);
@@ -99,11 +101,10 @@ void PcapParser::parseFrame(std::string path) {
                     //get size of ethernet type bytes
                     if (ISL_ETH_TYPE_START <= i && i < ISL_ETH_TYPE_END) {
                         char  hex_string[20];
-                        sprintf_s(hex_string, "%.2X", hexFrame[i]); //convert number to hex
+                        sprintf_s(hex_string, "%.2X", hexFrame[i]);
                         frameBuffer << hex_string;
                     }
                 }
-
             }
             else {
                 for (size_t i = 0; i < ETH_TYPE_END; i++)
@@ -119,7 +120,7 @@ void PcapParser::parseFrame(std::string path) {
                     //get size of ethernet type bytes
                     if (ETH_TYPE_START <= i && i < ETH_TYPE_END) {
                         char  hex_string[20];
-                        sprintf_s(hex_string, "%.2X", hexFrame[i]); //convert number to hex
+                        sprintf_s(hex_string, "%.2X", hexFrame[i]);
                         frameBuffer << hex_string;
                     }
                 }
@@ -132,7 +133,6 @@ void PcapParser::parseFrame(std::string path) {
             //add this frame to vector of frames
             _frames.push_back(thisFrame);
         }
-        //printData();
     }
     else {
         std::cout << "can not open pcap file, terminating!" << std::endl;
@@ -170,12 +170,13 @@ std::vector<std::string> PcapParser::getFrameType(int typeSize, std::vector<unsi
                     sBuffer << hex_string;
                 }
             }
-
             frameTypes.push_back(_protocolMap[stoi(sBuffer.str(), 0, 16)]);
             return frameTypes;
+
         case IEEE_802_3_RAW:
             frameTypes.push_back("IEEE 802.3 RAW");
             return frameTypes;
+
         default:
             frameTypes.push_back("IEEE 802.3 LLC");
             frameTypes.push_back(_protocolMap[typeSize]);
@@ -211,7 +212,7 @@ void PcapParser::printData() {
             // next line after every 16 octets
             if ((i % 16) == 0)
                 std::cout << std::endl;
-            printf("%.2x ", frame.hexFrame[i]);// Print each octet as hex (x), make sure there is always two characters (.2)
+            printf("%.2x ", frame.hexFrame[i]);
         }
         cout << endl << endl;
     }
@@ -238,9 +239,8 @@ void PcapParser::serializeYaml() {
         std::stringstream sBuffer;
         for (auto srcByte : packet.srcMac) {
             char  hex_string[20];
-            sprintf_s(hex_string, "%.2X", srcByte); //convert number to hex
+            sprintf_s(hex_string, "%.2X", srcByte);
             sBuffer << hex_string << ":";
-
         }
         output << YAML::Key << "src_mac" << YAML::Value << sBuffer.str().erase(sBuffer.str().size() - 1);
 
@@ -248,7 +248,7 @@ void PcapParser::serializeYaml() {
         sBuffer.clear();
         for (auto srcByte : packet.destMac) {
             char  hex_string[20];
-            sprintf_s(hex_string, "%.2X", srcByte); //convert number to hex
+            sprintf_s(hex_string, "%.2X", srcByte);
             sBuffer << hex_string << ":";
         }
         output << YAML::Key << "dst_mac" << YAML::Value << sBuffer.str().erase(sBuffer.str().size() - 1);
@@ -264,7 +264,7 @@ void PcapParser::serializeYaml() {
         sBuffer.clear();
         for (size_t i = 0; i < packet.capLen; i++) {
             char  hex_string[20];
-            sprintf_s(hex_string, "%.2X", packet.hexFrame[i]); //convert number to hex
+            sprintf_s(hex_string, "%.2X", packet.hexFrame[i]);
             sBuffer << hex_string;
 
             // next line after every 16 octets

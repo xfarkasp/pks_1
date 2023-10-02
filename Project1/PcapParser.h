@@ -6,6 +6,7 @@
 #include <fstream>
 #include <sstream>
 
+//struct of an ethernet frame
 struct Frame {
     size_t index;
     unsigned int capLen;
@@ -25,9 +26,10 @@ class PcapParser {
     
     private:
         void setProtocolMap();  //sets the protocol maping from external file
-        std::vector<std::string> getFrameType(int typeSize, std::vector<unsigned int>, bool ISL);
+        std::vector<std::string> getFrameType(int typeSize, std::vector<unsigned int>, bool ISL); //returns vector of strings with frame type and pid/sap
 
     private:
+        //frame offset enumeration
         enum FRAME_OFF_SETS {
             DEST_MAC_START = 0,
             DEST_MAC_END = 6,
@@ -48,7 +50,7 @@ class PcapParser {
             ISL_SNAP_PID_END = 47,
 
         };
-
+        //frame type values
         enum FRAME_TYPE {
             ETHERNET_II_MIN = 1536, //min value of Ethernet II frame
             IEEE_802_3_MAX = 1500,  //max value of Ethernet II frame
@@ -57,7 +59,7 @@ class PcapParser {
         };
 
         private:
-            std::vector<Frame> _frames;
-            std::string _fileName;
-            std::map<unsigned int, std::string> _protocolMap;
+            std::vector<Frame> _frames; //vector of all parsed frames
+            std::string _fileName;  //current file name
+            std::map<unsigned int, std::string> _protocolMap; //map of protocol values and names
 };

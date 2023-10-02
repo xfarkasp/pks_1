@@ -1,11 +1,6 @@
 #pragma once
-#include <string>
 #include <iostream>
-#include <fstream>
-#include <pcap.h>
-#include <yaml-cpp/yaml.h>
 #include "PcapParser.h"
-#include <sstream>
 
 int main(int argc, char* argv[])
 {

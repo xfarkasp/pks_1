@@ -9,7 +9,8 @@
 7E:X.25 PLP (ISO 8208)
 8E:PROWAY (IEC 955) Active Station List Maintenance
 AA:SNAP (Sub-Network Access Protocol/ non-IEEE SAPS)
-E0:IPX (Novell NetWare)
+E0:IPX
+F0:NETBIOS
 F4:LAN Management
 FE:ISO Network Layer Protocols
 FF:Global DSAP
