@@ -14,6 +14,8 @@ struct Frame {
     std::vector<unsigned int> hexFrame;
     std::vector<unsigned int> destMac;
     std::vector<unsigned int> srcMac;
+    std::vector<unsigned int> srcIp;
+    std::vector<unsigned int> dstIp;
     int typeSize;
     bool isISL = false;
 };
@@ -39,6 +41,10 @@ class PcapParser {
             ETH_TYPE_END = 14,
             SNAP_PID_START = 20,
             SNAP_PID_END = 21,
+
+            SRC_IP_START = 26,
+            DST_IP_START = 30,
+            DST_IP_END = 34,
             //ISL frame
             ISL_DEST_MAC_START = 26,
             ISL_DEST_MAC_END = 32,

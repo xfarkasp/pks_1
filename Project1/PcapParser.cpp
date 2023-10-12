@@ -68,9 +68,6 @@ void PcapParser::parseFrame(std::string path) {
             else
                 thisFrame.wireLen = (header->len) + 4; // +4 FCS
 
-            std::vector<unsigned int> destAdress;
-            std::vector<unsigned int> srcAdress;
-
             //put hexa frame bytes to vector
             std::vector<unsigned int> hexFrame;
             for (size_t i = 0; i < header->caplen; i++)
@@ -92,11 +89,11 @@ void PcapParser::parseFrame(std::string path) {
                 {
                     //pushback dest mac bytes to vector
                     if (FRAME_OFF_SETS::ISL_DEST_MAC_START <= i && i < FRAME_OFF_SETS::ISL_DEST_MAC_END)
-                        destAdress.push_back(hexFrame[i]);
+                        thisFrame.destMac.push_back(hexFrame[i]);
 
                     //pushback source mac bytes to vector
                     if (FRAME_OFF_SETS::ISL_SRC_MAC_START <= i && i < FRAME_OFF_SETS::ISL_SRC_MAC_END)
-                        srcAdress.push_back(hexFrame[i]);
+                        thisFrame.srcMac.push_back(hexFrame[i]);
 
                     //get size of ethernet type bytes
                     if (ISL_ETH_TYPE_START <= i && i < ISL_ETH_TYPE_END) {
@@ -107,28 +104,44 @@ void PcapParser::parseFrame(std::string path) {
                 }
             }
             else {
-                for (size_t i = 0; i < ETH_TYPE_END; i++)
+                int arpOffSetSrc = 0;
+                int arpOffSetDst = 0;
+                for (size_t i = 0; i < (DST_IP_END + arpOffSetDst); i++)
                 {
                     //pushback dest mac bytes to vector
                     if (FRAME_OFF_SETS::DEST_MAC_START <= i && i < FRAME_OFF_SETS::DEST_MAC_END)
-                        destAdress.push_back(hexFrame[i]);
+                        thisFrame.destMac.push_back(hexFrame[i]);
 
                     //pushback source mac bytes to vector
                     if (FRAME_OFF_SETS::SOURCE_MAC_START <= i && i < FRAME_OFF_SETS::SOURCE_MAC_END)
-                        srcAdress.push_back(hexFrame[i]);
+                        thisFrame.srcMac.push_back(hexFrame[i]);
 
+                    
                     //get size of ethernet type bytes
                     if (ETH_TYPE_START <= i && i < ETH_TYPE_END) {
                         char  hex_string[20];
                         sprintf_s(hex_string, "%.2X", hexFrame[i]);
                         frameBuffer << hex_string;
                     }
+                    if (ETH_TYPE_END == i) {
+                        if (stoi(frameBuffer.str(), 0, 16) == 0x0806)
+                            arpOffSetSrc = 2;
+                            arpOffSetDst = 8;
+                            
+                    }
+
+                    //src ip adress
+                    if ((SRC_IP_START + arpOffSetSrc) <= i && i < (DST_IP_START + arpOffSetSrc))
+                        thisFrame.srcIp.push_back(hexFrame[i]);
+
+                    //dst ip adress
+                    if ((DST_IP_START + arpOffSetDst) <= i && i < (DST_IP_END + arpOffSetDst))
+                        thisFrame.dstIp.push_back(hexFrame[i]);
                 }
+
             }
             //put data to frame struct
             thisFrame.typeSize = stoi(frameBuffer.str(), 0, 16);
-            thisFrame.destMac = destAdress;
-            thisFrame.srcMac = srcAdress;
 
             //add this frame to vector of frames
             _frames.push_back(thisFrame);
@@ -144,6 +157,7 @@ std::vector<std::string> PcapParser::getFrameType(int typeSize, std::vector<unsi
     std::vector<std::string> frameTypes;
     if (typeSize >= PcapParser::ETHERNET_II_MIN) {
         frameTypes.push_back("ETHERNET II");
+        frameTypes.push_back(_protocolMap[typeSize]);
         return frameTypes;
     }
     else if (typeSize <= PcapParser::IEEE_802_3_MAX) {
@@ -252,14 +266,37 @@ void PcapParser::serializeYaml() {
             sBuffer << hex_string << ":";
         }
         output << YAML::Key << "dst_mac" << YAML::Value << sBuffer.str().erase(sBuffer.str().size() - 1);
-
+        //frame types
         if (frameTypes.size() == 2) {
             if(frameTypes.at(0) == "IEEE 802.3 LLC & SNAP")
                 output << YAML::Key << "pid" << YAML::Value << frameTypes.at(1);
             else if(frameTypes.at(0) == "IEEE 802.3 LLC")
                 output << YAML::Key << "sap" << YAML::Value << frameTypes.at(1);
+            else if (frameTypes.at(0) == "ETHERNET II") {
+                output << YAML::Key << "ether_type" << YAML::Value << frameTypes.at(1);
+                if (frameTypes.at(1) == "IPv4") {
+                    char  hex_string[20];
+                    sprintf_s(hex_string, "%.2X", packet.hexFrame.at(23));
+                    output << YAML::Key << "protocol" << YAML::Value << _protocolMap[stoi(hex_string, 0, 16)];
+                }
+            }
         }
-            
+        sBuffer.str("");
+        sBuffer.clear();
+        //ip adresses
+        for(auto byte : packet.srcIp){
+            sBuffer << byte << ".";
+        }
+        output << YAML::Key << "src_ip" << YAML::Key << sBuffer.str().erase(sBuffer.str().size() - 1);
+
+        sBuffer.str("");
+        sBuffer.clear();
+        //ip adresses
+        for (auto byte : packet.dstIp) {
+            sBuffer << byte << ".";
+        }
+        output << YAML::Key << "dst_ip" << YAML::Key << sBuffer.str().erase(sBuffer.str().size() - 1);
+
         sBuffer.str("");
         sBuffer.clear();
         for (size_t i = 0; i < packet.capLen; i++) {
