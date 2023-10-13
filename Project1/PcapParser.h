@@ -29,7 +29,7 @@ class PcapParser {
         void serializeYaml();   //serializes read value to yaml
     
     private:
-        void setProtocolMap();  //sets the protocol maping from external file
+        std::map<unsigned int, std::string> setProtocolMap(std::string protocolFilePath, bool isHexa);  //sets the protocol maping from external file
         std::vector<std::string> getFrameType(int typeSize, std::vector<unsigned int>, bool ISL); //returns vector of strings with frame type and pid/sap
 
     private:
@@ -78,4 +78,5 @@ class PcapParser {
             std::vector<Frame> _frames; //vector of all parsed frames
             std::string _fileName;  //current file name
             std::map<unsigned int, std::string> _protocolMap; //map of protocol values and names
+            std::map<unsigned int, std::string> _portMap; //map of protocol values and names
 };

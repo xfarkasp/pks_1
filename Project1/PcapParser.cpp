@@ -3,13 +3,14 @@
 
 using namespace std;
 
-void PcapParser::setProtocolMap() {
+std::map<unsigned int, std::string> PcapParser::setProtocolMap(std::string protocolFilePath, bool isHexa) {
     std::fstream protocolFile;
-    std::string protocolFilePath = "Protocols\\L2.txt";
+    std::map<unsigned int, std::string> mapName;
     try {
         protocolFile.open(protocolFilePath, ios::in); 
 
         if (protocolFile.is_open()) {
+
             std::string fileStr; //read lines from file to this string
             while (getline(protocolFile, fileStr)) { //read lines from file
                 std::stringstream sBuffer;
@@ -21,7 +22,10 @@ void PcapParser::setProtocolMap() {
                     splitString.push_back(fileStr);
                 }
                 if (splitString.size() != 0) {
-                    _protocolMap.insert({ stoi(splitString.at(0), 0, 16), splitString.at(1) }); //add to map protocol value and name
+                    if(isHexa)
+                        mapName.insert({ stoi(splitString.at(0), 0, 16), splitString.at(1) }); //add to map protocol value in hexa and name 
+                    else
+                        mapName.insert({ stoi(splitString.at(0)), splitString.at(1) }); //add to map protocol value in decimal and name
                 }
             }
             protocolFile.close(); //close protocol file
@@ -37,12 +41,14 @@ void PcapParser::setProtocolMap() {
         std::cout << "something went wrong, terminating" << endl;
         exit(0);
     }
+    return mapName;
 }
 
 void PcapParser::parseFrame(std::string path) {
     _fileName = path;   //sets file current file path as member
 
-    setProtocolMap();  //call method to map protocols from file
+    _protocolMap = setProtocolMap("Protocols\\L2.txt", true);  //call method to map protocols from file
+    _portMap = setProtocolMap("Protocols\\ports.txt", false);  //call method to map protocols from file
 
     char errBuff[PCAP_ERRBUF_SIZE]; //error buffer for readinf pcap file
 
@@ -126,9 +132,10 @@ void PcapParser::parseFrame(std::string path) {
                     if (ETH_TYPE_END == i) {
                         //put data to frame struct
                         thisFrame.typeSize = stoi(frameBuffer.str(), 0, 16);
-                        if (thisFrame.typeSize == 0x0806)
+                        if (thisFrame.typeSize == 0x0806) {
                             arpOffSetSrc = ARP_SRC_IP_OFFSET;
                             arpOffSetDst = ARP_DST_IP_OFFSET;
+                        }
                     }
 
                     //src ip adress
@@ -290,6 +297,7 @@ void PcapParser::serializeYaml() {
             sBuffer << hex_string << ":";
         }
         output << YAML::Key << "dst_mac" << YAML::Value << sBuffer.str().erase(sBuffer.str().size() - 1);
+
         //frame types
         if (frameTypes.size() == 2) {
             if(frameTypes.at(0) == "IEEE 802.3 LLC & SNAP")
@@ -298,18 +306,11 @@ void PcapParser::serializeYaml() {
                 output << YAML::Key << "sap" << YAML::Value << frameTypes.at(1);
             else if (frameTypes.at(0) == "ETHERNET II") {
                 output << YAML::Key << "ether_type" << YAML::Value << frameTypes.at(1);
-                if (frameTypes.at(1) == "IPv4") {
-                    char  hex_string[20];
-                    sprintf_s(hex_string, "%.2X", packet.hexFrame.at(23));
-                    output << YAML::Key << "protocol" << YAML::Value << _protocolMap[stoi(hex_string, 0, 16)];
-                    output << YAML::Key << "src_port" << YAML::Value << packet.srcPort;
-                    output << YAML::Key << "dst_port" << YAML::Value << packet.dstPort;
-                }
             }
         }
         sBuffer.str("");
         sBuffer.clear();
-        //ip adresses
+        //source ip
         for(auto byte : packet.srcIp){
             sBuffer << byte << ".";
         }
@@ -317,11 +318,28 @@ void PcapParser::serializeYaml() {
 
         sBuffer.str("");
         sBuffer.clear();
-        //ip adresses
+        //dst ip
         for (auto byte : packet.dstIp) {
             sBuffer << byte << ".";
         }
         output << YAML::Key << "dst_ip" << YAML::Key << sBuffer.str().erase(sBuffer.str().size() - 1);
+
+        if (frameTypes.at(1) == "IPv4") {
+            char  hex_string[20];
+            sprintf_s(hex_string, "%.2X", packet.hexFrame.at(23));
+            output << YAML::Key << "protocol" << YAML::Value << _protocolMap[stoi(hex_string, 0, 16)];
+            output << YAML::Key << "src_port" << YAML::Value << packet.srcPort;
+            output << YAML::Key << "dst_port" << YAML::Value << packet.dstPort;
+
+            bool srcKnown = (_portMap.find(packet.srcPort) != _portMap.end());
+            bool dstKnown = (_portMap.find(packet.dstPort) != _portMap.end());
+            if (srcKnown && dstKnown)
+                output << YAML::Key << "app_protocol" << YAML::Value << _portMap[packet.srcPort] + ", " + _portMap[packet.dstPort];
+            else if (srcKnown)
+                output << YAML::Key << "app_protocol" << YAML::Value << _portMap[packet.srcPort];
+            else if (dstKnown)
+                output << YAML::Key << "app_protocol" << YAML::Value << _portMap[packet.dstPort];
+        }
 
         sBuffer.str("");
         sBuffer.clear();

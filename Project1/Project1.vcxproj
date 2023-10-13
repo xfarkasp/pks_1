@@ -104,12 +104,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;WIN32;WPCAP;HAVE_REMOTE;_XKEYCHECK_H;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\lordp\Downloads\WpdPack_4_1_2(1)\WpdPack\Include;C:\Users\lordp\OneDrive\Documents\libs\npcap-sdk-1.13\Include;C:\Users\lordp\OneDrive\Documents\libs\yaml-cpp-prebuilt-win32-master\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\pedro\Documents\Libs\npcap-sdk-1.13\Include;C:\Users\pedro\Documents\Libs\yaml-cpp-prebuilt-win32-master\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\lordp\OneDrive\Documents\libs\npcap-sdk-1.13\Lib\x64;C:\Users\lordp\OneDrive\Documents\libs\yaml-cpp-prebuilt-win32-master\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\pedro\Documents\Libs\npcap-sdk-1.13\Lib\x64;C:\Users\pedro\Documents\Libs\yaml-cpp-prebuilt-win32-master\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>wpcap.lib;libyaml-cppmdd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
