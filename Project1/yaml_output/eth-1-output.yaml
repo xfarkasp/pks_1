@@ -37164,3 +37164,20 @@ packets:
       06 64 C3 AE 00 50 96 7A CA 60 C8 78 B5 D6 50 14
       00 00 5B F7 00 00
       
+ipv4_senders:
+  - node: 147.175.1.55
+    number_of_sent_packets: 53
+  - node: 147.175.6.100
+    number_of_sent_packets: 332
+  - node: 173.194.44.32
+    number_of_sent_packets: 5
+  - node: 173.194.44.52
+    number_of_sent_packets: 2
+  - node: 173.194.44.56
+    number_of_sent_packets: 25
+  - node: 173.194.44.62
+    number_of_sent_packets: 6
+  - node: 192.168.1.33
+    number_of_sent_packets: 463
+max_send_packets_by:
+  - 192.168.1.33

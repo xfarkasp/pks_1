@@ -263,6 +263,28 @@ void PcapParser::printData() {
     }
 }
 
+std::vector<std::string> getMaxPacketSenders(std::map<std::string, unsigned int> map) {
+    std::vector<std::string> ipMaxSenders;
+    size_t prevMax = 0;
+    while (!map.empty()) {
+        size_t maxSentCount = 0;
+        std::string ipKey = "";
+        for (auto map : map) {
+            if (map.second > maxSentCount) {
+                ipKey = map.first;
+                maxSentCount = map.second;
+            }
+        }
+        if (prevMax != 0 && prevMax > maxSentCount)
+            break;
+
+        ipMaxSenders.push_back(ipKey);
+        map.erase(ipKey);
+        prevMax = maxSentCount;
+    }
+    return ipMaxSenders;
+}
+
 void PcapParser::serializeYaml() {
     YAML::Emitter output;
     output << YAML::BeginMap
@@ -314,7 +336,10 @@ void PcapParser::serializeYaml() {
         for(auto byte : packet.srcIp){
             sBuffer << byte << ".";
         }
-        output << YAML::Key << "src_ip" << YAML::Key << sBuffer.str().erase(sBuffer.str().size() - 1);
+        std::string srcString = sBuffer.str().erase(sBuffer.str().size() - 1); //src adress is used more times than dst to count senders
+        output << YAML::Key << "src_ip" << YAML::Key << srcString;
+
+        
 
         sBuffer.str("");
         sBuffer.clear();
@@ -339,6 +364,13 @@ void PcapParser::serializeYaml() {
                 output << YAML::Key << "app_protocol" << YAML::Value << _portMap[packet.srcPort];
             else if (dstKnown)
                 output << YAML::Key << "app_protocol" << YAML::Value << _portMap[packet.dstPort];
+
+            //count ipv4 packet senders
+            if (_packetSenders.find(srcString) != _packetSenders.end())
+                _packetSenders[srcString]++;
+            else {
+                _packetSenders.insert({ srcString, 1 });
+            }
         }
 
         sBuffer.str("");
@@ -351,7 +383,7 @@ void PcapParser::serializeYaml() {
             // next line after every 16 octets
             if (((i + 1) % 16) == 0 && i != 0) {
                 sBuffer << std::endl;
-            }
+            } 
             else {
                 if(i != packet.capLen - 1)
                     sBuffer << " ";
@@ -364,6 +396,26 @@ void PcapParser::serializeYaml() {
         output << YAML::EndMap;
     }
     output << YAML::EndSeq;
+
+    output << YAML::Key << "ipv4_senders" << YAML::Value << YAML::BeginSeq;
+    //print to yaml all sender packets and their values
+    for (auto node : _packetSenders) {
+        output << YAML::BeginMap;
+        output << YAML::Key << "node" << YAML::Value << node.first;
+        output << YAML::Key << "number_of_sent_packets" << YAML::Value << node.second;
+        output << YAML::EndMap;
+    }
+    output << YAML::EndSeq;
+    
+    output << YAML::Key << "max_send_packets_by";
+    output << YAML::Value << YAML::BeginSeq;
+
+    for (auto node : getMaxPacketSenders(_packetSenders)){
+        output << node;
+    }
+
+    output << YAML::EndSeq;
+
     output << YAML::EndMap;
 
     fstream yamlFile;
@@ -375,3 +427,7 @@ void PcapParser::serializeYaml() {
     }
     std::cout << "succesfuly serialized pcap " + _fileName << std::endl;
 }
+
+
+
+

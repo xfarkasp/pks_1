@@ -79,4 +79,5 @@ class PcapParser {
             std::string _fileName;  //current file name
             std::map<unsigned int, std::string> _protocolMap; //map of protocol values and names
             std::map<unsigned int, std::string> _portMap; //map of protocol values and names
+            std::map<std::string, unsigned int> _packetSenders; //map of sender ips and packets sent value
 };
