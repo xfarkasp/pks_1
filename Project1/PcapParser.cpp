@@ -124,10 +124,11 @@ void PcapParser::parseFrame(std::string path) {
                         frameBuffer << hex_string;
                     }
                     if (ETH_TYPE_END == i) {
-                        if (stoi(frameBuffer.str(), 0, 16) == 0x0806)
-                            arpOffSetSrc = 2;
-                            arpOffSetDst = 8;
-                            
+                        //put data to frame struct
+                        thisFrame.typeSize = stoi(frameBuffer.str(), 0, 16);
+                        if (thisFrame.typeSize == 0x0806)
+                            arpOffSetSrc = ARP_SRC_IP_OFFSET;
+                            arpOffSetDst = ARP_DST_IP_OFFSET;
                     }
 
                     //src ip adress
@@ -140,8 +141,31 @@ void PcapParser::parseFrame(std::string path) {
                 }
 
             }
-            //put data to frame struct
-            thisFrame.typeSize = stoi(frameBuffer.str(), 0, 16);
+            //IHL 
+            frameBuffer.str("");
+            frameBuffer.clear();
+            if (thisFrame.typeSize == 0x0800) {
+                unsigned int ihl = (hexFrame[14] & 0x0F) * 4;
+                int offSet = 0;
+                if (ihl < 20)
+                    offSet = ihl;
+
+                for (int i = SRC_PORT_START + offSet; i <= SRC_PORT_END + offSet; i++) {
+                    char  hex_string[20];
+                    sprintf_s(hex_string, "%.2X", hexFrame[i]);
+                    frameBuffer << hex_string;
+                }
+                thisFrame.srcPort = stoi(frameBuffer.str(), 0, 16);
+
+                frameBuffer.str("");
+                frameBuffer.clear();
+                for (int i = DST_PORT_START + offSet; i <= DST_PORT_END + offSet; i++) {
+                    char  hex_string[20];
+                    sprintf_s(hex_string, "%.2X", hexFrame[i]);
+                    frameBuffer << hex_string;
+                }
+                thisFrame.dstPort = stoi(frameBuffer.str(), 0, 16);
+            }
 
             //add this frame to vector of frames
             _frames.push_back(thisFrame);
@@ -278,6 +302,8 @@ void PcapParser::serializeYaml() {
                     char  hex_string[20];
                     sprintf_s(hex_string, "%.2X", packet.hexFrame.at(23));
                     output << YAML::Key << "protocol" << YAML::Value << _protocolMap[stoi(hex_string, 0, 16)];
+                    output << YAML::Key << "src_port" << YAML::Value << packet.srcPort;
+                    output << YAML::Key << "dst_port" << YAML::Value << packet.dstPort;
                 }
             }
         }
