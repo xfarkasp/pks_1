@@ -34,7 +34,8 @@ std::map<unsigned int, std::string> PcapParser::setProtocolMap(std::string proto
             throw -1;
     }
     catch (int error) {
-        std::cout << "error opening file, terminating" << endl;
+        if(error == -1)
+            std::cout << "error opening file, terminating" << endl;
         exit(0);
     }
     catch (...) {
@@ -428,6 +429,180 @@ void PcapParser::serializeYaml() {
     std::cout << "succesfuly serialized pcap " + _fileName << std::endl;
 }
 
+void PcapParser::serializeArpYaml() {
+    std::map<unsigned int, std::string>arpOpcode = setProtocolMap("Protocols\\arp.txt", true);
+    YAML::Emitter output;
+    output << YAML::BeginMap
+        << YAML::Key << "name"
+        << YAML::Value << "PKS2023/24"
+        << YAML::Key << "pcap_name"
+        << YAML::Value << _fileName.erase(0, _fileName.find_last_of("\\") + 1)
+        << YAML::Key << "filter_name"
+        << YAML::Value << "ARP";
+
+    output << YAML::Key << "complete_comms" << YAML::Value << YAML::BeginSeq;
+    output << YAML::BeginMap  << YAML::Key << "number_com" << YAML::Value << 0;
+    output <<  YAML::Key << "packets" << YAML::Value << YAML::BeginSeq;
+
+    //frames with arp maped to <reques, reply>
+    std::vector<Frame>completeConnections;
+    //frames waiting for reply
+    std::vector<Frame> replyQue;
+    for (auto packet : _frames) {
+        std::vector<std::string> frameTypes = getFrameType(packet.typeSize, packet.hexFrame, packet.isISL);
+        if (frameTypes.size() >= 2 && frameTypes.at(1) == "ARP") {
+            size_t indexOfFound = 0;
+            for (auto quedFrame : replyQue) {
+                if (packet.srcIp == quedFrame.dstIp) {
+                   std::stringstream quedFrameBuffer;
+                    std::stringstream newFrameBuffer;
+                    char  hex_string[20];
+                    for (size_t i = ARP_OPCODE_START; i <= ARP_OPCODE_END; i++) {
+                        sprintf_s(hex_string, "%.2X", quedFrame.hexFrame.at(i));
+                        quedFrameBuffer << hex_string;
+
+                        sprintf_s(hex_string, "%.2X", packet.hexFrame.at(i));
+                        newFrameBuffer << hex_string;
+                    }
+                    if (arpOpcode[stoi(quedFrameBuffer.str(), 0, 16)] == "REQUEST" && arpOpcode[stoi(newFrameBuffer.str(), 0, 16)] == "REPLY") {
+                        completeConnections.push_back(quedFrame);
+                        completeConnections.push_back(packet);
+                        replyQue.erase(std::next(replyQue.begin(), indexOfFound));
+                        break;
+                    }
+                    indexOfFound++;
+                }
+            }
+            replyQue.push_back(packet);
+        }
+    }
+
+    for (auto packet : completeConnections) {
+        std::vector<std::string> frameTypes = getFrameType(packet.typeSize, packet.hexFrame, packet.isISL);
+        if (frameTypes.size() >= 2 && frameTypes.at(1) == "ARP") {
+            output << YAML::BeginMap;
+            output << YAML::Key << "frame_number" << YAML::Value << packet.index;
+            output << YAML::Key << "len_frame_pcap" << YAML::Value << packet.capLen;
+            output << YAML::Key << "len_frame_medium" << YAML::Value << packet.wireLen;
+            std::vector<std::string> frameTypes = getFrameType(packet.typeSize, packet.hexFrame, packet.isISL);
+            output << YAML::Key << "frame_type" << YAML::Value << frameTypes.at(0);
+
+            std::stringstream sBuffer;
+            for (auto srcByte : packet.srcMac) {
+                char  hex_string[20];
+                sprintf_s(hex_string, "%.2X", srcByte);
+                sBuffer << hex_string << ":";
+            }
+            output << YAML::Key << "src_mac" << YAML::Value << sBuffer.str().erase(sBuffer.str().size() - 1);
+
+            sBuffer.str("");
+            sBuffer.clear();
+            for (auto srcByte : packet.destMac) {
+                char  hex_string[20];
+                sprintf_s(hex_string, "%.2X", srcByte);
+                sBuffer << hex_string << ":";
+            }
+            output << YAML::Key << "dst_mac" << YAML::Value << sBuffer.str().erase(sBuffer.str().size() - 1);
+
+            sBuffer.str("");
+            sBuffer.clear();
+            //frame types
+            if (frameTypes.size() == 2) {
+                if (frameTypes.at(0) == "IEEE 802.3 LLC & SNAP")
+                    output << YAML::Key << "pid" << YAML::Value << frameTypes.at(1);
+                else if (frameTypes.at(0) == "IEEE 802.3 LLC")
+                    output << YAML::Key << "sap" << YAML::Value << frameTypes.at(1);
+                else if (frameTypes.at(0) == "ETHERNET II") {
+                    output << YAML::Key << "ether_type" << YAML::Value << frameTypes.at(1);
+                    if (frameTypes.at(1) == "ARP") {
+                        char  hex_string[20];
+                        for (size_t i = ARP_OPCODE_START; i <= ARP_OPCODE_END; i++) {
+                            sprintf_s(hex_string, "%.2X", packet.hexFrame.at(i));
+                            sBuffer << hex_string;
+                        }
+                        
+                        output << YAML::Key << "arp_opcode" << YAML::Value << arpOpcode[stoi(sBuffer.str(), 0, 16)];
+                    }
+                }
+            }
+            sBuffer.str("");
+            sBuffer.clear();
+            //source ip
+            for (auto byte : packet.srcIp) {
+                sBuffer << byte << ".";
+            }
+            std::string srcString = sBuffer.str().erase(sBuffer.str().size() - 1); //src adress is used more times than dst to count senders
+            output << YAML::Key << "src_ip" << YAML::Key << srcString;
+
+
+
+            sBuffer.str("");
+            sBuffer.clear();
+            //dst ip
+            for (auto byte : packet.dstIp) {
+                sBuffer << byte << ".";
+            }
+            output << YAML::Key << "dst_ip" << YAML::Key << sBuffer.str().erase(sBuffer.str().size() - 1);
+
+            if (frameTypes.at(1) == "IPv4") {
+                char  hex_string[20];
+                sprintf_s(hex_string, "%.2X", packet.hexFrame.at(23));
+                output << YAML::Key << "protocol" << YAML::Value << _protocolMap[stoi(hex_string, 0, 16)];
+                output << YAML::Key << "src_port" << YAML::Value << packet.srcPort;
+                output << YAML::Key << "dst_port" << YAML::Value << packet.dstPort;
+
+                bool srcKnown = (_portMap.find(packet.srcPort) != _portMap.end());
+                bool dstKnown = (_portMap.find(packet.dstPort) != _portMap.end());
+                if (srcKnown && dstKnown)
+                    output << YAML::Key << "app_protocol" << YAML::Value << _portMap[packet.srcPort] + ", " + _portMap[packet.dstPort];
+                else if (srcKnown)
+                    output << YAML::Key << "app_protocol" << YAML::Value << _portMap[packet.srcPort];
+                else if (dstKnown)
+                    output << YAML::Key << "app_protocol" << YAML::Value << _portMap[packet.dstPort];
+
+                //count ipv4 packet senders
+                if (_packetSenders.find(srcString) != _packetSenders.end())
+                    _packetSenders[srcString]++;
+                else {
+                    _packetSenders.insert({ srcString, 1 });
+                }
+            }
+
+            sBuffer.str("");
+            sBuffer.clear();
+            for (size_t i = 0; i < packet.capLen; i++) {
+                char  hex_string[20];
+                sprintf_s(hex_string, "%.2X", packet.hexFrame[i]);
+                sBuffer << hex_string;
+
+                // next line after every 16 octets
+                if (((i + 1) % 16) == 0 && i != 0) {
+                    sBuffer << std::endl;
+                }
+                else {
+                    if (i != packet.capLen - 1)
+                        sBuffer << " ";
+                }
+            }
+            if ((sBuffer.str()).at(((sBuffer.str()).size() - 1)) != '\n')
+                sBuffer << endl;
+
+            output << YAML::Key << "hexa_frame" << YAML::Value << YAML::Literal << sBuffer.str();
+            output << YAML::EndMap;
+        }
+    }
+    output << YAML::EndSeq;
+    output << YAML::EndMap;
+
+    fstream yamlFile;
+    yamlFile.open("yaml_output//" + _fileName.erase(_fileName.find('.'), _fileName.size() - 1) + "-ARP.yaml", ios_base::out);
+    if (yamlFile.is_open())
+    {
+        yamlFile << output.c_str();
+        yamlFile.close();
+    }
+    std::cout << "succesfuly serialized pcap " + _fileName << std::endl;
+}
 
 
 

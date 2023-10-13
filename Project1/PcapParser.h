@@ -27,6 +27,7 @@ class PcapParser {
         void parseFrame(std::string path);  //parses pcap file
         void printData();       //prints data to console from pcap
         void serializeYaml();   //serializes read value to yaml
+        void serializeArpYaml();
     
     private:
         std::map<unsigned int, std::string> setProtocolMap(std::string protocolFilePath, bool isHexa);  //sets the protocol maping from external file
@@ -64,6 +65,12 @@ class PcapParser {
             ISL_ETH_TYPE_END = 40,
             ISL_SNAP_PID_START = 46,
             ISL_SNAP_PID_END = 47,
+
+            //arp reply-request 20-21
+            ARP_OPCODE_START = 20,
+            ARP_OPCODE_END = 21,
+
+
 
         };
         //frame type values
