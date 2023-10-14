@@ -27,9 +27,15 @@
     <ClCompile Include="ArpFilter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="IcmpFilter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PcapParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IcmpFilter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

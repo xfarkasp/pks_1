@@ -13,6 +13,7 @@ struct Frame {
     unsigned int wireLen;
     unsigned int srcPort;
     unsigned int dstPort;
+    std::string arpOpcode;
     std::vector<unsigned int> hexFrame;
     std::vector<unsigned int> destMac;
     std::vector<unsigned int> srcMac;
@@ -27,7 +28,8 @@ class PcapParser {
         void parseFrame(std::string path);  //parses pcap file
         void printData();       //prints data to console from pcap
         void serializeYaml();   //serializes read value to yaml
-        void arpFilter();
+        void arpFilter();       //arpFilter 
+        void icmpFilter();
         std::map<unsigned int, std::string> setProtocolMap(std::string protocolFilePath, bool isHexa);  //sets the protocol maping from external file
         std::vector<std::string> getFrameType(int typeSize, std::vector<unsigned int>, bool ISL); //returns vector of strings with frame type and pid/sap
 

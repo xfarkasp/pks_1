@@ -1,8 +1,8 @@
 #pragma once
-#include "ArpFilter.h"
+#include "IcmpFilter.h"
 
-void ArpFilter::findComms() {
-    _arpMap = setProtocolMap("Protocols\\arp.txt", true);
+void IcmpFilter::findComms() {
+    _icmpMap = setProtocolMap("Protocols\\arp.txt", true);
     //frames waiting for reply
     std::vector<Frame> replyQue;
     size_t indexOfFound = 0;
@@ -11,17 +11,19 @@ void ArpFilter::findComms() {
         std::vector<std::string> frameTypes = _parent->getFrameType(packet.typeSize, packet.hexFrame, packet.isISL);
         if (frameTypes.size() >= 2 && frameTypes.at(1) == "ARP") {
 
-            std::stringstream frameBuffer;
-            char  hex_string[20];
-            for (size_t i = ARP_OPCODE_START; i <= ARP_OPCODE_END; i++) {
-                sprintf_s(hex_string, "%.2X", packet.hexFrame.at(i));
-                frameBuffer << hex_string;
-            }
-            packet.arpOpcode = _arpMap[stoi(frameBuffer.str(), 0, 16)];
-
             for (auto quedFrame : replyQue) {
                 if (packet.srcIp == quedFrame.dstIp && packet.dstIp == quedFrame.srcIp) {
-                    if (quedFrame.arpOpcode == "REQUEST" && packet.arpOpcode == "REPLY") {
+                    std::stringstream quedFrameBuffer;
+                    std::stringstream newFrameBuffer;
+                    char  hex_string[20];
+                    for (size_t i = ARP_OPCODE_START; i <= ARP_OPCODE_END; i++) {
+                        sprintf_s(hex_string, "%.2X", quedFrame.hexFrame.at(i));
+                        quedFrameBuffer << hex_string;
+
+                        sprintf_s(hex_string, "%.2X", packet.hexFrame.at(i));
+                        newFrameBuffer << hex_string;
+                    }
+                    if (_icmpMap[stoi(quedFrameBuffer.str(), 0, 16)] == "REQUEST" && _icmpMap[stoi(newFrameBuffer.str(), 0, 16)] == "REPLY") {
                         std::pair<Frame, Frame> newPair;
                         newPair.first = quedFrame;
                         newPair.second = packet;
@@ -43,12 +45,12 @@ void ArpFilter::findComms() {
                 replyQue.push_back(packet);
         }
     }
-    
+
     _notCompleteComms = std::move(replyQue);
 }
 
-void ArpFilter::serializeArpYaml() {
-    findComms();
+void IcmpFilter::serializeIcmpYaml() {
+    //findComms();
 
     size_t comIndex = 0;
     YAML::Emitter output;
@@ -60,13 +62,13 @@ void ArpFilter::serializeArpYaml() {
         << YAML::Value << _parent->_fileName
         << YAML::Key << "filter_name"
         << YAML::Value << "ARP";
-    
+
     auto addComm = [&](std::vector<Frame>comms) {
         output << YAML::BeginMap << YAML::Key << "number_com" << YAML::Value << comIndex;
         output << YAML::Key << "packets" << YAML::Value << YAML::BeginSeq;
         for (auto packet : comms) {
             std::vector<std::string> frameTypes = _parent->getFrameType(packet.typeSize, packet.hexFrame, packet.isISL);
-            if (frameTypes.size() >= 2 && frameTypes.at(1) == "ARP") {
+            if (frameTypes.size() >= 2 && frameTypes.at(1) == "ICMP") {
                 output << YAML::BeginMap;
                 output << YAML::Key << "frame_number" << YAML::Value << packet.index;
                 output << YAML::Key << "len_frame_pcap" << YAML::Value << packet.capLen;
@@ -108,7 +110,7 @@ void ArpFilter::serializeArpYaml() {
                                 sBuffer << hex_string;
                             }
 
-                            output << YAML::Key << "arp_opcode" << YAML::Value << _arpMap[stoi(sBuffer.str(), 0, 16)];
+                            output << YAML::Key << "arp_opcode" << YAML::Value << _icmpMap[stoi(sBuffer.str(), 0, 16)];
                         }
                     }
                 }
@@ -178,11 +180,13 @@ void ArpFilter::serializeArpYaml() {
         }
         output << YAML::EndSeq;
         output << YAML::EndMap;
-        
+
     };
 
+
     output << YAML::Key << "complete_comms" << YAML::Value << YAML::BeginSeq;
-    while (!_commPairs.empty()) {
+    addComm(_parent->_frames);
+    /*while (!_commPairs.empty()) {
         std::vector<Frame>completeConnections;
         std::vector<size_t>removeIndexes;
         Frame commFrame = _commPairs.at(0).first;
@@ -199,24 +203,12 @@ void ArpFilter::serializeArpYaml() {
         for (size_t i = 0; i < _commPairs.size(); i++) {
             _commPairs.erase(std::next(_commPairs.begin(), removeIndexes.at(i)));
         }
-    }
-    output << YAML::EndSeq;
-    comIndex = 1;
-    std::vector<Frame>arpRqst;
-    std::vector<Frame>arpRply;
-    output << YAML::Key << "partial_comms" << YAML::Value << YAML::BeginSeq;
-    for (auto com : _notCompleteComms) {
-        if (com.arpOpcode == "REQUEST")
-            arpRqst.push_back(com);
-        if(com.arpOpcode == "REPLY")
-            arpRply.push_back(com);
-    }
-    addComm(arpRqst);
-    comIndex++;
-    addComm(arpRply);
+    }*/
     output << YAML::EndSeq;
 
-    /*while (!_notCompleteComms.empty()) {
+    /*comIndex = 0;
+    output << YAML::Key << "partial_comms" << YAML::Value << YAML::BeginSeq;
+    while (!_notCompleteComms.empty()) {
         std::vector<Frame>completeConnections;
         std::vector<size_t>removeIndexes;
         Frame commFrame = _notCompleteComms.at(0);
@@ -232,8 +224,8 @@ void ArpFilter::serializeArpYaml() {
         for (size_t i = 0; i < removeIndexes.size(); i++) {
             _notCompleteComms.erase(std::next(_notCompleteComms.begin(), removeIndexes.at(i)));
         }
-    }*/
-    
+    }
+    output << YAML::EndSeq;*/
 
     //addComm(replyQue);
 

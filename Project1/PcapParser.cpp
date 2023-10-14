@@ -1,6 +1,8 @@
 #pragma once
 #include "PcapParser.h"
 #include "ArpFilter.h"
+#include "ArpFilter.h"
+#include "IcmpFilter.h"
 
 using namespace std;
 
@@ -433,4 +435,9 @@ void PcapParser::serializeYaml() {
 void PcapParser::arpFilter() {
     ArpFilter* arpFilter = new ArpFilter(this);
     arpFilter->serializeArpYaml();
+}
+
+void PcapParser::icmpFilter() {
+    IcmpFilter* icmpFilter = new IcmpFilter(this);
+    icmpFilter->serializeIcmpYaml();
 }

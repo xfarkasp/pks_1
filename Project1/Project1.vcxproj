@@ -132,10 +132,12 @@
   <ItemGroup>
     <ClCompile Include="ArpFilter.cpp" />
     <ClCompile Include="ArpFilter.h" />
+    <ClCompile Include="IcmpFilter.cpp" />
     <ClCompile Include="PcapParser.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="IcmpFilter.h" />
     <ClInclude Include="PcapParser.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
