@@ -1,0 +1,149 @@
+80:HTTP
+0:Reserved; do not use 
+1:TCPMUX
+5:RJE
+7:ECHO
+9:DISCARD protoco
+11:SYSTAT protoco
+13:DAYTIME protoco
+17:QOTD
+18:Message Send
+19:CHARGEN
+20:FTP
+21:FTP
+22:SSH
+23:Telnet
+25:SMTP
+26:RSFTP
+35:QMS Magicolor 2 printer
+37:TIME
+38:Route Access
+39:Resource Location
+41:Graphic
+42:Host Name Server/WINS Replications
+43:WHOIS
+49:TACACS Login Host
+53:DNS
+57:MTP, Mail Transfer
+70:Gopher protoco
+79:Finger protoco
+81:Torpark
+88:Kerberos
+101:HOSTNAME
+102:ISO-TSAP/Microsoft Exchange
+107:Remote Telnet Service 
+109:POP, Post Office
+110:POP3
+111:SUNRPC
+113:Ident
+115:SFTP, Simple File Transfer
+117:UUCP-PATH
+118:SQL Service
+119:NNTP
+135:EPMAP / Microsoft RPC Locator Service
+137:NetBIOS NetBIOS Name Servic
+138:NetBIOS NetBIOS Datagram Servic
+139:NetBIOS NetBIOS Session Servic
+143:IMAP4
+152:BFTP, Background File Transfer Program
+153:SGMP, Simple Gateway Monitoring
+156:SQL Servic
+157:KNET VM Command Message
+158:DMSP, Distributed Mail Service
+159:NSS-Routing
+160:SGMP-TRAPS
+161:SNMP
+162:SNMPTRA
+170:Print-srv 
+179:BGP
+190:Gateway Access Control
+191:Prospero Directory Service
+192:OSU Network Monitoring System, Apple AirPort Base Station PPP status or discovery, AirPort Admin Utility or Express Assistant 
+194:IRC
+201:AppleTalk Routing Maintenance
+209:The Quick Mail Transfer
+213:IP
+218:MPP, Message Posting
+220:IMAP, Interactive Mail AccessProtocol, version 3
+259:ESRO, Efficient Short Remote Operations
+264:BGMP, Border Gateway Multicast
+311:Apple Server-Admin-Tool, Workgroup-Manager-Tool
+318:TSP, Time Stamp
+323:IMMP, Internet Message Mapping
+383:HP OpenView HTTPs Operations Agent
+366:SMTP, Simple Mail Transfer
+369:Rpc2portma
+371:ClearCase albd
+384:A Remote Network Server System
+387:AURP, AppleTalk Update-Based Routing
+389:LDAP
+401:UPS Uninterruptible Power Suppl
+411:Direct Connect Hub port 
+427:SLP
+443:HTTPS
+444:SNPP, Simple Network Paging
+445:Microsoft-DS
+464:Kerberos Change/Set passwor
+465:SMTP over SSL
+500:ISAKMP, IKE-Internet Key Exchange
+512:exec, Remote Process Execution
+513:Login 
+514:rsh
+515:Line Printer Daemon
+517:Talk
+520:efs
+524:NCP
+530:RP
+531:AOL Instant Messenger, IRC
+532:netnews
+540:UUCP
+542:commerce
+543:klogin, Kerberos login
+544:kshell, Kerberos Remote Shell 
+546:DHCPv6 client 
+547:DHCPv6 server 
+548:AFP
+554:RTSP
+556:Remotefs, rfs, rfs_server
+561:chcmd 
+563:NNTP over TLS/SSL
+587:Email message submission
+591:FileMaker 6.0 Web Sharing
+593:HTTP RPC Ep Map/Microsoft DCOM
+604:TUNNEL
+631:IPP, Internet Printing
+636:LDAP over SSL
+639:MSDP, Multicast Source Discovery
+646:LDP, Label Distribution
+647:DHCP Failover
+648:RRP, Registry Registrar
+652:DTCP, Dynamic Tunnel Configuration
+654:AODV, Ad hoc On-Demand Distance Vector
+665:sun-dr, Remote Dynamic Reconfiguration
+674:ACAP, Application Configuration Access
+691:Microsoft Exchange Routing
+692:Hyperwave-ISP 
+695:IEEE-MMS-SSL
+698:OLSR, Optimized Link State Routing
+699:Access Network
+700:EPP, Extensible Provisioning
+701:LMP, Link Management
+702:IRIS over BEEP
+706:SILC, Secure Internet Live Conferencing
+711:TDP, Tag Distribution
+712:TBRPF, Topology Broadcast based on Reverse-Path Forwarding
+720:SMQP, Simple Message Queue
+749:kerberos-adm, Kerberos administration
+782:Conserver serial-console management server
+829:CMP
+860:iSCSI
+873:rsync
+901:Samba Web Administration Tool
+911:Network Console on Acid
+981:SofaWare Technologies Remote HTTPS management for firewall devices running embedded Checkpoint Firewall-1 software
+989:FTP
+990:FTP
+991:NAS
+992:Telnet over TLS/SS
+993:IMAP4 over SSL
+995:POP3 over SSL
