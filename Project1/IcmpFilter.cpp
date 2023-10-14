@@ -1,5 +1,6 @@
 #pragma once
 #include "IcmpFilter.h"
+#include <bitset>
 
 void IcmpFilter::findComms() {
     _icmpMap = setProtocolMap("Protocols\\arp.txt", true);
@@ -13,6 +14,26 @@ void IcmpFilter::findComms() {
             char  hex_string[20];
             sprintf_s(hex_string, "%.2X", packet.hexFrame.at(23));
             if (_parent->_protocolMap[std::stoi(hex_string, 0, 16)] == "ICMP") {
+                sprintf_s(hex_string, "%.2X", packet.hexFrame.at(FRAG_FLAG + packet.ihlOffset));
+                //ad frag params to frame struct
+                std::bitset<3> fragFlags(std::stoi(hex_string));
+                packet.MF = fragFlags[MF_Flag];
+                std::stringstream idBuffer;
+                std::stringstream offSetBuffer;
+                for (size_t i = (FRAG_ID_START + packet.ihlOffset); i <= (FRAG_OFFSET_END + packet.ihlOffset); i++) {
+                    char  hex_string[20];
+                    if ((FRAG_ID_START + packet.ihlOffset) <= i && i <= (FRAG_ID_END + packet.ihlOffset)) {
+                        sprintf_s(hex_string, "%.2X", packet.hexFrame[i]);
+                        idBuffer << hex_string;
+                    }
+                    if ((FRAG_OFFSET_START + packet.ihlOffset) <= i && i <= (FRAG_OFFSET_END + packet.ihlOffset)) {
+                        sprintf_s(hex_string, "%.2X", packet.hexFrame[i]);
+                        offSetBuffer << hex_string;
+                    }
+                }
+                packet.fragID = stoi(idBuffer.str(), 0, 16);
+                packet.fragOffSet = stoi(offSetBuffer.str(), 0, 16);
+                
 
                 packet.icmpType = _parent->_icmpMap[packet.hexFrame.at(ICMP_TYPE + packet.ihlOffset)];
 
@@ -90,6 +111,9 @@ void IcmpFilter::findComms() {
 
     _notCompleteComms = std::move(replyQue);
 }
+std::vector<Frame>completeFregments() {
+
+}
 
 void IcmpFilter::serializeIcmpYaml() {
     findComms();
@@ -121,6 +145,7 @@ void IcmpFilter::serializeIcmpYaml() {
         sBuffer.str("");
         sBuffer.clear();
         output << YAML::Key << "packets" << YAML::Value << YAML::BeginSeq;
+
         for (auto packet : comms) {
             char  hex_string[20];
             sprintf_s(hex_string, "%.2X", packet.hexFrame.at(23));
@@ -201,6 +226,8 @@ void IcmpFilter::serializeIcmpYaml() {
 
                 output << YAML::Key << "hexa_frame" << YAML::Value << YAML::Literal << sBuffer.str();
                 output << YAML::EndMap;
+
+                
             }
         }
         output << YAML::EndSeq;

@@ -16,6 +16,8 @@ struct Frame {
     unsigned int ihlOffset = 0;
     int icmpID = -1;
     int icmpSQ = -1;
+    int fragID = -1;
+    int fragOffSet = -1;
     std::string arpOpcode;
     std::string icmpType;
     std::vector<unsigned int> hexFrame;
@@ -25,6 +27,7 @@ struct Frame {
     std::vector<unsigned int> dstIp;
     int typeSize;
     bool isISL = false;
+    bool MF = false;
 };
 
 class PcapParser {
@@ -63,16 +66,25 @@ class PcapParser {
 
             ICMP_IDENT_START = 38,
             ICMP_IDENT_END = 39,
-            
+
             ICMP_SEQ_START = 40,
             ICMP_SEQ_END = 41,
 
             ICMP_IDENT_EXCEEDED_START = 66,
             ICMP_IDENT_EXCEEDED_END = 67,
-            
+
             ICMP_SEQ_EXCEEDED_START = 68,
             ICMP_SEQ_EXCEEDED_END = 69,
 
+            //fragmentation positions
+            FRAG_FLAG = 20,
+            RB_Flag = 0,
+            DF_Flag = 1,
+            MF_Flag = 2,
+            FRAG_ID_START = 18,
+            FRAG_ID_END = 19,
+            FRAG_OFFSET_START = 20,
+            FRAG_OFFSET_END = 21,
 
             ARP_SRC_IP_OFFSET = 2,
             ARP_DST_IP_OFFSET = 8,
@@ -89,9 +101,6 @@ class PcapParser {
             //arp reply-request 20-21
             ARP_OPCODE_START = 20,
             ARP_OPCODE_END = 21,
-
-
-
         };
         //frame type values
         enum FRAME_TYPE {
