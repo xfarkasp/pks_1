@@ -298,7 +298,6 @@ void PcapParser::serializeYaml() {
         << YAML::Value << _fileName;
 
     output << YAML::Key << "packets" << YAML::Value << YAML::BeginSeq;
-    
     for (auto packet : _frames) {
         output << YAML::BeginMap;
         output << YAML::Key << "frame_number" << YAML::Value << packet.index;
@@ -313,7 +312,8 @@ void PcapParser::serializeYaml() {
             sprintf_s(hex_string, "%.2X", srcByte);
             sBuffer << hex_string << ":";
         }
-        output << YAML::Key << "src_mac" << YAML::Value << sBuffer.str().erase(sBuffer.str().size() - 1);
+        if(sBuffer.str().length() > 0)
+            output << YAML::Key << "src_mac" << YAML::Value << sBuffer.str().erase(sBuffer.str().size() - 1);
 
         sBuffer.str("");
         sBuffer.clear();
@@ -322,7 +322,8 @@ void PcapParser::serializeYaml() {
             sprintf_s(hex_string, "%.2X", srcByte);
             sBuffer << hex_string << ":";
         }
-        output << YAML::Key << "dst_mac" << YAML::Value << sBuffer.str().erase(sBuffer.str().size() - 1);
+        if (sBuffer.str().length() > 0)
+            output << YAML::Key << "dst_mac" << YAML::Value << sBuffer.str().erase(sBuffer.str().size() - 1);
 
         //frame types
         if (frameTypes.size() == 2) {
@@ -340,20 +341,22 @@ void PcapParser::serializeYaml() {
         for(auto byte : packet.srcIp){
             sBuffer << byte << ".";
         }
-        std::string srcString = sBuffer.str().erase(sBuffer.str().size() - 1); //src adress is used more times than dst to count senders
-        output << YAML::Key << "src_ip" << YAML::Key << srcString;
-
+        std::string srcString = "";
+        if (sBuffer.str().length() > 0) {
+            srcString = sBuffer.str().erase(sBuffer.str().size() - 1); //src adress is used more times than dst to count senders
+            output << YAML::Key << "src_ip" << YAML::Key << srcString;
+        }
         
-
         sBuffer.str("");
         sBuffer.clear();
         //dst ip
         for (auto byte : packet.dstIp) {
             sBuffer << byte << ".";
         }
-        output << YAML::Key << "dst_ip" << YAML::Key << sBuffer.str().erase(sBuffer.str().size() - 1);
+        if (sBuffer.str().length() > 0)
+            output << YAML::Key << "dst_ip" << YAML::Key << sBuffer.str().erase(sBuffer.str().size() - 1);
 
-        if (frameTypes.at(1) == "IPv4") {
+        if (frameTypes.size() > 1 && frameTypes.at(1) == "IPv4") {
             char  hex_string[20];
             sprintf_s(hex_string, "%.2X", packet.hexFrame.at(23));
             output << YAML::Key << "protocol" << YAML::Value << _protocolMap[stoi(hex_string, 0, 16)];
@@ -393,7 +396,7 @@ void PcapParser::serializeYaml() {
                     sBuffer << " ";
             }  
         }
-        if((sBuffer.str()).at(((sBuffer.str()).size()-1)) != '\n')
+        if(sBuffer.str().length() > 0 && (sBuffer.str()).at(((sBuffer.str()).size()-1)) != '\n')
             sBuffer << endl;
 
         output << YAML::Key << "hexa_frame" << YAML::Value << YAML::Literal << sBuffer.str();

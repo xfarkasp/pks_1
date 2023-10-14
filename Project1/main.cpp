@@ -13,7 +13,7 @@ int main(int argc, char* argv[])
         file = argv[1];*/
     
     PcapParser *parser = new PcapParser();
-    parser->parseFrame("C:\\Users\\pedro\\Documents\\PKS\\vzorky_pcap_na_analyzu\\trace-27.pcap");
-    //parser->serializeYaml();
-    parser->arpFilter();
+    parser->parseFrame("C:\\Users\\pedro\\Documents\\PKS\\vzorky_pcap_na_analyzu\\trace-26.pcap");
+    parser->serializeYaml();
+    //parser->arpFilter();
 }
