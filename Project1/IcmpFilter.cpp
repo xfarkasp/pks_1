@@ -53,16 +53,18 @@ void IcmpFilter::findComms() {
                             delFlag = true;
                             break;
                         }
-                        indexOfFound++;
+                        
                     }
+                    indexOfFound++;
                 }
                 if (delFlag) {
                     replyQue.erase(std::next(replyQue.begin(), indexOfFound));
-                    indexOfFound = 0;
                     delFlag = false;
                 }
                 else
                     replyQue.push_back(packet);
+
+                indexOfFound = 0;
             }
         }
     }

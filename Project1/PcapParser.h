@@ -14,8 +14,8 @@ struct Frame {
     unsigned int srcPort;
     unsigned int dstPort;
     unsigned int ihlOffset = 0;
-    unsigned int icmpID;
-    unsigned int icmpSQ;
+    unsigned int icmpID = 0;
+    unsigned int icmpSQ = 0;
     std::string arpOpcode;
     std::string icmpType;
     std::vector<unsigned int> hexFrame;

@@ -31,8 +31,8 @@ void ArpFilter::findComms() {
                         delFlag = true;
                         break;
                     }
-                    indexOfFound++;
                 }
+                indexOfFound++;
             }
             if (delFlag) {
                 replyQue.erase(std::next(replyQue.begin(), indexOfFound));
@@ -41,6 +41,8 @@ void ArpFilter::findComms() {
             }
             else
                 replyQue.push_back(packet);
+
+            indexOfFound = 0;
         }
     }
     

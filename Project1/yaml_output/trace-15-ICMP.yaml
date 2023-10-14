@@ -447,69 +447,60 @@ complete_comms:
 partial_comms:
   - number_com: 1
     packets:
-      - frame_number: 3244
-        len_frame_pcap: 114
-        len_frame_medium: 118
+      - frame_number: 42
+        len_frame_pcap: 70
+        len_frame_medium: 74
         frame_type: ETHERNET II
         src_mac: CC:08:09:D4:00:00
         dst_mac: 02:00:4C:4F:4F:50
         src_ip: 12.0.0.1
         dst_ip: 12.0.0.5
         protocol: ICMP
-        icmp_type: ECHO REQUEST
-        icmp_id: 3
-        icmp_seq: 2
+        icmp_type: DESTINATION UNREACHABLE
+        icmp_id: 0
+        icmp_seq: 0
         hexa_frame: |
-          02 00 4C 4F 4F 50 CC 08 09 D4 00 00 08 00 45 00
-          00 64 00 0F 00 00 FF 01 A3 84 0C 00 00 01 0C 00
-          00 05 08 00 D6 85 00 03 00 02 00 00 00 00 00 03
-          A7 BC AB CD AB CD AB CD AB CD AB CD AB CD AB CD
-          AB CD AB CD AB CD AB CD AB CD AB CD AB CD AB CD
-          AB CD AB CD AB CD AB CD AB CD AB CD AB CD AB CD
-          AB CD AB CD AB CD AB CD AB CD AB CD AB CD AB CD
-          AB CD
+          02 00 4C 4F 4F 50 CC 08 09 D4 00 00 08 00 45 C0
+          00 38 00 18 00 00 FF 01 A2 E7 0C 00 00 01 0C 00
+          00 05 03 03 4B 98 00 00 00 00 45 00 02 20 38 09
+          00 00 7F 11 E9 BE 0C 00 00 05 0C 00 00 01 05 E6
+          C2 FD 02 0C E6 74
           
-      - frame_number: 3246
-        len_frame_pcap: 114
-        len_frame_medium: 118
+      - frame_number: 51
+        len_frame_pcap: 70
+        len_frame_medium: 74
         frame_type: ETHERNET II
         src_mac: CC:08:09:D4:00:00
         dst_mac: 02:00:4C:4F:4F:50
         src_ip: 12.0.0.1
         dst_ip: 12.0.0.5
         protocol: ICMP
-        icmp_type: ECHO REQUEST
-        icmp_id: 3
-        icmp_seq: 3
+        icmp_type: DESTINATION UNREACHABLE
+        icmp_id: 0
+        icmp_seq: 0
         hexa_frame: |
-          02 00 4C 4F 4F 50 CC 08 09 D4 00 00 08 00 45 00
-          00 64 00 10 00 00 FF 01 A3 83 0C 00 00 01 0C 00
-          00 05 08 00 D6 24 00 03 00 03 00 00 00 00 00 03
-          A8 1C AB CD AB CD AB CD AB CD AB CD AB CD AB CD
-          AB CD AB CD AB CD AB CD AB CD AB CD AB CD AB CD
-          AB CD AB CD AB CD AB CD AB CD AB CD AB CD AB CD
-          AB CD AB CD AB CD AB CD AB CD AB CD AB CD AB CD
-          AB CD
+          02 00 4C 4F 4F 50 CC 08 09 D4 00 00 08 00 45 C0
+          00 38 00 1D 00 00 FF 01 A2 E2 0C 00 00 01 0C 00
+          00 05 03 03 A6 1D 00 00 00 00 45 00 02 20 38 20
+          00 00 7F 11 E9 A7 0C 00 00 05 0C 00 00 01 05 E8
+          D3 49 02 0C 7B A1
           
-      - frame_number: 3248
-        len_frame_pcap: 114
-        len_frame_medium: 118
+      - frame_number: 73
+        len_frame_pcap: 70
+        len_frame_medium: 74
         frame_type: ETHERNET II
         src_mac: CC:08:09:D4:00:00
         dst_mac: 02:00:4C:4F:4F:50
         src_ip: 12.0.0.1
         dst_ip: 12.0.0.5
         protocol: ICMP
-        icmp_type: ECHO REQUEST
-        icmp_id: 3
-        icmp_seq: 4
+        icmp_type: DESTINATION UNREACHABLE
+        icmp_id: 0
+        icmp_seq: 0
         hexa_frame: |
-          02 00 4C 4F 4F 50 CC 08 09 D4 00 00 08 00 45 00
-          00 64 00 11 00 00 FF 01 A3 82 0C 00 00 01 0C 00
-          00 05 08 00 D5 FB 00 03 00 04 00 00 00 00 00 03
-          A8 44 AB CD AB CD AB CD AB CD AB CD AB CD AB CD
-          AB CD AB CD AB CD AB CD AB CD AB CD AB CD AB CD
-          AB CD AB CD AB CD AB CD AB CD AB CD AB CD AB CD
-          AB CD AB CD AB CD AB CD AB CD AB CD AB CD AB CD
-          AB CD
+          02 00 4C 4F 4F 50 CC 08 09 D4 00 00 08 00 45 C0
+          00 38 00 28 00 00 FF 01 A2 D7 0C 00 00 01 0C 00
+          00 05 03 03 4B 98 00 00 00 00 45 00 02 20 39 A2
+          00 00 7F 11 E8 25 0C 00 00 05 0C 00 00 01 05 EC
+          C8 43 02 0C E1 28
           
