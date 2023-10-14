@@ -161,9 +161,9 @@ void PcapParser::parseFrame(std::string path) {
                 unsigned int ihl = (hexFrame[14] & 0x0F) * 4;
                 
                 int offSet = 0;
-                if (ihl < 20) {
-                    offSet = ihl;
-                    thisFrame.ihlOffset = ihl;
+                if (ihl > 20) {
+                    offSet = ihl - 20;
+                    thisFrame.ihlOffset = offSet;
                 }
 
                 for (int i = SRC_PORT_START + offSet; i <= SRC_PORT_END + offSet; i++) {
@@ -377,6 +377,7 @@ void PcapParser::serializeYaml() {
             char  hex_string[20];
             sprintf_s(hex_string, "%.2X", packet.hexFrame.at(23));
             output << YAML::Key << "protocol" << YAML::Value << _protocolMap[stoi(hex_string, 0, 16)];
+
             if (_protocolMap[stoi(hex_string, 0, 16)] == "UDP" || _protocolMap[stoi(hex_string, 0, 16)] == "TCP") {
                 output << YAML::Key << "src_port" << YAML::Value << packet.srcPort;
                 output << YAML::Key << "dst_port" << YAML::Value << packet.dstPort;
@@ -392,7 +393,6 @@ void PcapParser::serializeYaml() {
             }
             else if (_protocolMap[stoi(hex_string, 0, 16)] == "ICMP") {
                 output << YAML::Key << "icmp_type" << YAML::Value << _icmpMap[packet.hexFrame.at(ICMP_TYPE + packet.ihlOffset)];
-
             }
 
             //count ipv4 packet senders

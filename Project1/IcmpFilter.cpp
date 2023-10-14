@@ -9,40 +9,61 @@ void IcmpFilter::findComms() {
     bool delFlag = false;
     for (auto packet : _parent->_frames) {
         std::vector<std::string> frameTypes = _parent->getFrameType(packet.typeSize, packet.hexFrame, packet.isISL);
-        if (frameTypes.size() >= 2 && frameTypes.at(1) == "ICMP") {
+        if (frameTypes.size() >= 2 && frameTypes.at(1) == "IPv4") {
+            char  hex_string[20];
+            sprintf_s(hex_string, "%.2X", packet.hexFrame.at(23));
+            if (_parent->_protocolMap[std::stoi(hex_string, 0, 16)] == "ICMP") {
 
-            for (auto quedFrame : replyQue) {
-                if (packet.srcIp == quedFrame.dstIp && packet.dstIp == quedFrame.srcIp) {
-                    std::stringstream quedFrameBuffer;
-                    std::stringstream newFrameBuffer;
+                packet.icmpType = _parent->_icmpMap[packet.hexFrame.at(ICMP_TYPE + packet.ihlOffset)];
+
+                std::stringstream idBuffer;
+                std::stringstream sqBuffer;
+                for (size_t i = (ICMP_IDENT_START + packet.ihlOffset); i <= (ICMP_SEQ_END + packet.ihlOffset); i++) {
                     char  hex_string[20];
-                    for (size_t i = ARP_OPCODE_START; i <= ARP_OPCODE_END; i++) {
-                        sprintf_s(hex_string, "%.2X", quedFrame.hexFrame.at(i));
-                        quedFrameBuffer << hex_string;
-
-                        sprintf_s(hex_string, "%.2X", packet.hexFrame.at(i));
-                        newFrameBuffer << hex_string;
+                    if ((ICMP_IDENT_START + packet.ihlOffset) <= i && i <= (ICMP_IDENT_END + packet.ihlOffset)) {
+                        sprintf_s(hex_string, "%.2X", packet.hexFrame[i]);
+                        idBuffer << hex_string;
                     }
-                    if (_icmpMap[stoi(quedFrameBuffer.str(), 0, 16)] == "REQUEST" && _icmpMap[stoi(newFrameBuffer.str(), 0, 16)] == "REPLY") {
-                        std::pair<Frame, Frame> newPair;
-                        newPair.first = quedFrame;
-                        newPair.second = packet;
-                        _commPairs.push_back(newPair);
-
-                        //replyQue.erase(std::next(replyQue.begin(), indexOfFound));
-                        delFlag = true;
-                        break;
+                    if ((ICMP_SEQ_START + packet.ihlOffset) <= i && i <= (ICMP_SEQ_END + packet.ihlOffset)) {
+                        sprintf_s(hex_string, "%.2X", packet.hexFrame[i]);
+                        sqBuffer << hex_string;
                     }
-                    indexOfFound++;
                 }
+
+                packet.icmpID = std::stoi(idBuffer.str(), 0, 16);
+                packet.icmpSQ = std::stoi(sqBuffer.str(), 0, 16);
+
+                for (auto quedFrame : replyQue) {
+                    if (packet.srcIp == quedFrame.dstIp &&
+                        packet.dstIp == quedFrame.srcIp &&
+                        packet.icmpID == quedFrame.icmpID &&
+                        packet.icmpSQ == quedFrame.icmpSQ) {
+
+                        std::stringstream quedFrameBuffer;
+                        std::stringstream newFrameBuffer;
+                        char  hex_string[20];
+
+                        if (quedFrame.icmpType == "ECHO REQUEST" && packet.icmpType == "ECHO REPLY") {
+                            std::pair<Frame, Frame> newPair;
+                            newPair.first = quedFrame;
+                            newPair.second = packet;
+                            _commPairs.push_back(std::move(newPair));
+
+                            //replyQue.erase(std::next(replyQue.begin(), indexOfFound));
+                            delFlag = true;
+                            break;
+                        }
+                        indexOfFound++;
+                    }
+                }
+                if (delFlag) {
+                    replyQue.erase(std::next(replyQue.begin(), indexOfFound));
+                    indexOfFound = 0;
+                    delFlag = false;
+                }
+                else
+                    replyQue.push_back(packet);
             }
-            if (delFlag) {
-                replyQue.erase(std::next(replyQue.begin(), indexOfFound));
-                indexOfFound = 0;
-                delFlag = false;
-            }
-            else
-                replyQue.push_back(packet);
         }
     }
 
@@ -50,7 +71,7 @@ void IcmpFilter::findComms() {
 }
 
 void IcmpFilter::serializeIcmpYaml() {
-    //findComms();
+    findComms();
 
     size_t comIndex = 0;
     YAML::Emitter output;
@@ -67,8 +88,10 @@ void IcmpFilter::serializeIcmpYaml() {
         output << YAML::BeginMap << YAML::Key << "number_com" << YAML::Value << comIndex;
         output << YAML::Key << "packets" << YAML::Value << YAML::BeginSeq;
         for (auto packet : comms) {
-            std::vector<std::string> frameTypes = _parent->getFrameType(packet.typeSize, packet.hexFrame, packet.isISL);
-            if (frameTypes.size() >= 2 && frameTypes.at(1) == "ICMP") {
+            char  hex_string[20];
+            sprintf_s(hex_string, "%.2X", packet.hexFrame.at(23));
+
+            if (_parent->_protocolMap[std::stoi(hex_string, 0, 16)] == "ICMP") {
                 output << YAML::BeginMap;
                 output << YAML::Key << "frame_number" << YAML::Value << packet.index;
                 output << YAML::Key << "len_frame_pcap" << YAML::Value << packet.capLen;
@@ -95,27 +118,6 @@ void IcmpFilter::serializeIcmpYaml() {
 
                 sBuffer.str("");
                 sBuffer.clear();
-                //frame types
-                if (frameTypes.size() == 2) {
-                    if (frameTypes.at(0) == "IEEE 802.3 LLC & SNAP")
-                        output << YAML::Key << "pid" << YAML::Value << frameTypes.at(1);
-                    else if (frameTypes.at(0) == "IEEE 802.3 LLC")
-                        output << YAML::Key << "sap" << YAML::Value << frameTypes.at(1);
-                    else if (frameTypes.at(0) == "ETHERNET II") {
-                        output << YAML::Key << "ether_type" << YAML::Value << frameTypes.at(1);
-                        if (frameTypes.at(1) == "ARP") {
-                            char  hex_string[20];
-                            for (size_t i = ARP_OPCODE_START; i <= ARP_OPCODE_END; i++) {
-                                sprintf_s(hex_string, "%.2X", packet.hexFrame.at(i));
-                                sBuffer << hex_string;
-                            }
-
-                            output << YAML::Key << "arp_opcode" << YAML::Value << _icmpMap[stoi(sBuffer.str(), 0, 16)];
-                        }
-                    }
-                }
-                sBuffer.str("");
-                sBuffer.clear();
                 //source ip
                 for (auto byte : packet.srcIp) {
                     sBuffer << byte << ".";
@@ -134,24 +136,11 @@ void IcmpFilter::serializeIcmpYaml() {
                 if (frameTypes.at(1) == "IPv4") {
                     char  hex_string[20];
                     sprintf_s(hex_string, "%.2X", packet.hexFrame.at(23));
-                    output << YAML::Key << "protocol" << YAML::Value << _protocolMap[std::stoi(hex_string, 0, 16)];
-                    output << YAML::Key << "src_port" << YAML::Value << packet.srcPort;
-                    output << YAML::Key << "dst_port" << YAML::Value << packet.dstPort;
-
-                    bool srcKnown = (_portMap.find(packet.srcPort) != _portMap.end());
-                    bool dstKnown = (_portMap.find(packet.dstPort) != _portMap.end());
-                    if (srcKnown && dstKnown)
-                        output << YAML::Key << "app_protocol" << YAML::Value << _portMap[packet.srcPort] + ", " + _portMap[packet.dstPort];
-                    else if (srcKnown)
-                        output << YAML::Key << "app_protocol" << YAML::Value << _portMap[packet.srcPort];
-                    else if (dstKnown)
-                        output << YAML::Key << "app_protocol" << YAML::Value << _portMap[packet.dstPort];
-
-                    //count ipv4 packet senders
-                    if (_packetSenders.find(srcString) != _packetSenders.end())
-                        _packetSenders[srcString]++;
-                    else {
-                        _packetSenders.insert({ srcString, 1 });
+                    output << YAML::Key << "protocol" << YAML::Value << _parent->_protocolMap[std::stoi(hex_string, 0, 16)];
+                    if (_parent->_protocolMap[std::stoi(hex_string, 0, 16)] == "ICMP") {
+                        output << YAML::Key << "icmp_type" << YAML::Value << packet.icmpType;
+                        output << YAML::Key << "icmp_id" << YAML::Value << packet.icmpID;
+                        output << YAML::Key << "icmp_seq" << YAML::Value << packet.icmpSQ;
                     }
                 }
 
@@ -183,10 +172,8 @@ void IcmpFilter::serializeIcmpYaml() {
 
     };
 
-
     output << YAML::Key << "complete_comms" << YAML::Value << YAML::BeginSeq;
-    addComm(_parent->_frames);
-    /*while (!_commPairs.empty()) {
+    while (!_commPairs.empty()) {
         std::vector<Frame>completeConnections;
         std::vector<size_t>removeIndexes;
         Frame commFrame = _commPairs.at(0).first;
@@ -200,13 +187,14 @@ void IcmpFilter::serializeIcmpYaml() {
         comIndex++;
         addComm(completeConnections);
         std::reverse(removeIndexes.begin(), removeIndexes.end());
-        for (size_t i = 0; i < _commPairs.size(); i++) {
+        for (size_t i = 0; i < removeIndexes.size(); i++) {
             _commPairs.erase(std::next(_commPairs.begin(), removeIndexes.at(i)));
         }
-    }*/
+    }
     output << YAML::EndSeq;
 
-    /*comIndex = 0;
+    
+    comIndex = 0;
     output << YAML::Key << "partial_comms" << YAML::Value << YAML::BeginSeq;
     while (!_notCompleteComms.empty()) {
         std::vector<Frame>completeConnections;
@@ -225,7 +213,7 @@ void IcmpFilter::serializeIcmpYaml() {
             _notCompleteComms.erase(std::next(_notCompleteComms.begin(), removeIndexes.at(i)));
         }
     }
-    output << YAML::EndSeq;*/
+    output << YAML::EndSeq;
 
     //addComm(replyQue);
 
