@@ -2,7 +2,7 @@ name: PKS2023/24
 pcap_name: trace-1.pcap
 filter_name: ARP
 complete_comms:
-  - number_com: 1
+  - number_comm: 1
     packets:
       - frame_number: 1
         len_frame_pcap: 42
@@ -36,7 +36,7 @@ complete_comms:
           00 00 00 00 00 00 00 00 00 00 00 00
           
 partial_comms:
-  - number_com: 1
+  - number_comm: 1
     packets:
       - frame_number: 6
         len_frame_pcap: 60

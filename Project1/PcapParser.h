@@ -13,6 +13,7 @@ struct Frame {
     unsigned int wireLen;
     unsigned int srcPort;
     unsigned int dstPort;
+    unsigned int ihlOffset = 0;
     std::string arpOpcode;
     std::vector<unsigned int> hexFrame;
     std::vector<unsigned int> destMac;
@@ -54,6 +55,9 @@ class PcapParser {
             DST_PORT_START = 36,
             DST_PORT_END = 37,
 
+            ICMP_TYPE = 34,
+            ICMP_CODE = 35,
+
             ARP_SRC_IP_OFFSET = 2,
             ARP_DST_IP_OFFSET = 8,
             //ISL frame
@@ -86,5 +90,7 @@ class PcapParser {
             std::string _fileName;  //current file name
             std::map<unsigned int, std::string> _protocolMap; //map of protocol values and names
             std::map<unsigned int, std::string> _portMap; //map of protocol values and names
+            std::map<unsigned int, std::string> _arpMap;
+            std::map<unsigned int, std::string> _icmpMap;
             std::map<std::string, unsigned int> _packetSenders; //map of sender ips and packets sent value
 };

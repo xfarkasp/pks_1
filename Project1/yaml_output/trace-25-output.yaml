@@ -26,6 +26,7 @@ packets:
     src_mac: 00:04:76:A4:E4:8C
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.1
     dst_ip: 147.175.98.74
     hexa_frame: |
@@ -41,6 +42,7 @@ packets:
     src_mac: 00:04:76:A4:E4:8C
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.1
     dst_ip: 147.175.98.132
     hexa_frame: |
@@ -139,6 +141,7 @@ packets:
     src_mac: 00:04:76:A4:E4:8C
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.1
     dst_ip: 147.175.98.113
     hexa_frame: |
@@ -332,6 +335,7 @@ packets:
     src_mac: 00:04:76:A4:E4:8C
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.1
     dst_ip: 147.175.98.192
     hexa_frame: |
@@ -368,6 +372,7 @@ packets:
     src_mac: 00:04:76:A4:E4:8C
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.1
     dst_ip: 147.175.98.200
     hexa_frame: |
@@ -428,6 +433,7 @@ packets:
     src_mac: 00:E0:29:05:51:2B
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.30
     dst_ip: 147.175.98.40
     hexa_frame: |
@@ -512,6 +518,7 @@ packets:
     src_mac: 00:E0:29:05:51:2B
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.30
     dst_ip: 147.175.98.3
     hexa_frame: |
@@ -548,6 +555,7 @@ packets:
     src_mac: 00:04:76:A4:E4:8C
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.1
     dst_ip: 147.175.98.120
     hexa_frame: |
@@ -584,6 +592,7 @@ packets:
     src_mac: 00:04:76:A4:E4:8C
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.1
     dst_ip: 147.175.98.153
     hexa_frame: |
@@ -599,6 +608,7 @@ packets:
     src_mac: 00:E0:29:05:51:2B
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.30
     dst_ip: 147.175.98.78
     hexa_frame: |
@@ -635,6 +645,7 @@ packets:
     src_mac: 00:04:76:A4:E4:8C
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.1
     dst_ip: 147.175.98.5
     hexa_frame: |
@@ -650,6 +661,7 @@ packets:
     src_mac: 00:E0:29:05:51:2B
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.30
     dst_ip: 147.175.98.3
     hexa_frame: |
@@ -680,6 +692,7 @@ packets:
     src_mac: 00:E0:29:05:51:2B
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.30
     dst_ip: 147.175.98.78
     hexa_frame: |
@@ -1495,6 +1508,7 @@ packets:
     src_mac: 00:04:76:A4:E4:8C
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.1
     dst_ip: 147.175.98.5
     hexa_frame: |
@@ -1550,6 +1564,7 @@ packets:
     src_mac: 00:04:76:A4:E4:8C
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.1
     dst_ip: 147.175.98.200
     hexa_frame: |
@@ -1667,6 +1682,7 @@ packets:
     src_mac: 00:E0:29:05:51:2B
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.30
     dst_ip: 147.175.98.3
     hexa_frame: |
@@ -1682,6 +1698,7 @@ packets:
     src_mac: 00:E0:29:05:51:2B
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.30
     dst_ip: 147.175.98.78
     hexa_frame: |
@@ -1697,6 +1714,7 @@ packets:
     src_mac: 00:04:76:A4:E4:8C
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.1
     dst_ip: 147.175.98.5
     hexa_frame: |
@@ -1712,6 +1730,7 @@ packets:
     src_mac: 00:04:75:C6:B8:1F
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.224
     dst_ip: 147.175.98.40
     hexa_frame: |
@@ -1727,6 +1746,7 @@ packets:
     src_mac: 00:04:76:A4:E4:8C
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.1
     dst_ip: 147.175.98.110
     hexa_frame: |
@@ -1742,6 +1762,7 @@ packets:
     src_mac: 00:04:76:A4:E4:8C
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.1
     dst_ip: 147.175.98.142
     hexa_frame: |
@@ -1794,6 +1815,7 @@ packets:
     src_mac: 00:04:76:A4:E4:8C
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.1
     dst_ip: 147.175.98.25
     hexa_frame: |
@@ -1809,6 +1831,7 @@ packets:
     src_mac: 00:E0:29:05:51:2B
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.30
     dst_ip: 147.175.98.146
     hexa_frame: |
@@ -1827,9 +1850,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.99.42
     protocol: IP (DoD Internet Protocol)
-    src_port: 1114
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 30 0A 0A 40 00 80 06 03 47 93 AF 62 EE 93 AF
@@ -1846,9 +1866,6 @@ packets:
     src_ip: 147.175.99.42
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1114
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 2C 0D 2B 00 00 3F 06 81 2A 93 AF 63 2A 93 AF
@@ -1865,9 +1882,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.99.42
     protocol: IP (DoD Internet Protocol)
-    src_port: 1114
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A 0C 40 00 80 06 03 4D 93 AF 62 EE 93 AF
@@ -1884,9 +1898,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.99.42
     protocol: IP (DoD Internet Protocol)
-    src_port: 1114
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 47 0A 0D 40 00 80 06 02 2D 93 AF 62 EE 93 AF
@@ -1921,9 +1932,6 @@ packets:
     src_ip: 147.175.99.42
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1114
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 28 0D 2C 00 00 3F 06 81 2D 93 AF 63 2A 93 AF
@@ -1937,6 +1945,7 @@ packets:
     src_mac: 00:E0:29:05:51:2B
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.30
     dst_ip: 147.175.98.48
     hexa_frame: |
@@ -1955,9 +1964,6 @@ packets:
     src_ip: 147.175.99.42
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1114
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 8C 0D 39 00 00 3F 06 80 BC 93 AF 63 2A 93 AF
@@ -1980,9 +1986,6 @@ packets:
     src_ip: 147.175.99.42
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1114
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 71 0D 3A 00 00 3F 06 80 D6 93 AF 63 2A 93 AF
@@ -2003,9 +2006,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.99.42
     protocol: IP (DoD Internet Protocol)
-    src_port: 1114
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A 0F 40 00 80 06 03 4A 93 AF 62 EE 93 AF
@@ -2022,9 +2022,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.99.42
     protocol: IP (DoD Internet Protocol)
-    src_port: 1114
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       02 18 0A 10 40 00 80 06 01 59 93 AF 62 EE 93 AF
@@ -2072,9 +2069,6 @@ packets:
     src_ip: 147.175.99.42
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1114
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 28 0D 40 00 00 3F 06 81 19 93 AF 63 2A 93 AF
@@ -2091,9 +2085,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.99.42
     protocol: IP (DoD Internet Protocol)
-    src_port: 1115
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 30 0A 12 40 00 80 06 03 3F 93 AF 62 EE 93 AF
@@ -2110,9 +2101,6 @@ packets:
     src_ip: 147.175.99.42
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1115
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 2C 0D 43 00 00 3F 06 81 12 93 AF 63 2A 93 AF
@@ -2129,9 +2117,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.99.42
     protocol: IP (DoD Internet Protocol)
-    src_port: 1115
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A 14 40 00 80 06 03 45 93 AF 62 EE 93 AF
@@ -2148,9 +2133,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.99.42
     protocol: IP (DoD Internet Protocol)
-    src_port: 1115
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       02 1A 0A 15 40 00 80 06 01 52 93 AF 62 EE 93 AF
@@ -2198,9 +2180,6 @@ packets:
     src_ip: 147.175.99.42
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1115
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 28 0D 45 00 00 3F 06 81 14 93 AF 63 2A 93 AF
@@ -2217,9 +2196,6 @@ packets:
     src_ip: 147.175.99.42
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1114
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 8C 0D 62 00 00 3F 06 80 93 93 AF 63 2A 93 AF
@@ -2242,9 +2218,6 @@ packets:
     src_ip: 147.175.99.42
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1114
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 70 0D 63 00 00 3F 06 80 AE 93 AF 63 2A 93 AF
@@ -2265,9 +2238,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.99.42
     protocol: IP (DoD Internet Protocol)
-    src_port: 1114
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A 17 40 00 80 06 03 42 93 AF 62 EE 93 AF
@@ -2284,9 +2254,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.99.42
     protocol: IP (DoD Internet Protocol)
-    src_port: 1114
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       02 1A 0A 18 40 00 80 06 01 4F 93 AF 62 EE 93 AF
@@ -2334,9 +2301,6 @@ packets:
     src_ip: 147.175.99.42
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1114
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 28 0D 65 00 00 3F 06 80 F4 93 AF 63 2A 93 AF
@@ -2353,9 +2317,6 @@ packets:
     src_ip: 147.175.99.42
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1115
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 8C 0D 67 00 00 3F 06 80 8E 93 AF 63 2A 93 AF
@@ -2378,9 +2339,6 @@ packets:
     src_ip: 147.175.99.42
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1115
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 70 0D 68 00 00 3F 06 80 A9 93 AF 63 2A 93 AF
@@ -2401,9 +2359,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.99.42
     protocol: IP (DoD Internet Protocol)
-    src_port: 1115
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A 1A 40 00 80 06 03 3F 93 AF 62 EE 93 AF
@@ -2420,9 +2375,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.99.42
     protocol: IP (DoD Internet Protocol)
-    src_port: 1115
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       02 19 0A 1B 40 00 80 06 01 4D 93 AF 62 EE 93 AF
@@ -2470,9 +2422,6 @@ packets:
     src_ip: 147.175.99.42
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1115
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 28 0D 6A 00 00 3F 06 80 EF 93 AF 63 2A 93 AF
@@ -2489,9 +2438,6 @@ packets:
     src_ip: 147.175.99.42
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1114
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 8C 0D 7F 00 00 3F 06 80 76 93 AF 63 2A 93 AF
@@ -2514,9 +2460,6 @@ packets:
     src_ip: 147.175.99.42
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1114
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 70 0D 80 00 00 3F 06 80 91 93 AF 63 2A 93 AF
@@ -2537,9 +2480,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.99.42
     protocol: IP (DoD Internet Protocol)
-    src_port: 1114
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A 1D 40 00 80 06 03 3C 93 AF 62 EE 93 AF
@@ -2556,9 +2496,6 @@ packets:
     src_ip: 147.175.99.42
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1115
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 8C 0D 82 00 00 3F 06 80 73 93 AF 63 2A 93 AF
@@ -2581,9 +2518,6 @@ packets:
     src_ip: 147.175.99.42
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1115
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 70 0D 83 00 00 3F 06 80 8E 93 AF 63 2A 93 AF
@@ -2604,9 +2538,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.99.42
     protocol: IP (DoD Internet Protocol)
-    src_port: 1115
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A 1E 40 00 80 06 03 3B 93 AF 62 EE 93 AF
@@ -2620,6 +2551,7 @@ packets:
     src_mac: 00:04:76:A4:E5:52
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.210
     dst_ip: 147.175.98.40
     hexa_frame: |
@@ -2635,6 +2567,7 @@ packets:
     src_mac: 00:E0:29:05:51:2B
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.30
     dst_ip: 147.175.98.45
     hexa_frame: |
@@ -2669,6 +2602,7 @@ packets:
     src_mac: 00:04:76:A4:E4:8C
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.1
     dst_ip: 147.175.98.76
     hexa_frame: |
@@ -2684,6 +2618,7 @@ packets:
     src_mac: 00:04:76:A4:E4:8C
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.1
     dst_ip: 147.175.98.5
     hexa_frame: |
@@ -2699,6 +2634,7 @@ packets:
     src_mac: 00:E0:29:05:51:2B
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.30
     dst_ip: 147.175.98.146
     hexa_frame: |
@@ -2714,6 +2650,7 @@ packets:
     src_mac: 00:E0:29:05:51:2B
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.30
     dst_ip: 147.175.98.48
     hexa_frame: |
@@ -2729,6 +2666,7 @@ packets:
     src_mac: 00:E0:29:05:51:2B
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.30
     dst_ip: 147.175.98.45
     hexa_frame: |
@@ -2744,6 +2682,7 @@ packets:
     src_mac: 00:04:76:A4:E4:8C
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.1
     dst_ip: 147.175.98.76
     hexa_frame: |
@@ -2759,6 +2698,7 @@ packets:
     src_mac: 00:04:75:7F:B4:CB
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.216
     dst_ip: 147.175.98.40
     hexa_frame: |
@@ -2774,6 +2714,7 @@ packets:
     src_mac: 00:04:76:A4:E4:8C
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.1
     dst_ip: 147.175.98.132
     hexa_frame: |
@@ -2789,6 +2730,7 @@ packets:
     src_mac: 00:00:C0:64:D5:C2
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.167
     dst_ip: 147.175.98.40
     hexa_frame: |
@@ -2804,6 +2746,7 @@ packets:
     src_mac: 00:04:76:A4:E4:8C
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.1
     dst_ip: 147.175.98.72
     hexa_frame: |
@@ -2843,9 +2786,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.98.40
     protocol: IP (DoD Internet Protocol)
-    src_port: 1032
-    dst_port: 139
-    app_protocol: NetBIOS NetBIOS Session Servic
     hexa_frame: |
       00 04 76 A4 E4 8B 00 00 C0 D7 80 C2 08 00 45 00
       00 8C 0A 24 40 00 80 06 03 D3 93 AF 62 EE 93 AF
@@ -2868,9 +2808,6 @@ packets:
     src_ip: 147.175.98.40
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 139
-    dst_port: 1032
-    app_protocol: NetBIOS NetBIOS Session Servic
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8B 08 00 45 00
       00 4F 97 69 40 00 40 06 B6 CA 93 AF 62 28 93 AF
@@ -2889,9 +2826,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.98.40
     protocol: IP (DoD Internet Protocol)
-    src_port: 1032
-    dst_port: 139
-    app_protocol: NetBIOS NetBIOS Session Servic
     hexa_frame: |
       00 04 76 A4 E4 8B 00 00 C0 D7 80 C2 08 00 45 00
       00 8C 0A 25 40 00 80 06 03 D2 93 AF 62 EE 93 AF
@@ -2914,9 +2848,6 @@ packets:
     src_ip: 147.175.98.40
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 139
-    dst_port: 1032
-    app_protocol: NetBIOS NetBIOS Session Servic
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8B 08 00 45 00
       00 4F 97 6A 40 00 40 06 B6 C9 93 AF 62 28 93 AF
@@ -2935,9 +2866,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.98.40
     protocol: IP (DoD Internet Protocol)
-    src_port: 1032
-    dst_port: 139
-    app_protocol: NetBIOS NetBIOS Session Servic
     hexa_frame: |
       00 04 76 A4 E4 8B 00 00 C0 D7 80 C2 08 00 45 00
       00 8C 0A 26 40 00 80 06 03 D1 93 AF 62 EE 93 AF
@@ -2960,9 +2888,6 @@ packets:
     src_ip: 147.175.98.40
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 139
-    dst_port: 1032
-    app_protocol: NetBIOS NetBIOS Session Servic
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8B 08 00 45 00
       00 4F 97 6B 40 00 40 06 B6 C8 93 AF 62 28 93 AF
@@ -2981,9 +2906,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.98.40
     protocol: IP (DoD Internet Protocol)
-    src_port: 1032
-    dst_port: 139
-    app_protocol: NetBIOS NetBIOS Session Servic
     hexa_frame: |
       00 04 76 A4 E4 8B 00 00 C0 D7 80 C2 08 00 45 00
       00 8C 0A 27 40 00 80 06 03 D0 93 AF 62 EE 93 AF
@@ -3006,9 +2928,6 @@ packets:
     src_ip: 147.175.98.40
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 139
-    dst_port: 1032
-    app_protocol: NetBIOS NetBIOS Session Servic
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8B 08 00 45 00
       00 4F 97 6C 40 00 40 06 B6 C7 93 AF 62 28 93 AF
@@ -3048,9 +2967,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.98.40
     protocol: IP (DoD Internet Protocol)
-    src_port: 1032
-    dst_port: 139
-    app_protocol: NetBIOS NetBIOS Session Servic
     hexa_frame: |
       00 04 76 A4 E4 8B 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A 28 40 00 80 06 04 33 93 AF 62 EE 93 AF
@@ -3067,9 +2983,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.98.40
     protocol: IP (DoD Internet Protocol)
-    src_port: 1032
-    dst_port: 139
-    app_protocol: NetBIOS NetBIOS Session Servic
     hexa_frame: |
       00 04 76 A4 E4 8B 00 00 C0 D7 80 C2 08 00 45 00
       00 AD 0A 29 40 00 80 06 03 AD 93 AF 62 EE 93 AF
@@ -3094,9 +3007,6 @@ packets:
     src_ip: 147.175.98.40
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 139
-    dst_port: 1032
-    app_protocol: NetBIOS NetBIOS Session Servic
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8B 08 00 45 00
       00 7D 97 6E 40 00 40 06 B6 97 93 AF 62 28 93 AF
@@ -3118,9 +3028,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.98.40
     protocol: IP (DoD Internet Protocol)
-    src_port: 1032
-    dst_port: 139
-    app_protocol: NetBIOS NetBIOS Session Servic
     hexa_frame: |
       00 04 76 A4 E4 8B 00 00 C0 D7 80 C2 08 00 45 00
       00 6E 0A 2A 40 00 80 06 03 EB 93 AF 62 EE 93 AF
@@ -3141,9 +3048,6 @@ packets:
     src_ip: 147.175.98.40
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 139
-    dst_port: 1032
-    app_protocol: NetBIOS NetBIOS Session Servic
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8B 08 00 45 00
       00 5D 97 6F 40 00 40 06 B6 B6 93 AF 62 28 93 AF
@@ -3163,9 +3067,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.98.40
     protocol: IP (DoD Internet Protocol)
-    src_port: 1032
-    dst_port: 139
-    app_protocol: NetBIOS NetBIOS Session Servic
     hexa_frame: |
       00 04 76 A4 E4 8B 00 00 C0 D7 80 C2 08 00 45 00
       00 4F 0A 2B 40 00 80 06 04 09 93 AF 62 EE 93 AF
@@ -3184,9 +3085,6 @@ packets:
     src_ip: 147.175.98.40
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 139
-    dst_port: 1032
-    app_protocol: NetBIOS NetBIOS Session Servic
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8B 08 00 45 00
       00 4F 97 70 40 00 40 06 B6 C3 93 AF 62 28 93 AF
@@ -3205,9 +3103,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.98.40
     protocol: IP (DoD Internet Protocol)
-    src_port: 1032
-    dst_port: 139
-    app_protocol: NetBIOS NetBIOS Session Servic
     hexa_frame: |
       00 04 76 A4 E4 8B 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A 2C 40 00 80 06 04 2F 93 AF 62 EE 93 AF
@@ -3289,6 +3184,7 @@ packets:
     src_mac: 00:E0:29:05:51:2B
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.30
     dst_ip: 147.175.98.146
     hexa_frame: |
@@ -3304,6 +3200,7 @@ packets:
     src_mac: 00:E0:29:05:51:2B
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.30
     dst_ip: 147.175.98.48
     hexa_frame: |
@@ -3319,6 +3216,7 @@ packets:
     src_mac: 00:E0:29:05:51:2B
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.30
     dst_ip: 147.175.98.45
     hexa_frame: |
@@ -3334,6 +3232,7 @@ packets:
     src_mac: 00:04:76:A4:E4:8C
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.1
     dst_ip: 147.175.98.76
     hexa_frame: |
@@ -3462,9 +3361,6 @@ packets:
     src_ip: 147.175.99.42
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1114
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 28 0E 02 00 00 3F 06 80 57 93 AF 63 2A 93 AF
@@ -3481,9 +3377,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.99.42
     protocol: IP (DoD Internet Protocol)
-    src_port: 1114
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A 33 40 00 80 06 03 26 93 AF 62 EE 93 AF
@@ -3500,9 +3393,6 @@ packets:
     src_ip: 147.175.99.42
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1115
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 28 0E 06 00 00 3F 06 80 53 93 AF 63 2A 93 AF
@@ -3519,9 +3409,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.99.42
     protocol: IP (DoD Internet Protocol)
-    src_port: 1115
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A 34 40 00 80 06 03 25 93 AF 62 EE 93 AF
@@ -3538,9 +3425,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.99.42
     protocol: IP (DoD Internet Protocol)
-    src_port: 1114
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A 35 40 00 80 06 03 24 93 AF 62 EE 93 AF
@@ -3557,9 +3441,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.99.42
     protocol: IP (DoD Internet Protocol)
-    src_port: 1115
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A 36 40 00 80 06 03 23 93 AF 62 EE 93 AF
@@ -3751,9 +3632,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.99.62
     protocol: IP (DoD Internet Protocol)
-    src_port: 1117
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 30 0A 38 40 00 80 06 03 05 93 AF 62 EE 93 AF
@@ -3770,9 +3648,6 @@ packets:
     src_ip: 147.175.99.62
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1117
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 30 00 00 40 00 3F 06 4E 3D 93 AF 63 3E 93 AF
@@ -3789,9 +3664,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.99.62
     protocol: IP (DoD Internet Protocol)
-    src_port: 1117
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A 3A 40 00 80 06 03 0B 93 AF 62 EE 93 AF
@@ -3808,9 +3680,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.99.62
     protocol: IP (DoD Internet Protocol)
-    src_port: 1117
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 9B 0A 3B 40 00 80 06 01 97 93 AF 62 EE 93 AF
@@ -3850,9 +3719,6 @@ packets:
     src_ip: 147.175.99.62
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1117
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 28 78 4E 40 00 3F 06 D5 F6 93 AF 63 3E 93 AF
@@ -3869,9 +3735,6 @@ packets:
     src_ip: 147.175.99.62
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1117
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       02 C9 78 4F 40 00 3F 06 D3 54 93 AF 63 3E 93 AF
@@ -3930,9 +3793,6 @@ packets:
     src_ip: 147.175.99.62
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1117
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 28 78 50 40 00 3F 06 D5 F4 93 AF 63 3E 93 AF
@@ -3949,9 +3809,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.99.62
     protocol: IP (DoD Internet Protocol)
-    src_port: 1117
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A 3D 40 00 80 06 03 08 93 AF 62 EE 93 AF
@@ -3968,9 +3825,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.99.62
     protocol: IP (DoD Internet Protocol)
-    src_port: 1117
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A 3E 40 00 80 06 03 07 93 AF 62 EE 93 AF
@@ -3987,9 +3841,6 @@ packets:
     src_ip: 147.175.99.62
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1117
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 28 78 51 40 00 3F 06 D5 F3 93 AF 63 3E 93 AF
@@ -4006,9 +3857,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.99.62
     protocol: IP (DoD Internet Protocol)
-    src_port: 1118
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 30 0A 3F 40 00 80 06 02 FE 93 AF 62 EE 93 AF
@@ -4025,9 +3873,6 @@ packets:
     src_ip: 147.175.99.62
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1118
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 30 00 00 40 00 3F 06 4E 3D 93 AF 63 3E 93 AF
@@ -4044,9 +3889,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.99.62
     protocol: IP (DoD Internet Protocol)
-    src_port: 1118
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A 41 40 00 80 06 03 04 93 AF 62 EE 93 AF
@@ -4063,9 +3905,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.99.62
     protocol: IP (DoD Internet Protocol)
-    src_port: 1118
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 F4 0A 42 40 00 80 06 01 37 93 AF 62 EE 93 AF
@@ -4111,9 +3950,6 @@ packets:
     src_ip: 147.175.99.62
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1118
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 28 95 14 40 00 3F 06 B9 30 93 AF 63 3E 93 AF
@@ -4130,9 +3966,6 @@ packets:
     src_ip: 147.175.99.62
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1118
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       01 16 95 15 40 00 3F 06 B8 41 93 AF 63 3E 93 AF
@@ -4164,9 +3997,6 @@ packets:
     src_ip: 147.175.99.62
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1118
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 28 95 16 40 00 3F 06 B9 2E 93 AF 63 3E 93 AF
@@ -4183,9 +4013,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.99.62
     protocol: IP (DoD Internet Protocol)
-    src_port: 1118
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A 44 40 00 80 06 03 01 93 AF 62 EE 93 AF
@@ -4202,9 +4029,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.99.62
     protocol: IP (DoD Internet Protocol)
-    src_port: 1118
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A 45 40 00 80 06 03 00 93 AF 62 EE 93 AF
@@ -4221,9 +4045,6 @@ packets:
     src_ip: 147.175.99.62
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1118
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 28 95 17 40 00 3F 06 B9 2D 93 AF 63 3E 93 AF
@@ -4240,9 +4061,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.99.62
     protocol: IP (DoD Internet Protocol)
-    src_port: 1119
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 30 0A 46 40 00 80 06 02 F7 93 AF 62 EE 93 AF
@@ -4259,9 +4077,6 @@ packets:
     src_ip: 147.175.99.62
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1119
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 30 00 00 40 00 3F 06 4E 3D 93 AF 63 3E 93 AF
@@ -4278,9 +4093,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.99.62
     protocol: IP (DoD Internet Protocol)
-    src_port: 1119
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A 48 40 00 80 06 02 FD 93 AF 62 EE 93 AF
@@ -4297,9 +4109,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.99.62
     protocol: IP (DoD Internet Protocol)
-    src_port: 1119
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 8D 0A 49 40 00 80 06 01 97 93 AF 62 EE 93 AF
@@ -4338,9 +4147,6 @@ packets:
     src_ip: 147.175.99.62
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1119
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 28 90 49 40 00 3F 06 BD FB 93 AF 63 3E 93 AF
@@ -4357,9 +4163,6 @@ packets:
     src_ip: 147.175.99.62
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1119
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       01 16 90 4A 40 00 3F 06 BD 0C 93 AF 63 3E 93 AF
@@ -4391,9 +4194,6 @@ packets:
     src_ip: 147.175.99.62
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1119
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 28 90 4B 40 00 3F 06 BD F9 93 AF 63 3E 93 AF
@@ -4410,9 +4210,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.99.62
     protocol: IP (DoD Internet Protocol)
-    src_port: 1119
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A 4B 40 00 80 06 02 FA 93 AF 62 EE 93 AF
@@ -4429,9 +4226,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.99.62
     protocol: IP (DoD Internet Protocol)
-    src_port: 1119
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A 4C 40 00 80 06 02 F9 93 AF 62 EE 93 AF
@@ -4448,9 +4242,6 @@ packets:
     src_ip: 147.175.99.62
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1119
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 28 90 4C 40 00 3F 06 BD F8 93 AF 63 3E 93 AF
@@ -4464,6 +4255,7 @@ packets:
     src_mac: 00:04:76:A4:E4:8C
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.1
     dst_ip: 147.175.98.213
     hexa_frame: |
@@ -4479,6 +4271,7 @@ packets:
     src_mac: 00:04:76:A4:E4:8C
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.1
     dst_ip: 147.175.98.92
     hexa_frame: |
@@ -4494,6 +4287,7 @@ packets:
     src_mac: 00:E0:29:05:51:2B
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.30
     dst_ip: 147.175.98.146
     hexa_frame: |
@@ -4509,6 +4303,7 @@ packets:
     src_mac: 52:54:AB:17:27:79
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.54
     dst_ip: 147.175.98.6
     hexa_frame: |
@@ -4574,6 +4369,7 @@ packets:
     src_mac: 00:E0:29:05:51:2B
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.30
     dst_ip: 147.175.98.48
     hexa_frame: |
@@ -4677,6 +4473,7 @@ packets:
     src_mac: 00:E0:29:05:51:2B
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.30
     dst_ip: 147.175.98.45
     hexa_frame: |
@@ -4713,6 +4510,7 @@ packets:
     src_mac: 52:54:AB:14:8B:15
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.205
     dst_ip: 147.175.98.1
     hexa_frame: |
@@ -4728,6 +4526,7 @@ packets:
     src_mac: 52:54:AB:14:8B:15
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.205
     dst_ip: 147.175.98.232
     hexa_frame: |
@@ -4743,6 +4542,7 @@ packets:
     src_mac: 00:04:76:A4:E4:8C
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.1
     dst_ip: 147.175.98.76
     hexa_frame: |
@@ -4858,6 +4658,7 @@ packets:
     src_mac: 00:04:76:A4:E4:8C
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.1
     dst_ip: 147.175.98.92
     hexa_frame: |
@@ -4873,6 +4674,7 @@ packets:
     src_mac: 00:E0:29:05:51:2B
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.30
     dst_ip: 147.175.98.146
     hexa_frame: |
@@ -4909,6 +4711,7 @@ packets:
     src_mac: 00:E0:29:05:51:2B
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.30
     dst_ip: 147.175.98.48
     hexa_frame: |
@@ -4924,6 +4727,7 @@ packets:
     src_mac: 00:04:76:A4:E4:8B
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.40
     dst_ip: 147.175.98.220
     hexa_frame: |
@@ -5070,6 +4874,7 @@ packets:
     src_mac: 00:04:76:A4:E4:8B
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.40
     dst_ip: 147.175.98.220
     hexa_frame: |
@@ -5085,6 +4890,7 @@ packets:
     src_mac: 00:E0:29:05:51:2B
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.30
     dst_ip: 147.175.98.45
     hexa_frame: |
@@ -5100,6 +4906,7 @@ packets:
     src_mac: 00:04:76:A4:E4:8C
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.1
     dst_ip: 147.175.98.76
     hexa_frame: |
@@ -5115,6 +4922,7 @@ packets:
     src_mac: 00:04:76:A4:E4:8B
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.40
     dst_ip: 147.175.98.220
     hexa_frame: |
@@ -5130,6 +4938,7 @@ packets:
     src_mac: 00:04:76:A4:E4:8B
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.40
     dst_ip: 147.175.98.220
     hexa_frame: |
@@ -5196,9 +5005,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1121
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 30 0A 56 40 00 80 06 65 15 93 AF 62 EE 93 AF
@@ -5215,9 +5021,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1121
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 2C F4 B8 40 00 3D 06 BD B6 93 AF 01 10 93 AF
@@ -5234,9 +5037,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1121
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A 58 40 00 80 06 65 1B 93 AF 62 EE 93 AF
@@ -5253,9 +5053,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1121
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 E0 0A 59 40 00 80 06 63 62 93 AF 62 EE 93 AF
@@ -5299,9 +5096,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1121
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 E7 F4 B9 40 00 3D 06 BC FA 93 AF 01 10 93 AF
@@ -5330,9 +5124,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1121
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 E6 0A 5B 40 00 80 06 63 5A 93 AF 62 EE 93 AF
@@ -5377,9 +5168,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1121
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       05 DC F4 CB 40 00 3D 06 B7 F3 93 AF 01 10 93 AF
@@ -5487,9 +5275,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1121
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       05 DC F4 CC 40 00 3D 06 B7 F2 93 AF 01 10 93 AF
@@ -5597,9 +5382,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1121
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       05 DC F4 CD 40 00 3D 06 B7 F1 93 AF 01 10 93 AF
@@ -5707,9 +5489,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1121
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A 5D 40 00 80 06 65 16 93 AF 62 EE 93 AF
@@ -5726,9 +5505,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1121
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       04 4B F4 CE 40 00 3D 06 B9 81 93 AF 01 10 93 AF
@@ -5811,9 +5587,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1121
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 71 0A 5E 40 00 80 06 63 CC 93 AF 62 EE 93 AF
@@ -5850,9 +5623,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1121
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 E6 F4 D5 40 00 3D 06 BC DF 93 AF 01 10 93 AF
@@ -5881,9 +5651,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1121
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 79 0A 60 40 00 80 06 63 C2 93 AF 62 EE 93 AF
@@ -5921,9 +5688,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1121
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 E7 F4 D7 40 00 3D 06 BC DC 93 AF 01 10 93 AF
@@ -5952,9 +5716,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1121
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 7E 0A 62 40 00 80 06 63 BB 93 AF 62 EE 93 AF
@@ -5992,9 +5753,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1121
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 E7 F4 DA 40 00 3D 06 BC D9 93 AF 01 10 93 AF
@@ -6023,9 +5781,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1121
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 7A 0A 64 40 00 80 06 63 BD 93 AF 62 EE 93 AF
@@ -6063,9 +5818,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1121
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 E7 F4 DE 40 00 3D 06 BC D5 93 AF 01 10 93 AF
@@ -6094,9 +5846,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1121
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 78 0A 66 40 00 80 06 63 BD 93 AF 62 EE 93 AF
@@ -6134,9 +5883,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1121
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 E6 F4 E2 40 00 3D 06 BC D2 93 AF 01 10 93 AF
@@ -6165,9 +5911,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1121
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 78 0A 68 40 00 80 06 63 BB 93 AF 62 EE 93 AF
@@ -6205,9 +5948,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1122
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 30 0A 6A 40 00 80 06 65 01 93 AF 62 EE 93 AF
@@ -6224,9 +5964,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1121
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 E6 F4 E5 40 00 3D 06 BC CF 93 AF 01 10 93 AF
@@ -6255,9 +5992,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1122
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 2C F4 E6 40 00 3D 06 BD 88 93 AF 01 10 93 AF
@@ -6274,9 +6008,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1122
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A 6C 40 00 80 06 65 07 93 AF 62 EE 93 AF
@@ -6293,9 +6024,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1122
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 7B 0A 6D 40 00 80 06 63 B3 93 AF 62 EE 93 AF
@@ -6333,9 +6061,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1121
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 7A 0A 6F 40 00 80 06 63 B2 93 AF 62 EE 93 AF
@@ -6373,9 +6098,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1122
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 E7 F4 E8 40 00 3D 06 BC CB 93 AF 01 10 93 AF
@@ -6404,9 +6126,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1121
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 E6 F4 E9 40 00 3D 06 BC CB 93 AF 01 10 93 AF
@@ -6435,9 +6154,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1122
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 7C 0A 71 40 00 80 06 63 AE 93 AF 62 EE 93 AF
@@ -6475,9 +6191,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1121
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 77 0A 73 40 00 80 06 63 B1 93 AF 62 EE 93 AF
@@ -6515,9 +6228,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1122
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 E6 F4 EB 40 00 3D 06 BC C9 93 AF 01 10 93 AF
@@ -6546,9 +6256,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1121
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 E6 F4 EC 40 00 3D 06 BC C8 93 AF 01 10 93 AF
@@ -6577,9 +6284,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1122
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 7C 0A 75 40 00 80 06 63 AA 93 AF 62 EE 93 AF
@@ -6617,9 +6321,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1121
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 76 0A 77 40 00 80 06 63 AE 93 AF 62 EE 93 AF
@@ -6657,9 +6358,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1122
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 E6 F4 ED 40 00 3D 06 BC C7 93 AF 01 10 93 AF
@@ -6688,9 +6386,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1121
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 E6 F4 EE 40 00 3D 06 BC C6 93 AF 01 10 93 AF
@@ -6719,9 +6414,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1122
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 77 0A 79 40 00 80 06 63 AB 93 AF 62 EE 93 AF
@@ -6759,9 +6451,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1122
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 E6 F4 F0 40 00 3D 06 BC C4 93 AF 01 10 93 AF
@@ -6790,9 +6479,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1121
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 77 0A 7B 40 00 80 06 63 A9 93 AF 62 EE 93 AF
@@ -6830,9 +6516,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1121
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 E6 F4 F1 40 00 3D 06 BC C3 93 AF 01 10 93 AF
@@ -6861,9 +6544,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1122
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 78 0A 7D 40 00 80 06 63 A6 93 AF 62 EE 93 AF
@@ -6901,9 +6581,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1122
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 E6 F4 F3 40 00 3D 06 BC C1 93 AF 01 10 93 AF
@@ -6932,9 +6609,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1121
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 78 0A 7F 40 00 80 06 63 A4 93 AF 62 EE 93 AF
@@ -6972,9 +6646,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1121
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 E6 F4 F4 40 00 3D 06 BC C0 93 AF 01 10 93 AF
@@ -7003,9 +6674,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1122
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 7B 0A 81 40 00 80 06 63 9F 93 AF 62 EE 93 AF
@@ -7043,9 +6711,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1121
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 7A 0A 83 40 00 80 06 63 9E 93 AF 62 EE 93 AF
@@ -7083,9 +6748,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1122
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 E6 F4 F5 40 00 3D 06 BC BF 93 AF 01 10 93 AF
@@ -7114,9 +6776,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1121
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 E6 F4 F6 40 00 3D 06 BC BE 93 AF 01 10 93 AF
@@ -7145,9 +6804,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1122
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 26 0A 85 40 00 80 06 63 F0 93 AF 62 EE 93 AF
@@ -7180,9 +6836,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1122
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       02 3D F4 F7 40 00 3D 06 BB 66 93 AF 01 10 93 AF
@@ -7232,9 +6885,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1121
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 7C 0A 87 40 00 80 06 63 98 93 AF 62 EE 93 AF
@@ -7272,9 +6922,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1122
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 77 0A 89 40 00 80 06 63 9B 93 AF 62 EE 93 AF
@@ -7312,9 +6959,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1121
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 E6 F4 F9 40 00 3D 06 BC BB 93 AF 01 10 93 AF
@@ -7343,9 +6987,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1121
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 7B 0A 8B 40 00 80 06 63 95 93 AF 62 EE 93 AF
@@ -7383,9 +7024,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1122
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 E6 F4 FA 40 00 3D 06 BC BA 93 AF 01 10 93 AF
@@ -7414,9 +7052,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1121
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 E6 F4 FB 40 00 3D 06 BC B9 93 AF 01 10 93 AF
@@ -7445,9 +7080,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1122
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 77 0A 8C 40 00 80 06 63 98 93 AF 62 EE 93 AF
@@ -7485,9 +7117,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1121
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 76 0A 8E 40 00 80 06 63 97 93 AF 62 EE 93 AF
@@ -7525,9 +7154,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1122
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 E6 F4 FD 40 00 3D 06 BC B7 93 AF 01 10 93 AF
@@ -7556,9 +7182,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1121
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 E6 F4 FE 40 00 3D 06 BC B6 93 AF 01 10 93 AF
@@ -7584,6 +7207,7 @@ packets:
     src_mac: 00:04:76:A4:E4:8C
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.1
     dst_ip: 147.175.98.133
     hexa_frame: |
@@ -7602,9 +7226,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1121
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A 90 40 00 80 06 64 E3 93 AF 62 EE 93 AF
@@ -7621,9 +7242,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1122
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A 91 40 00 80 06 64 E2 93 AF 62 EE 93 AF
@@ -7637,6 +7255,7 @@ packets:
     src_mac: 00:04:76:A4:E4:8B
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.40
     dst_ip: 147.175.98.220
     hexa_frame: |
@@ -7652,6 +7271,7 @@ packets:
     src_mac: 00:04:76:A4:E4:8C
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.1
     dst_ip: 147.175.98.37
     hexa_frame: |
@@ -7667,6 +7287,7 @@ packets:
     src_mac: 00:04:76:A4:E4:8B
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.40
     dst_ip: 147.175.98.220
     hexa_frame: |
@@ -7682,6 +7303,7 @@ packets:
     src_mac: 00:04:76:A4:E4:8C
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.1
     dst_ip: 147.175.98.70
     hexa_frame: |
@@ -7712,6 +7334,7 @@ packets:
     src_mac: 00:04:76:A4:E4:8C
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.1
     dst_ip: 147.175.98.92
     hexa_frame: |
@@ -7727,6 +7350,7 @@ packets:
     src_mac: 00:E0:29:05:51:2B
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.30
     dst_ip: 147.175.98.146
     hexa_frame: |
@@ -7742,6 +7366,7 @@ packets:
     src_mac: 00:E0:29:05:51:2B
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.30
     dst_ip: 147.175.98.48
     hexa_frame: |
@@ -7760,9 +7385,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1122
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 C3 0A 92 40 00 80 06 63 46 93 AF 62 EE 93 AF
@@ -7805,9 +7427,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1122
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       02 40 F5 C0 40 00 3D 06 BA 9A 93 AF 01 10 93 AF
@@ -7857,9 +7476,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1122
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A 94 40 00 80 06 64 DF 93 AF 62 EE 93 AF
@@ -7876,9 +7492,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1121
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 9E 0A 95 40 00 80 06 63 68 93 AF 62 EE 93 AF
@@ -7918,9 +7531,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1121
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       03 1E F5 CB 40 00 3D 06 B9 B1 93 AF 01 10 93 AF
@@ -7984,9 +7594,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1122
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 D1 0A 97 40 00 80 06 63 33 93 AF 62 EE 93 AF
@@ -8029,9 +7636,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1122
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       05 DC F5 CE 40 00 3D 06 B6 F0 93 AF 01 10 93 AF
@@ -8139,9 +7743,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1122
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       05 DC F5 CF 40 00 3D 06 B6 EF 93 AF 01 10 93 AF
@@ -8249,9 +7850,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1122
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       05 1B F5 D0 40 00 3D 06 B7 AF 93 AF 01 10 93 AF
@@ -8347,9 +7945,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1122
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A 99 40 00 80 06 64 DA 93 AF 62 EE 93 AF
@@ -8366,9 +7961,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1121
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 D7 0A 9A 40 00 80 06 63 2A 93 AF 62 EE 93 AF
@@ -8412,9 +8004,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1121
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       03 75 F5 D1 40 00 3D 06 B9 54 93 AF 01 10 93 AF
@@ -8484,9 +8073,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1121
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 89 0A 9C 40 00 80 06 63 76 93 AF 62 EE 93 AF
@@ -8525,9 +8111,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1121
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 E7 F5 D3 40 00 3D 06 BB E0 93 AF 01 10 93 AF
@@ -8556,9 +8139,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1122
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 85 0A 9E 40 00 80 06 63 78 93 AF 62 EE 93 AF
@@ -8597,9 +8177,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1122
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 E7 F5 D4 40 00 3D 06 BB DF 93 AF 01 10 93 AF
@@ -8628,9 +8205,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1121
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 DB 0A A0 40 00 80 06 63 20 93 AF 62 EE 93 AF
@@ -8674,9 +8248,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1121
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       05 DC F5 D5 40 00 3D 06 B6 E9 93 AF 01 10 93 AF
@@ -8784,9 +8355,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1121
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       05 DC F5 D6 40 00 3D 06 B6 E8 93 AF 01 10 93 AF
@@ -8894,9 +8462,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1121
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       02 73 F5 D7 40 00 3D 06 BA 50 93 AF 01 10 93 AF
@@ -8950,9 +8515,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1121
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A A2 40 00 80 06 64 D1 93 AF 62 EE 93 AF
@@ -8969,9 +8531,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1122
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 87 0A A3 40 00 80 06 63 71 93 AF 62 EE 93 AF
@@ -9010,9 +8569,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1122
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 E7 F5 DE 40 00 3D 06 BB D5 93 AF 01 10 93 AF
@@ -9041,9 +8597,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1122
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 83 0A A5 40 00 80 06 63 73 93 AF 62 EE 93 AF
@@ -9082,9 +8635,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1122
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 E6 F5 DF 40 00 3D 06 BB D5 93 AF 01 10 93 AF
@@ -9113,9 +8663,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1122
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 DE 0A A7 40 00 80 06 63 16 93 AF 62 EE 93 AF
@@ -9159,9 +8706,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1122
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       05 DC F5 E0 40 00 3D 06 B6 DE 93 AF 01 10 93 AF
@@ -9269,9 +8813,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1122
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       05 DC F5 E1 40 00 3D 06 B6 DD 93 AF 01 10 93 AF
@@ -9379,9 +8920,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1122
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       05 DC F5 E2 40 00 3D 06 B6 DC 93 AF 01 10 93 AF
@@ -9489,9 +9027,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1122
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       05 DC F5 E3 40 00 3D 06 B6 DB 93 AF 01 10 93 AF
@@ -9599,9 +9134,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1122
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       05 DC F5 E5 40 00 3D 06 B6 D9 93 AF 01 10 93 AF
@@ -9709,9 +9241,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1122
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       05 DC F5 E6 40 00 3D 06 B6 D8 93 AF 01 10 93 AF
@@ -9819,9 +9348,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1122
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       05 DC F5 E8 40 00 3D 06 B6 D6 93 AF 01 10 93 AF
@@ -9929,9 +9455,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1122
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       05 DC F5 E9 40 00 3D 06 B6 D5 93 AF 01 10 93 AF
@@ -10039,9 +9562,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1122
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A A9 40 00 80 06 64 CA 93 AF 62 EE 93 AF
@@ -10058,9 +9578,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1122
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A AA 40 00 80 06 64 C9 93 AF 62 EE 93 AF
@@ -10077,9 +9594,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1122
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A AB 40 00 80 06 64 C8 93 AF 62 EE 93 AF
@@ -10096,9 +9610,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1122
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A AC 40 00 80 06 64 C7 93 AF 62 EE 93 AF
@@ -10115,9 +9626,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1122
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A AD 40 00 80 06 64 C6 93 AF 62 EE 93 AF
@@ -10134,9 +9642,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1122
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       05 DC F5 EC 40 00 3D 06 B6 D2 93 AF 01 10 93 AF
@@ -10244,9 +9749,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1122
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       01 D9 F5 ED 40 00 3D 06 BA D4 93 AF 01 10 93 AF
@@ -10290,9 +9792,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1122
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       05 DC F5 EE 40 00 3D 06 B6 D0 93 AF 01 10 93 AF
@@ -10400,9 +9899,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1122
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A AE 40 00 80 06 64 C5 93 AF 62 EE 93 AF
@@ -10419,9 +9915,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1122
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A AF 40 00 80 06 64 C4 93 AF 62 EE 93 AF
@@ -10438,9 +9931,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1122
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A B0 40 00 80 06 64 C3 93 AF 62 EE 93 AF
@@ -10457,9 +9947,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1122
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       05 DC F5 EF 40 00 3D 06 B6 CF 93 AF 01 10 93 AF
@@ -10567,9 +10054,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1122
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A B1 40 00 80 06 64 C2 93 AF 62 EE 93 AF
@@ -10586,9 +10070,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1122
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       05 DC F5 F0 40 00 3D 06 B6 CE 93 AF 01 10 93 AF
@@ -10696,9 +10177,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1122
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A B2 40 00 80 06 64 C1 93 AF 62 EE 93 AF
@@ -10715,9 +10193,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1121
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 82 0A B3 40 00 80 06 63 66 93 AF 62 EE 93 AF
@@ -10755,9 +10230,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1121
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 E5 F5 F4 40 00 3D 06 BB C1 93 AF 01 10 93 AF
@@ -10786,9 +10258,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1121
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 82 0A B5 40 00 80 06 63 64 93 AF 62 EE 93 AF
@@ -10826,9 +10295,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1121
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 E6 F5 F5 40 00 3D 06 BB BF 93 AF 01 10 93 AF
@@ -10857,9 +10323,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1121
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 84 0A B7 40 00 80 06 63 60 93 AF 62 EE 93 AF
@@ -10898,9 +10361,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1121
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 E5 F5 F6 40 00 3D 06 BB BF 93 AF 01 10 93 AF
@@ -10929,9 +10389,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1122
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A B9 40 00 80 06 64 BA 93 AF 62 EE 93 AF
@@ -10945,6 +10402,7 @@ packets:
     src_mac: 00:E0:29:05:51:2B
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.30
     dst_ip: 147.175.98.45
     hexa_frame: |
@@ -10963,9 +10421,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1121
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 86 0A BA 40 00 80 06 63 5B 93 AF 62 EE 93 AF
@@ -11004,9 +10459,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1121
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       00 E5 F5 F9 40 00 3D 06 BB BC 93 AF 01 10 93 AF
@@ -11035,9 +10487,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1122
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       01 38 0A BC 40 00 80 06 63 A7 93 AF 62 EE 93 AF
@@ -11071,9 +10520,6 @@ packets:
     src_ip: 147.175.1.16
     dst_ip: 147.175.98.238
     protocol: IP (DoD Internet Protocol)
-    src_port: 80
-    dst_port: 1122
-    app_protocol: HTTP
     hexa_frame: |
       00 00 C0 D7 80 C2 00 04 76 A4 E4 8C 08 00 45 00
       02 38 F5 FA 40 00 3D 06 BA 68 93 AF 01 10 93 AF
@@ -11123,9 +10569,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1121
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A BE 40 00 80 06 64 B5 93 AF 62 EE 93 AF
@@ -11142,9 +10585,6 @@ packets:
     src_ip: 147.175.98.238
     dst_ip: 147.175.1.16
     protocol: IP (DoD Internet Protocol)
-    src_port: 1122
-    dst_port: 80
-    app_protocol: HTTP
     hexa_frame: |
       00 04 76 A4 E4 8C 00 00 C0 D7 80 C2 08 00 45 00
       00 28 0A BF 40 00 80 06 64 B4 93 AF 62 EE 93 AF
@@ -11158,6 +10598,7 @@ packets:
     src_mac: 00:07:E9:4A:B5:25
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.185
     dst_ip: 147.175.98.40
     hexa_frame: |
@@ -11173,6 +10614,7 @@ packets:
     src_mac: 00:04:76:A4:E4:8C
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.1
     dst_ip: 147.175.98.74
     hexa_frame: |
@@ -11188,6 +10630,7 @@ packets:
     src_mac: 00:04:76:A4:E4:8C
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 147.175.98.1
     dst_ip: 147.175.98.151
     hexa_frame: |

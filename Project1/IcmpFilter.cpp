@@ -9,7 +9,7 @@ void IcmpFilter::findComms() {
     bool delFlag = false;
     for (auto packet : _parent->_frames) {
         std::vector<std::string> frameTypes = _parent->getFrameType(packet.typeSize, packet.hexFrame, packet.isISL);
-        if (frameTypes.size() >= 2 && frameTypes.at(1) == "ARP") {
+        if (frameTypes.size() >= 2 && frameTypes.at(1) == "ICMP") {
 
             for (auto quedFrame : replyQue) {
                 if (packet.srcIp == quedFrame.dstIp && packet.dstIp == quedFrame.srcIp) {
@@ -232,7 +232,7 @@ void IcmpFilter::serializeIcmpYaml() {
 
 
     std::fstream yamlFile;
-    yamlFile.open("yaml_output//" + _parent->_fileName.erase(_parent->_fileName.find('.'), _parent->_fileName.size() - 1) + "-ARP.yaml", std::ios_base::out);
+    yamlFile.open("yaml_output//" + _parent->_fileName.erase(_parent->_fileName.find('.'), _parent->_fileName.size() - 1) + "-ICMP.yaml", std::ios_base::out);
     if (yamlFile.is_open())
     {
         yamlFile << output.c_str();

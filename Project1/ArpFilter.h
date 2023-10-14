@@ -17,5 +17,4 @@ class ArpFilter : public PcapParser {
 		std::map<unsigned int, std::string> _arpMap;
 		std::vector<std::pair<Frame, Frame>> _commPairs;
 		std::vector<Frame> _notCompleteComms;
-
 };

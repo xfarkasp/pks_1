@@ -823,6 +823,7 @@ packets:
     src_mac: 00:10:18:33:CF:44
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
     hexa_frame: |
@@ -837,6 +838,7 @@ packets:
     src_mac: 00:16:47:02:24:40
     dst_mac: 00:10:18:33:CF:44
     ether_type: ARP
+    arp_opcode: REPLY
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
     hexa_frame: |
@@ -854,7 +856,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
-    protocol: ""
+    protocol: ICMP
     src_port: 2048
     dst_port: 61761
     hexa_frame: |
@@ -963,7 +965,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
-    protocol: ""
+    protocol: ICMP
     src_port: 24930
     dst_port: 25444
     hexa_frame: |
@@ -1048,7 +1050,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
-    protocol: ""
+    protocol: ICMP
     src_port: 0
     dst_port: 63809
     app_protocol: "Reserved; do not use "
@@ -1158,7 +1160,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
-    protocol: ""
+    protocol: ICMP
     src_port: 24930
     dst_port: 25444
     hexa_frame: |
@@ -1243,7 +1245,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
-    protocol: ""
+    protocol: ICMP
     src_port: 2048
     dst_port: 61760
     hexa_frame: |
@@ -1352,7 +1354,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
-    protocol: ""
+    protocol: ICMP
     src_port: 24930
     dst_port: 25444
     hexa_frame: |
@@ -1437,7 +1439,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
-    protocol: ""
+    protocol: ICMP
     src_port: 0
     dst_port: 63808
     app_protocol: "Reserved; do not use "
@@ -1547,7 +1549,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
-    protocol: ""
+    protocol: ICMP
     src_port: 24930
     dst_port: 25444
     hexa_frame: |
@@ -1647,7 +1649,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
-    protocol: ""
+    protocol: ICMP
     src_port: 2048
     dst_port: 61759
     hexa_frame: |
@@ -1756,7 +1758,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
-    protocol: ""
+    protocol: ICMP
     src_port: 24930
     dst_port: 25444
     hexa_frame: |
@@ -1841,7 +1843,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
-    protocol: ""
+    protocol: ICMP
     src_port: 0
     dst_port: 63807
     app_protocol: "Reserved; do not use "
@@ -1951,7 +1953,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
-    protocol: ""
+    protocol: ICMP
     src_port: 24930
     dst_port: 25444
     hexa_frame: |
@@ -2036,7 +2038,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
-    protocol: ""
+    protocol: ICMP
     src_port: 2048
     dst_port: 61758
     hexa_frame: |
@@ -2145,7 +2147,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
-    protocol: ""
+    protocol: ICMP
     src_port: 24930
     dst_port: 25444
     hexa_frame: |
@@ -2230,7 +2232,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
-    protocol: ""
+    protocol: ICMP
     src_port: 0
     dst_port: 63806
     app_protocol: "Reserved; do not use "
@@ -2340,7 +2342,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
-    protocol: ""
+    protocol: ICMP
     src_port: 24930
     dst_port: 25444
     hexa_frame: |
@@ -2504,7 +2506,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
-    protocol: ""
+    protocol: ICMP
     src_port: 2048
     dst_port: 61757
     hexa_frame: |
@@ -2613,7 +2615,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
-    protocol: ""
+    protocol: ICMP
     src_port: 24930
     dst_port: 25444
     hexa_frame: |
@@ -2698,7 +2700,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
-    protocol: ""
+    protocol: ICMP
     src_port: 0
     dst_port: 63805
     app_protocol: "Reserved; do not use "
@@ -2808,7 +2810,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
-    protocol: ""
+    protocol: ICMP
     src_port: 24930
     dst_port: 25444
     hexa_frame: |
@@ -2893,7 +2895,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
-    protocol: ""
+    protocol: ICMP
     src_port: 2048
     dst_port: 61756
     hexa_frame: |
@@ -3002,7 +3004,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
-    protocol: ""
+    protocol: ICMP
     src_port: 24930
     dst_port: 25444
     hexa_frame: |
@@ -3087,7 +3089,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
-    protocol: ""
+    protocol: ICMP
     src_port: 0
     dst_port: 63804
     app_protocol: "Reserved; do not use "
@@ -3197,7 +3199,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
-    protocol: ""
+    protocol: ICMP
     src_port: 24930
     dst_port: 25444
     hexa_frame: |
@@ -3297,7 +3299,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
-    protocol: ""
+    protocol: ICMP
     src_port: 2048
     dst_port: 61755
     hexa_frame: |
@@ -3406,7 +3408,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
-    protocol: ""
+    protocol: ICMP
     src_port: 24930
     dst_port: 25444
     hexa_frame: |
@@ -3491,7 +3493,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
-    protocol: ""
+    protocol: ICMP
     src_port: 0
     dst_port: 63803
     app_protocol: "Reserved; do not use "
@@ -3601,7 +3603,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
-    protocol: ""
+    protocol: ICMP
     src_port: 24930
     dst_port: 25444
     hexa_frame: |
@@ -3701,7 +3703,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
-    protocol: ""
+    protocol: ICMP
     src_port: 2048
     dst_port: 61754
     hexa_frame: |
@@ -3810,7 +3812,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
-    protocol: ""
+    protocol: ICMP
     src_port: 24930
     dst_port: 25444
     hexa_frame: |
@@ -3895,7 +3897,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
-    protocol: ""
+    protocol: ICMP
     src_port: 0
     dst_port: 63802
     app_protocol: "Reserved; do not use "
@@ -4005,7 +4007,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
-    protocol: ""
+    protocol: ICMP
     src_port: 24930
     dst_port: 25444
     hexa_frame: |
@@ -4135,7 +4137,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
-    protocol: ""
+    protocol: ICMP
     src_port: 2048
     dst_port: 61753
     hexa_frame: |
@@ -4244,7 +4246,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
-    protocol: ""
+    protocol: ICMP
     src_port: 24930
     dst_port: 25444
     hexa_frame: |
@@ -4329,7 +4331,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
-    protocol: ""
+    protocol: ICMP
     src_port: 0
     dst_port: 63801
     app_protocol: "Reserved; do not use "
@@ -4439,7 +4441,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
-    protocol: ""
+    protocol: ICMP
     src_port: 24930
     dst_port: 25444
     hexa_frame: |
@@ -4557,7 +4559,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
-    protocol: ""
+    protocol: ICMP
     src_port: 2048
     dst_port: 61752
     hexa_frame: |
@@ -4666,7 +4668,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
-    protocol: ""
+    protocol: ICMP
     src_port: 24930
     dst_port: 25444
     hexa_frame: |
@@ -4751,7 +4753,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
-    protocol: ""
+    protocol: ICMP
     src_port: 0
     dst_port: 63800
     app_protocol: "Reserved; do not use "
@@ -4861,7 +4863,7 @@ packets:
     ether_type: IPv4
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
-    protocol: ""
+    protocol: ICMP
     src_port: 24930
     dst_port: 25444
     hexa_frame: |
@@ -4980,6 +4982,7 @@ packets:
     src_mac: 00:10:18:33:CF:44
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 0.0.0.0
     dst_ip: 10.20.30.1
     hexa_frame: |
@@ -4994,6 +4997,7 @@ packets:
     src_mac: 00:10:18:33:CF:44
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
     hexa_frame: |
@@ -5008,6 +5012,7 @@ packets:
     src_mac: 00:10:18:33:CF:44
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 0.0.0.0
     dst_ip: 10.20.30.1
     hexa_frame: |
@@ -5022,6 +5027,7 @@ packets:
     src_mac: 00:10:18:33:CF:44
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
     hexa_frame: |
@@ -5224,6 +5230,7 @@ packets:
     src_mac: 00:10:18:33:CF:44
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 0.0.0.0
     dst_ip: 10.20.30.1
     hexa_frame: |
@@ -5238,6 +5245,7 @@ packets:
     src_mac: 00:10:18:33:CF:44
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
     hexa_frame: |
@@ -5288,6 +5296,7 @@ packets:
     src_mac: 00:10:18:33:CF:44
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.1
     hexa_frame: |
@@ -5321,6 +5330,7 @@ packets:
     src_mac: 00:10:18:33:CF:44
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
     hexa_frame: |
@@ -5354,6 +5364,7 @@ packets:
     src_mac: 00:10:18:33:CF:44
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
     hexa_frame: |
@@ -5572,6 +5583,7 @@ packets:
     src_mac: 00:10:18:33:CF:44
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
     hexa_frame: |
@@ -5794,6 +5806,7 @@ packets:
     src_mac: 00:10:18:33:CF:44
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
     hexa_frame: |
@@ -6059,6 +6072,7 @@ packets:
     src_mac: 00:10:18:33:CF:44
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
     hexa_frame: |
@@ -6073,6 +6087,7 @@ packets:
     src_mac: 00:10:18:33:CF:44
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
     hexa_frame: |
@@ -6273,6 +6288,7 @@ packets:
     src_mac: 00:10:18:33:CF:44
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
     hexa_frame: |
@@ -6450,6 +6466,7 @@ packets:
     src_mac: 00:10:18:33:CF:44
     dst_mac: FF:FF:FF:FF:FF:FF
     ether_type: ARP
+    arp_opcode: REQUEST
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
     hexa_frame: |

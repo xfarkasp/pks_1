@@ -1,4 +1,5 @@
 00:Null SAP
+01:ICMP
 02:LLC Sublayer Management / Individual
 03:LLC Sublayer Management / Group
 06:IP (DoD Internet Protocol)

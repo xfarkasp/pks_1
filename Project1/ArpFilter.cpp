@@ -62,7 +62,7 @@ void ArpFilter::serializeArpYaml() {
         << YAML::Value << "ARP";
     
     auto addComm = [&](std::vector<Frame>comms) {
-        output << YAML::BeginMap << YAML::Key << "number_com" << YAML::Value << comIndex;
+        output << YAML::BeginMap << YAML::Key << "number_comm" << YAML::Value << comIndex;
         output << YAML::Key << "packets" << YAML::Value << YAML::BeginSeq;
         for (auto packet : comms) {
             std::vector<std::string> frameTypes = _parent->getFrameType(packet.typeSize, packet.hexFrame, packet.isISL);
@@ -201,19 +201,26 @@ void ArpFilter::serializeArpYaml() {
         }
     }
     output << YAML::EndSeq;
-    comIndex = 1;
-    std::vector<Frame>arpRqst;
-    std::vector<Frame>arpRply;
+
+    comIndex = 0;
     output << YAML::Key << "partial_comms" << YAML::Value << YAML::BeginSeq;
-    for (auto com : _notCompleteComms) {
-        if (com.arpOpcode == "REQUEST")
-            arpRqst.push_back(com);
-        if(com.arpOpcode == "REPLY")
-            arpRply.push_back(com);
+    while (!_notCompleteComms.empty()) {
+        std::vector<Frame>completeConnections;
+        std::vector<size_t>removeIndexes;
+        Frame commFrame = _notCompleteComms.at(0);
+        for (size_t i = 0; i < _notCompleteComms.size(); i++) {
+            if (_notCompleteComms.at(i).dstIp == commFrame.dstIp) {
+                completeConnections.push_back(_notCompleteComms.at(i));
+                removeIndexes.push_back(i);
+            }
+        }
+        comIndex++;
+        addComm(completeConnections);
+        std::reverse(removeIndexes.begin(), removeIndexes.end());
+        for (size_t i = 0; i < removeIndexes.size(); i++) {
+            _notCompleteComms.erase(std::next(_notCompleteComms.begin(), removeIndexes.at(i)));
+        }
     }
-    addComm(arpRqst);
-    comIndex++;
-    addComm(arpRply);
     output << YAML::EndSeq;
 
     /*while (!_notCompleteComms.empty()) {

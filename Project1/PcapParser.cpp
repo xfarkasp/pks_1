@@ -53,6 +53,8 @@ void PcapParser::parseFrame(std::string path) {
 
     _protocolMap = setProtocolMap("Protocols\\L2.txt", true);  //call method to map protocols from file
     _portMap = setProtocolMap("Protocols\\ports.txt", false);  //call method to map protocols from file
+    _arpMap = setProtocolMap("Protocols\\arp.txt", true);
+    _icmpMap = setProtocolMap("Protocols\\icmp.txt", true);
 
     char errBuff[PCAP_ERRBUF_SIZE]; //error buffer for readinf pcap file
 
@@ -157,9 +159,12 @@ void PcapParser::parseFrame(std::string path) {
             frameBuffer.clear();
             if (thisFrame.typeSize == 0x0800) {
                 unsigned int ihl = (hexFrame[14] & 0x0F) * 4;
+                
                 int offSet = 0;
-                if (ihl < 20)
+                if (ihl < 20) {
                     offSet = ihl;
+                    thisFrame.ihlOffset = ihl;
+                }
 
                 for (int i = SRC_PORT_START + offSet; i <= SRC_PORT_END + offSet; i++) {
                     char  hex_string[20];
@@ -335,6 +340,18 @@ void PcapParser::serializeYaml() {
                 output << YAML::Key << "ether_type" << YAML::Value << frameTypes.at(1);
             }
         }
+
+        sBuffer.str("");
+        sBuffer.clear();
+        if (frameTypes.size() > 1 && frameTypes.at(1) == "ARP") {
+            char  hex_string[20];
+            for (size_t i = ARP_OPCODE_START; i <= ARP_OPCODE_END; i++) {
+                sprintf_s(hex_string, "%.2X", packet.hexFrame.at(i));
+                sBuffer << hex_string;
+            }
+            output << YAML::Key << "arp_opcode" << YAML::Value << _arpMap[stoi(hex_string, 0, 16)];
+        }
+
         sBuffer.str("");
         sBuffer.clear();
         //source ip
@@ -360,17 +377,23 @@ void PcapParser::serializeYaml() {
             char  hex_string[20];
             sprintf_s(hex_string, "%.2X", packet.hexFrame.at(23));
             output << YAML::Key << "protocol" << YAML::Value << _protocolMap[stoi(hex_string, 0, 16)];
-            output << YAML::Key << "src_port" << YAML::Value << packet.srcPort;
-            output << YAML::Key << "dst_port" << YAML::Value << packet.dstPort;
+            if (_protocolMap[stoi(hex_string, 0, 16)] == "UDP" || _protocolMap[stoi(hex_string, 0, 16)] == "TCP") {
+                output << YAML::Key << "src_port" << YAML::Value << packet.srcPort;
+                output << YAML::Key << "dst_port" << YAML::Value << packet.dstPort;
 
-            bool srcKnown = (_portMap.find(packet.srcPort) != _portMap.end());
-            bool dstKnown = (_portMap.find(packet.dstPort) != _portMap.end());
-            if (srcKnown && dstKnown)
-                output << YAML::Key << "app_protocol" << YAML::Value << _portMap[packet.srcPort] + ", " + _portMap[packet.dstPort];
-            else if (srcKnown)
-                output << YAML::Key << "app_protocol" << YAML::Value << _portMap[packet.srcPort];
-            else if (dstKnown)
-                output << YAML::Key << "app_protocol" << YAML::Value << _portMap[packet.dstPort];
+                bool srcKnown = (_portMap.find(packet.srcPort) != _portMap.end());
+                bool dstKnown = (_portMap.find(packet.dstPort) != _portMap.end());
+                if (srcKnown && dstKnown)
+                    output << YAML::Key << "app_protocol" << YAML::Value << _portMap[packet.srcPort] + ", " + _portMap[packet.dstPort];
+                else if (srcKnown)
+                    output << YAML::Key << "app_protocol" << YAML::Value << _portMap[packet.srcPort];
+                else if (dstKnown)
+                    output << YAML::Key << "app_protocol" << YAML::Value << _portMap[packet.dstPort];
+            }
+            else if (_protocolMap[stoi(hex_string, 0, 16)] == "ICMP") {
+                output << YAML::Key << "icmp_type" << YAML::Value << _icmpMap[packet.hexFrame.at(ICMP_TYPE + packet.ihlOffset)];
+
+            }
 
             //count ipv4 packet senders
             if (_packetSenders.find(srcString) != _packetSenders.end())
