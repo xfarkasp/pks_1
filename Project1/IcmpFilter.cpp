@@ -18,13 +18,34 @@ void IcmpFilter::findComms() {
 
                 std::stringstream idBuffer;
                 std::stringstream sqBuffer;
-                for (size_t i = (ICMP_IDENT_START + packet.ihlOffset); i <= (ICMP_SEQ_END + packet.ihlOffset); i++) {
+                int identStart;
+                int identEnd;
+
+                int seqStart;
+                int seqEnd;
+
+                if (packet.icmpType != "TIME EXCEEDED") {
+                    identStart = ICMP_IDENT_START;
+                    identEnd = ICMP_IDENT_END;
+                    
+                    seqStart = ICMP_SEQ_START;
+                    seqEnd = ICMP_SEQ_END;
+                }
+                else {
+                    identStart = ICMP_IDENT_EXCEEDED_START;
+                    identEnd = ICMP_IDENT_EXCEEDED_END;
+
+                    seqStart = ICMP_SEQ_EXCEEDED_START;
+                    seqEnd = ICMP_SEQ_EXCEEDED_END;
+                }
+
+                for (size_t i = (identStart + packet.ihlOffset); i <= (seqEnd + packet.ihlOffset); i++) {
                     char  hex_string[20];
-                    if ((ICMP_IDENT_START + packet.ihlOffset) <= i && i <= (ICMP_IDENT_END + packet.ihlOffset)) {
+                    if ((identStart + packet.ihlOffset) <= i && i <= (identEnd + packet.ihlOffset)) {
                         sprintf_s(hex_string, "%.2X", packet.hexFrame[i]);
                         idBuffer << hex_string;
                     }
-                    if ((ICMP_SEQ_START + packet.ihlOffset) <= i && i <= (ICMP_SEQ_END + packet.ihlOffset)) {
+                    if ((seqStart + packet.ihlOffset) <= i && i <= (seqEnd + packet.ihlOffset)) {
                         sprintf_s(hex_string, "%.2X", packet.hexFrame[i]);
                         sqBuffer << hex_string;
                     }
@@ -34,7 +55,7 @@ void IcmpFilter::findComms() {
                 packet.icmpSQ = std::stoi(sqBuffer.str(), 0, 16);
 
                 for (auto quedFrame : replyQue) {
-                    if (packet.srcIp == quedFrame.dstIp &&
+                    if ((packet.srcIp == quedFrame.dstIp || packet.icmpType == "TIME EXCEEDED") &&
                         packet.dstIp == quedFrame.srcIp &&
                         packet.icmpID == quedFrame.icmpID &&
                         packet.icmpSQ == quedFrame.icmpSQ) {
@@ -43,17 +64,15 @@ void IcmpFilter::findComms() {
                         std::stringstream newFrameBuffer;
                         char  hex_string[20];
 
-                        if (quedFrame.icmpType == "ECHO REQUEST" && packet.icmpType == "ECHO REPLY") {
+                        if (quedFrame.icmpType == "ECHO REQUEST" && (packet.icmpType == "ECHO REPLY" || packet.icmpType== "TIME EXCEEDED")) {
                             std::pair<Frame, Frame> newPair;
                             newPair.first = quedFrame;
                             newPair.second = packet;
                             _commPairs.push_back(std::move(newPair));
 
-                            //replyQue.erase(std::next(replyQue.begin(), indexOfFound));
                             delFlag = true;
                             break;
                         }
-                        
                     }
                     indexOfFound++;
                 }
@@ -86,8 +105,21 @@ void IcmpFilter::serializeIcmpYaml() {
         << YAML::Key << "filter_name"
         << YAML::Value << "ARP";
 
-    auto addComm = [&](std::vector<Frame>comms) {
+    auto addComm = [&](std::vector<Frame>comms, bool complete) {
         output << YAML::BeginMap << YAML::Key << "number_com" << YAML::Value << comIndex;
+        std::stringstream sBuffer;
+        for (auto byte : comms.at(0).srcIp) {
+            sBuffer << byte << ".";
+        }
+        output << YAML::Key << "src_comm" << sBuffer.str().erase(sBuffer.str().size() - 1);
+        sBuffer.str("");
+        sBuffer.clear();
+        for (auto byte : comms.at(0).dstIp) {
+            sBuffer << byte << ".";
+        }
+        output << YAML::Key << "dst_comm" << YAML::Value << sBuffer.str().erase(sBuffer.str().size() - 1);
+        sBuffer.str("");
+        sBuffer.clear();
         output << YAML::Key << "packets" << YAML::Value << YAML::BeginSeq;
         for (auto packet : comms) {
             char  hex_string[20];
@@ -141,8 +173,10 @@ void IcmpFilter::serializeIcmpYaml() {
                     output << YAML::Key << "protocol" << YAML::Value << _parent->_protocolMap[std::stoi(hex_string, 0, 16)];
                     if (_parent->_protocolMap[std::stoi(hex_string, 0, 16)] == "ICMP") {
                         output << YAML::Key << "icmp_type" << YAML::Value << packet.icmpType;
-                        output << YAML::Key << "icmp_id" << YAML::Value << packet.icmpID;
-                        output << YAML::Key << "icmp_seq" << YAML::Value << packet.icmpSQ;
+                        if(complete)
+                            output << YAML::Key << "icmp_id" << YAML::Value << packet.icmpID;
+                        if (complete)
+                            output << YAML::Key << "icmp_seq" << YAML::Value << packet.icmpSQ;
                     }
                 }
 
@@ -187,7 +221,7 @@ void IcmpFilter::serializeIcmpYaml() {
             }
         }
         comIndex++;
-        addComm(completeConnections);
+        addComm(completeConnections, true);
         std::reverse(removeIndexes.begin(), removeIndexes.end());
         for (size_t i = 0; i < removeIndexes.size(); i++) {
             _commPairs.erase(std::next(_commPairs.begin(), removeIndexes.at(i)));
@@ -195,7 +229,6 @@ void IcmpFilter::serializeIcmpYaml() {
     }
     output << YAML::EndSeq;
 
-    
     comIndex = 0;
     output << YAML::Key << "partial_comms" << YAML::Value << YAML::BeginSeq;
     while (!_notCompleteComms.empty()) {
@@ -209,17 +242,13 @@ void IcmpFilter::serializeIcmpYaml() {
             }
         }
         comIndex++;
-        addComm(completeConnections);
+        addComm(completeConnections, false);
         std::reverse(removeIndexes.begin(), removeIndexes.end());
         for (size_t i = 0; i < removeIndexes.size(); i++) {
             _notCompleteComms.erase(std::next(_notCompleteComms.begin(), removeIndexes.at(i)));
         }
     }
     output << YAML::EndSeq;
-
-    //addComm(replyQue);
-
-
 
     std::fstream yamlFile;
     yamlFile.open("yaml_output//" + _parent->_fileName.erase(_parent->_fileName.find('.'), _parent->_fileName.size() - 1) + "-ICMP.yaml", std::ios_base::out);

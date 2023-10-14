@@ -152,7 +152,6 @@ void PcapParser::parseFrame(std::string path) {
                     if ((DST_IP_START + arpOffSetDst) <= i && i < (DST_IP_END + arpOffSetDst))
                         thisFrame.dstIp.push_back(hexFrame[i]);
                 }
-
             }
             //IHL 
             frameBuffer.str("");

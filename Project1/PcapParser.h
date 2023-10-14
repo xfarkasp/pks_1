@@ -14,8 +14,8 @@ struct Frame {
     unsigned int srcPort;
     unsigned int dstPort;
     unsigned int ihlOffset = 0;
-    unsigned int icmpID = 0;
-    unsigned int icmpSQ = 0;
+    int icmpID = -1;
+    int icmpSQ = -1;
     std::string arpOpcode;
     std::string icmpType;
     std::vector<unsigned int> hexFrame;
@@ -66,6 +66,13 @@ class PcapParser {
             
             ICMP_SEQ_START = 40,
             ICMP_SEQ_END = 41,
+
+            ICMP_IDENT_EXCEEDED_START = 66,
+            ICMP_IDENT_EXCEEDED_END = 67,
+            
+            ICMP_SEQ_EXCEEDED_START = 68,
+            ICMP_SEQ_EXCEEDED_END = 69,
+
 
             ARP_SRC_IP_OFFSET = 2,
             ARP_DST_IP_OFFSET = 8,
