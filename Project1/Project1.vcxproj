@@ -130,6 +130,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ArpFilter.cpp" />
+    <ClCompile Include="ArpFilter.h" />
     <ClCompile Include="PcapParser.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>

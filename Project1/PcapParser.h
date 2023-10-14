@@ -27,14 +27,11 @@ class PcapParser {
         void parseFrame(std::string path);  //parses pcap file
         void printData();       //prints data to console from pcap
         void serializeYaml();   //serializes read value to yaml
-        void serializeArpYaml();
-    
-    private:
+        void arpFilter();
         std::map<unsigned int, std::string> setProtocolMap(std::string protocolFilePath, bool isHexa);  //sets the protocol maping from external file
         std::vector<std::string> getFrameType(int typeSize, std::vector<unsigned int>, bool ISL); //returns vector of strings with frame type and pid/sap
-        YAML::Emitter arpYamlTemp(std::vector<Frame> frameVector, YAML::Emitter output);
 
-    private:
+    protected:
         //frame offset enumeration
         enum FRAME_OFF_SETS {
             DEST_MAC_START = 0,
@@ -82,7 +79,7 @@ class PcapParser {
             IEEE_802_3_RAW = 0xFF,
         };
 
-        private:
+        public:
             std::vector<Frame> _frames; //vector of all parsed frames
             std::string _fileName;  //current file name
             std::map<unsigned int, std::string> _protocolMap; //map of protocol values and names
