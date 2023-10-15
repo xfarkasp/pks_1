@@ -5,6 +5,7 @@
 #include "IcmpFilter.h"
 #include "IcmpFilter.h"
 #include "TftpFilter.h"
+#include "TcpFilter.h"
 
 using namespace std;
 
@@ -468,7 +469,13 @@ void PcapParser::icmpFilter() {
     IcmpFilter* icmpFilter = new IcmpFilter(this);
     icmpFilter->serializeIcmpYaml();
 }
+
 void PcapParser::tftpFilter() {
     TftpFilter* tftpFilter = new TftpFilter(this);
     tftpFilter->serializeTftpYaml();
+}
+
+void PcapParser::tcpFilter() {
+    TcpFilter* tcpFilter = new TcpFilter(this);
+    tcpFilter->serializeTcpYaml();
 }

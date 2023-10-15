@@ -5,6 +5,7 @@
 #include <yaml-cpp/yaml.h>
 #include <fstream>
 #include <sstream>
+#include <bitset>
 
 //struct of an ethernet frame
 struct Frame {
@@ -28,6 +29,7 @@ struct Frame {
     std::vector<unsigned int> srcMac;
     std::vector<unsigned int> srcIp;
     std::vector<unsigned int> dstIp;
+    std::bitset<8> tcpFlags;
     int typeSize;
     bool isISL = false;
     bool MF = false;
@@ -41,12 +43,14 @@ class PcapParser {
         void arpFilter();       //arpFilter 
         void icmpFilter();
         void tftpFilter();
+        void tcpFilter();
         std::map<unsigned int, std::string> setProtocolMap(std::string protocolFilePath, bool isHexa);  //sets the protocol maping from external file
         std::vector<std::string> getFrameType(int typeSize, std::vector<unsigned int>, bool ISL); //returns vector of strings with frame type and pid/sap
 
     protected:
         //frame offset enumeration
         enum FRAME_OFF_SETS {
+            //l2
             DEST_MAC_START = 0,
             DEST_MAC_END = 6,
             SOURCE_MAC_START = 6,
@@ -55,16 +59,16 @@ class PcapParser {
             ETH_TYPE_END = 14,
             SNAP_PID_START = 20,
             SNAP_PID_END = 21,
-
+            //l3
             SRC_IP_START = 26,
             DST_IP_START = 30,
             DST_IP_END = 34,
-
+            //l4
             SRC_PORT_START = 34,
             SRC_PORT_END = 35,
             DST_PORT_START = 36,
             DST_PORT_END = 37,
-
+            //icmp
             ICMP_TYPE = 34,
             ICMP_CODE = 35,
 
@@ -80,7 +84,20 @@ class PcapParser {
             ICMP_SEQ_EXCEEDED_START = 68,
             ICMP_SEQ_EXCEEDED_END = 69,
 
-            //fragmentation positions
+            //tcp values
+            TCP_FLAGS_START = 46,
+            TCP_FLAGS_END = 47,
+            //tcpflags
+            TCP_FIN = 0,
+            TCP_SYN = 1,
+            TCP_RST = 2,
+            TCP_PSH = 3,
+            TCP_ACK = 4,
+            TCP_URG = 5,
+            TCP_ECN = 6,
+            TCP_CON = 7,
+
+            //fragmentation 
             FRAG_FLAG = 20,
             RB_Flag = 0,
             DF_Flag = 1,
@@ -90,7 +107,7 @@ class PcapParser {
             FRAG_OFFSET_START = 20,
             FRAG_OFFSET_END = 21,
 
-            //tftp positions 38 39
+            //tftp 
             TFTP_OPCODE = 43,
             UDP_PAYLOAD_SIZE_START = 38,
             UDP_PAYLOAD_SIZE_END = 39,
@@ -99,8 +116,10 @@ class PcapParser {
             EPHEMERAL_PORT_START = 49152,
             EPHEMERAL_PORT_END = 65535,
 
+            //arp
             ARP_SRC_IP_OFFSET = 2,
             ARP_DST_IP_OFFSET = 8,
+
             //ISL frame
             ISL_DEST_MAC_START = 26,
             ISL_DEST_MAC_END = 32,

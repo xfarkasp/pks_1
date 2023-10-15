@@ -2,7 +2,7 @@
 01:ICMP
 02:LLC Sublayer Management / Individual
 03:LLC Sublayer Management / Group
-06:IP (DoD Internet Protocol)
+06:TCP
 0E:PROWAY (IEC 955) Network Management, Maintenance and Installation
 42:STP
 4E:MMS (Manufacturing Message Service) EIA-RS 511

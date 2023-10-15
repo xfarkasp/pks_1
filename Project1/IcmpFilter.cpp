@@ -18,7 +18,7 @@ void IcmpFilter::findComms() {
                 sprintf_s(hex_string, "%.2X", packet.hexFrame.at(FRAG_FLAG + packet.ihlOffset));
 
                 //ad frag params to frame struct
-                std::bitset<3> fragFlags(std::stoi(hex_string));
+                std::bitset<3> fragFlags(std::stoi(hex_string, 0 , 16));
                 packet.MF = fragFlags[MF_Flag];
                 std::stringstream idBuffer; //buffer to read frag id
                 std::stringstream offSetBuffer; //buffer to read frag offset
