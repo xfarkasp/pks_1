@@ -1,6 +1,6 @@
 name: PKS2023/24
 pcap_name: trace-15.pcap
-filter_name: ARP
+filter_name: ICMP
 complete_comms:
   - number_com: 1
     src_comm: 12.0.0.1

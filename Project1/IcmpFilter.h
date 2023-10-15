@@ -17,5 +17,6 @@ public:
 	std::map<unsigned int, std::string> _icmpMap;
 	std::vector<std::pair<Frame, Frame>> _commPairs;
 	std::vector<Frame> _notCompleteComms;
+	std::vector<Frame> _fragQue;
 
 };
