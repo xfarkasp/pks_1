@@ -16,9 +16,10 @@ int main(int argc, char* argv[])
     std::chrono::time_point<std::chrono::system_clock> m_StartTime = std::chrono::system_clock::now();;
     
     PcapParser *parser = new PcapParser();
-    parser->parseFrame("C:\\Users\\pedro\\Documents\\PKS\\vzorky_pcap_na_analyzu\\trace-26.pcap");
+    parser->parseFrame("C:\\Users\\pedro\\Documents\\PKS\\vzorky_pcap_na_analyzu\\eth-8.pcap");
     //parser->serializeYaml();
-    parser->icmpFilter();
+    //parser->icmpFilter();
+    parser->tftpFilter();
 
     std::chrono::time_point<std::chrono::system_clock> endTime = std::chrono::system_clock::now();
 

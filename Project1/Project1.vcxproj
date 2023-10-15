@@ -138,10 +138,12 @@
     <ClCompile Include="IcmpFilter.cpp" />
     <ClCompile Include="PcapParser.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="TftpFilter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IcmpFilter.h" />
     <ClInclude Include="PcapParser.h" />
+    <ClInclude Include="TftpFilter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -30,12 +30,18 @@
     <ClCompile Include="IcmpFilter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TftpFilter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PcapParser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="IcmpFilter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TftpFilter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -9,6 +9,8 @@
 //struct of an ethernet frame
 struct Frame {
     size_t index;
+    size_t udpPayload;
+    size_t tftpBlockCount =SIZE_MAX;
     unsigned int capLen;
     unsigned int wireLen;
     unsigned int srcPort;
@@ -19,6 +21,7 @@ struct Frame {
     int fragID = -1;
     int fragOffSet = -1;
     std::string arpOpcode;
+    std::string tftpOptcode;
     std::string icmpType;
     std::vector<unsigned int> hexFrame;
     std::vector<unsigned int> destMac;
@@ -37,6 +40,7 @@ class PcapParser {
         void serializeYaml();   //serializes read value to yaml
         void arpFilter();       //arpFilter 
         void icmpFilter();
+        void tftpFilter();
         std::map<unsigned int, std::string> setProtocolMap(std::string protocolFilePath, bool isHexa);  //sets the protocol maping from external file
         std::vector<std::string> getFrameType(int typeSize, std::vector<unsigned int>, bool ISL); //returns vector of strings with frame type and pid/sap
 
@@ -85,6 +89,15 @@ class PcapParser {
             FRAG_ID_END = 19,
             FRAG_OFFSET_START = 20,
             FRAG_OFFSET_END = 21,
+
+            //tftp positions 38 39
+            TFTP_OPCODE = 43,
+            UDP_PAYLOAD_SIZE_START = 38,
+            UDP_PAYLOAD_SIZE_END = 39,
+            TFTP_DEFAULT_SIZE = 512,
+
+            EPHEMERAL_PORT_START = 49152,
+            EPHEMERAL_PORT_END = 65535,
 
             ARP_SRC_IP_OFFSET = 2,
             ARP_DST_IP_OFFSET = 8,

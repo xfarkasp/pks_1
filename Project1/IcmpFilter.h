@@ -18,5 +18,4 @@ public:
 	std::vector<std::pair<Frame, Frame>> _commPairs;
 	std::vector<Frame> _notCompleteComms;
 	std::vector<Frame> _fragQue;
-
 };

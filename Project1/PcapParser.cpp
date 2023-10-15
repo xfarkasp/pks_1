@@ -3,6 +3,8 @@
 #include "ArpFilter.h"
 #include "ArpFilter.h"
 #include "IcmpFilter.h"
+#include "IcmpFilter.h"
+#include "TftpFilter.h"
 
 using namespace std;
 
@@ -465,4 +467,8 @@ void PcapParser::arpFilter() {
 void PcapParser::icmpFilter() {
     IcmpFilter* icmpFilter = new IcmpFilter(this);
     icmpFilter->serializeIcmpYaml();
+}
+void PcapParser::tftpFilter() {
+    TftpFilter* tftpFilter = new TftpFilter(this);
+    tftpFilter->serializeTftpYaml();
 }

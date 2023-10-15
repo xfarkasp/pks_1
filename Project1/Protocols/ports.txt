@@ -25,6 +25,7 @@
 49:TACACS Login Host
 53:DNS
 57:MTP, Mail Transfer
+69:TFTP
 70:Gopher protoco
 79:Finger protoco
 81:Torpark
