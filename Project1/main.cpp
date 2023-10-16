@@ -17,26 +17,23 @@ int main(int argc, char* argv[])
         filterName = argv[2];
         file = argv[3];
     }
-    std::cout << parameter << " ";
-    std::cout << filterName << " ";
-    std::cout << file << " ";
         
     std::chrono::time_point<std::chrono::system_clock> m_StartTime = std::chrono::system_clock::now();;
     PcapParser *parser = new PcapParser();
     parser->parseFrame(file);
     if (!parameter.empty()) {
         if (filterName == "HTTP")
-            parser->tcpFilter();
+            parser->tcpFilter("HTTP");
         else if (filterName == "HTTPS")
-            parser->tcpFilter();
+            parser->tcpFilter("HTTPS");
         else if (filterName == "TELNET")
-            parser->tcpFilter();
+            parser->tcpFilter("TELNET");
         else if (filterName == "SSH")
-            parser->tcpFilter();
+            parser->tcpFilter("SSH");
         else if (filterName == "FTP_CONTROLL")
-            parser->tcpFilter();
+            parser->tcpFilter("FTP_CONTROLL");
         else if (filterName == "FTP_DATA")
-            parser->tcpFilter();
+            parser->tcpFilter("FTP_DATA");
         else if (filterName == "TFTP")
             parser->tftpFilter();
         else if (filterName == "ICMP")

@@ -43,7 +43,7 @@ class PcapParser {
         void arpFilter();       //arpFilter 
         void icmpFilter();
         void tftpFilter();
-        void tcpFilter();
+        void tcpFilter(std::string filter);
         std::map<unsigned int, std::string> setProtocolMap(std::string protocolFilePath, bool isHexa);  //sets the protocol maping from external file
         std::vector<std::string> getFrameType(int typeSize, std::vector<unsigned int>, bool ISL); //returns vector of strings with frame type and pid/sap
 

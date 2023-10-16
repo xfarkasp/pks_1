@@ -15,19 +15,24 @@ void TcpFilter::findComms() {
             char  hex_string[20];
             sprintf_s(hex_string, "%.2X", packet.hexFrame.at(23));
             if (_parent->_protocolMap[std::stoi(hex_string, 0, 16)] == "TCP") {
-                std::string portName = "";
+                std::string portNameSrc = "";
+                std::string portNameDst = "";
+                if (_parent->_portMap.find(packet.srcPort) != _parent->_portMap.end())
+                    portNameSrc = _parent->_portMap[packet.srcPort];
                 if (_parent->_portMap.find(packet.dstPort) != _parent->_portMap.end())
-                    portName = _parent->_portMap[packet.dstPort];
+                    portNameDst = _parent->_portMap[packet.dstPort];
 
-                std::stringstream tcpFlagsBuffer; //buffer to read flags
-                char  hex_string[20];
-                sprintf_s(hex_string, "%.2X", packet.hexFrame[(TCP_FLAGS_END + packet.ihlOffset)]);
-                std::bitset<8> fragFlags(std::stoi(hex_string, 0, 16));
-                packet.tcpFlags = fragFlags;
-                if (fragFlags[TCP_SYN] && !fragFlags[TCP_ACK])
-                    tcpComStartQue.push_back(packet);
-                else
-                    tcpFrameQue.push_back(packet);
+                if (portNameSrc == _filterName || portNameDst == _filterName) {
+                    std::stringstream tcpFlagsBuffer; //buffer to read flags
+                    char  hex_string[20];
+                    sprintf_s(hex_string, "%.2X", packet.hexFrame[(TCP_FLAGS_END + packet.ihlOffset)]);
+                    std::bitset<8> fragFlags(std::stoi(hex_string, 0, 16));
+                    packet.tcpFlags = fragFlags;
+                    if (fragFlags[TCP_SYN] && !fragFlags[TCP_ACK])
+                        tcpComStartQue.push_back(packet);
+                    else
+                        tcpFrameQue.push_back(packet);
+                }
             }
         }
     }
@@ -142,7 +147,7 @@ void TcpFilter::serializeTcpYaml() {
         << YAML::Key << "pcap_name"
         << YAML::Value << _parent->_fileName
         << YAML::Key << "filter_name"
-        << YAML::Value << "TFTP";
+        << YAML::Value << _filterName;
 
     auto addComm = [&](std::vector<Frame>comms) {
         output << YAML::BeginMap << YAML::Key << "number_com" << YAML::Value << comIndex;
@@ -268,7 +273,7 @@ void TcpFilter::serializeTcpYaml() {
     output << YAML::EndSeq;
 
     std::fstream yamlFile;
-    yamlFile.open("yaml_output//TCP//" + _parent->_fileName.erase(_parent->_fileName.find('.'), _parent->_fileName.size() - 1) + "-HTTP.yaml", std::ios_base::out);
+    yamlFile.open("yaml_output//" + _filterName + "//" + _parent->_fileName.erase(_parent->_fileName.find('.'), _parent->_fileName.size() - 1) + "-HTTP.yaml", std::ios_base::out);
     if (yamlFile.is_open())
     {
         yamlFile << output.c_str();

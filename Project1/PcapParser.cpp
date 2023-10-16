@@ -475,7 +475,7 @@ void PcapParser::tftpFilter() {
     tftpFilter->serializeTftpYaml();
 }
 
-void PcapParser::tcpFilter() {
-    TcpFilter* tcpFilter = new TcpFilter(this);
+void PcapParser::tcpFilter(std::string filter) {
+    TcpFilter* tcpFilter = new TcpFilter(this, filter);
     tcpFilter->serializeTcpYaml();
 }
