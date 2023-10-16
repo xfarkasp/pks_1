@@ -266,8 +266,6 @@ void TcpFilter::serializeTcpYaml() {
         }
         output << YAML::EndSeq;
     }
-    else
-        output << YAML::Key << "complete_comms" << YAML::Value << YAML::BeginSeq << YAML::EndSeq;;
 
     if (!_notCompleteComms.empty()) {
         comIndex = 0;
@@ -276,8 +274,6 @@ void TcpFilter::serializeTcpYaml() {
             addComm(_notCompleteComms.at(0));
         output << YAML::EndSeq;
     }
-    else
-        output  << YAML::Key << "partial_comms" << YAML::Value << YAML::BeginSeq << YAML::EndSeq;;
     
     output << YAML::EndMap;
     std::fstream yamlFile;
