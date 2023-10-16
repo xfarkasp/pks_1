@@ -180,7 +180,6 @@ void ArpFilter::serializeArpYaml() {
         }
         output << YAML::EndSeq;
         output << YAML::EndMap;
-        
     };
 
     if (!_commPairs.empty()) {

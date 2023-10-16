@@ -285,48 +285,50 @@ void IcmpFilter::serializeIcmpYaml() {
         output << YAML::EndMap;
 
     };
-
-    output << YAML::Key << "complete_comms" << YAML::Value << YAML::BeginSeq;
-    while (!_commPairs.empty()) {
-        std::vector<Frame>completeConnections;
-        std::vector<size_t>removeIndexes;
-        Frame commFrame = _commPairs.at(0).first;
-        for (size_t i = 0; i < _commPairs.size(); i++) {
-            if (_commPairs.at(i).first.dstIp == commFrame.dstIp) {
-                completeConnections.push_back(_commPairs.at(i).first);
-                completeConnections.push_back(_commPairs.at(i).second);
-                removeIndexes.push_back(i);
+    if (!_commPairs.empty()) {
+        output << YAML::Key << "complete_comms" << YAML::Value << YAML::BeginSeq;
+        while (!_commPairs.empty()) {
+            std::vector<Frame>completeConnections;
+            std::vector<size_t>removeIndexes;
+            Frame commFrame = _commPairs.at(0).first;
+            for (size_t i = 0; i < _commPairs.size(); i++) {
+                if (_commPairs.at(i).first.dstIp == commFrame.dstIp) {
+                    completeConnections.push_back(_commPairs.at(i).first);
+                    completeConnections.push_back(_commPairs.at(i).second);
+                    removeIndexes.push_back(i);
+                }
+            }
+            comIndex++;
+            addComm(completeConnections, true);
+            std::reverse(removeIndexes.begin(), removeIndexes.end());
+            for (size_t i = 0; i < removeIndexes.size(); i++) {
+                _commPairs.erase(std::next(_commPairs.begin(), removeIndexes.at(i)));
             }
         }
-        comIndex++;
-        addComm(completeConnections, true);
-        std::reverse(removeIndexes.begin(), removeIndexes.end());
-        for (size_t i = 0; i < removeIndexes.size(); i++) {
-            _commPairs.erase(std::next(_commPairs.begin(), removeIndexes.at(i)));
-        }
+        output << YAML::EndSeq;
     }
-    output << YAML::EndSeq;
-
-    comIndex = 0;
-    output << YAML::Key << "partial_comms" << YAML::Value << YAML::BeginSeq;
-    while (!_notCompleteComms.empty()) {
-        std::vector<Frame>completeConnections;
-        std::vector<size_t>removeIndexes;
-        Frame commFrame = _notCompleteComms.at(0);
-        for (size_t i = 0; i < _notCompleteComms.size(); i++) {
-            if (_notCompleteComms.at(i).dstIp == commFrame.dstIp) {
-                completeConnections.push_back(_notCompleteComms.at(i));
-                removeIndexes.push_back(i);
+    if (!_notCompleteComms.empty()) {
+        comIndex = 0;
+        output << YAML::Key << "partial_comms" << YAML::Value << YAML::BeginSeq;
+        while (!_notCompleteComms.empty()) {
+            std::vector<Frame>completeConnections;
+            std::vector<size_t>removeIndexes;
+            Frame commFrame = _notCompleteComms.at(0);
+            for (size_t i = 0; i < _notCompleteComms.size(); i++) {
+                if (_notCompleteComms.at(i).dstIp == commFrame.dstIp) {
+                    completeConnections.push_back(_notCompleteComms.at(i));
+                    removeIndexes.push_back(i);
+                }
+            }
+            comIndex++;
+            addComm(completeConnections, false);
+            std::reverse(removeIndexes.begin(), removeIndexes.end());
+            for (size_t i = 0; i < removeIndexes.size(); i++) {
+                _notCompleteComms.erase(std::next(_notCompleteComms.begin(), removeIndexes.at(i)));
             }
         }
-        comIndex++;
-        addComm(completeConnections, false);
-        std::reverse(removeIndexes.begin(), removeIndexes.end());
-        for (size_t i = 0; i < removeIndexes.size(); i++) {
-            _notCompleteComms.erase(std::next(_notCompleteComms.begin(), removeIndexes.at(i)));
-        }
+        output << YAML::EndSeq;
     }
-    output << YAML::EndSeq;
 
     std::fstream yamlFile;
     yamlFile.open("yaml_output//ICMP//" + _parent->_fileName.erase(_parent->_fileName.find('.'), _parent->_fileName.size() - 1) + "-ICMP.yaml", std::ios_base::out);
