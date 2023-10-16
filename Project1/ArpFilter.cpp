@@ -225,31 +225,8 @@ void ArpFilter::serializeArpYaml() {
     }
     output << YAML::EndSeq;
 
-    /*while (!_notCompleteComms.empty()) {
-        std::vector<Frame>completeConnections;
-        std::vector<size_t>removeIndexes;
-        Frame commFrame = _notCompleteComms.at(0);
-        for (size_t i = 0; i < _notCompleteComms.size(); i++) {
-            if (_notCompleteComms.at(i).dstIp == commFrame.dstIp) {
-                completeConnections.push_back(_notCompleteComms.at(i));
-                removeIndexes.push_back(i);
-            }
-        }
-        comIndex++;
-        addComm(completeConnections);
-        std::reverse(removeIndexes.begin(), removeIndexes.end());
-        for (size_t i = 0; i < removeIndexes.size(); i++) {
-            _notCompleteComms.erase(std::next(_notCompleteComms.begin(), removeIndexes.at(i)));
-        }
-    }*/
-    
-
-    //addComm(replyQue);
-
-
-
     std::fstream yamlFile;
-    yamlFile.open("yaml_output//" + _parent->_fileName.erase(_parent->_fileName.find('.'), _parent->_fileName.size() - 1) + "-ARP.yaml", std::ios_base::out);
+    yamlFile.open("yaml_output//ARP//" + _parent->_fileName.erase(_parent->_fileName.find('.'), _parent->_fileName.size() - 1) + "-ARP.yaml", std::ios_base::out);
     if (yamlFile.is_open())
     {
         yamlFile << output.c_str();

@@ -1,0 +1,28 @@
+name: PKS2023/24
+pcap_name: trace-1.pcap
+filter_name: TFTP
+complete_comms:
+  []
+partial_comms:
+  - number_com: 0
+    src_comm: 192.168.1.105
+    dst_comm: 199.2.53.206
+    packets:
+      - frame_number: 3
+        len_frame_pcap: 62
+        len_frame_medium: 66
+        frame_type: ETHERNET II
+        src_mac: 00:D0:59:A9:3D:68
+        dst_mac: 00:06:25:DA:AF:73
+        src_ip: 192.168.1.105
+        dst_ip: 199.2.53.206
+        protocol: TCP
+        src_port: 1057
+        dst_port: 631
+        app_protocol: IPP, Internet Printing
+        hexa_frame: |
+          00 06 25 DA AF 73 00 D0 59 A9 3D 68 08 00 45 00
+          00 30 00 F3 40 00 80 06 3A F3 C0 A8 01 69 C7 02
+          35 CE 04 21 02 77 64 D1 7E 0B 00 00 00 00 70 02
+          FA F0 DF D7 00 00 02 04 05 B4 01 01 04 02
+          

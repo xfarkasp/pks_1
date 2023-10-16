@@ -42,21 +42,9 @@ void TcpFilter::findComms() {
         bool synAckFound = false;
         bool ackFound = false;
 
-        bool finFirst = false;
-        bool finSecond = false;
-        bool finAckLast = false;
-        //when connection opens in connection
-        bool newConOpendDuringThisone = false;
-        bool newFinFirst = false;
-        bool newAckFirst = false;
-        bool newFinSecond = false;
-        bool newAckSecond = false;
-
         //add comm starter tcp frame
         newComm.push_back(packet);
         for (auto tcpFrame : tcpFrameQue) {
-            if (tcpFrame.index == 68 && packet.index == 61)
-                int mojeVajcia = 0;
             if (((packet.dstIp == tcpFrame.srcIp && packet.srcIp == tcpFrame.dstIp) ||
                 (packet.dstIp == tcpFrame.dstIp && packet.srcIp == tcpFrame.srcIp)) &&
                 ((packet.dstPort == tcpFrame.srcPort && packet.srcPort == tcpFrame.dstPort) ||
@@ -80,69 +68,19 @@ void TcpFilter::findComms() {
                 }
 
                 if (ackFound) {
-                    //if a new connection opens during this one
-                    //if (newConOpendDuringThisone || tcpFrame.tcpFlags[TCP_SYN]) {
-                    //    newConOpendDuringThisone = true;
-                    //    //if newly opened connection is terminated by rst-ack flags
-                    //    if(tcpFrame.tcpFlags[TCP_RST] && tcpFrame.tcpFlags[TCP_ACK])
-                    //        newConOpendDuringThisone = false;
-                    //    //if suffering is neccesery
-                    //    else if (!newFinFirst && tcpFrame.tcpFlags[TCP_FIN] && tcpFrame.tcpFlags[TCP_ACK]) {
-                    //        newFinFirst = true;
-                    //    }
-                    //    else if (!newAckFirst && newFinFirst && tcpFrame.tcpFlags[TCP_ACK]) {
-                    //        newAckFirst = true;
-                    //    }
-                    //    else if (!newFinSecond  && newAckFirst && newFinFirst && tcpFrame.tcpFlags[TCP_FIN] && tcpFrame.tcpFlags[TCP_ACK]) {
-                    //        newFinSecond = true;
-                    //    }
-                    //    else if (newFinSecond && tcpFrame.tcpFlags[TCP_ACK]) {
-                    //        newConOpendDuringThisone = false;
-                    //        newFinFirst = false;
-                    //        newAckFirst = false;
-                    //        newFinSecond = false;
-                    //        newAckSecond = false;
-                    //    }
-                    //    rmIndex++;
-                    //    continue;
-                    //}
                     newComm.push_back(tcpFrame);
                     removeIndexes.push_back(rmIndex);
-                    //conection ended with RST ACK
-                    //if (tcpFrame.tcpFlags[TCP_RST] && tcpFrame.tcpFlags[TCP_ACK]) {
-                    //    isComplete = true;
-                    //    break;
-                    //}
-                    ////if first fin-ack found
-                    //else if (!finFirst && tcpFrame.tcpFlags[TCP_FIN] && tcpFrame.tcpFlags[TCP_ACK]) {
-                    //    finFirst = true;
-                    //}
-                    //else if (!finAckLast && finFirst && tcpFrame.tcpFlags[TCP_ACK]) {
-                    //    finAckLast = true;
-                    //}
-                    //else if (!finSecond && finAckLast && tcpFrame.tcpFlags[TCP_FIN] && tcpFrame.tcpFlags[TCP_ACK]) {
-                    //    finSecond = true;
-                    //}
-                    //else if (finSecond && tcpFrame.tcpFlags[TCP_ACK]) {
-                    //    isComplete = true;
-                    //    break;
-                    //}
                 }
             }
             rmIndex++;
         }
-        /*if (isComplete)
-            _completeComms.push_back(newComm);
-        else
-            _notCompleteComms.push_back(newComm);*/
-
-        tcpComms.push_back(newComm);
+        validateComm(newComm);
 
         std::reverse(removeIndexes.begin(), removeIndexes.end());
         for (unsigned int rmI : removeIndexes)
             tcpFrameQue.erase(std::next(tcpFrameQue.begin(), rmI));
-
     }
+    std::cout << "";
 }
 
 void TcpFilter::validateComm(std::vector<Frame> comm) {
@@ -151,31 +89,46 @@ void TcpFilter::validateComm(std::vector<Frame> comm) {
 
     //validate connection establishment
     ///check if connection began correctly with 3 way hs
-    if (comm.at(0).tcpFlags[TCP_SYN] && !comm.at(0).tcpFlags[TCP_ACK] &&
+    if (comm.size() > 2 && (comm.at(0).tcpFlags[TCP_SYN] && !comm.at(0).tcpFlags[TCP_ACK] &&
         comm.at(1).tcpFlags[TCP_SYN] && comm.at(1).tcpFlags[TCP_ACK] &&
-        !comm.at(2).tcpFlags[TCP_SYN] && comm.at(2).tcpFlags[TCP_ACK])
+        !comm.at(2).tcpFlags[TCP_SYN] && comm.at(2).tcpFlags[TCP_ACK]))
         validStart = true;
     ///check if connection began correctly with 4 way hs
-    else if (comm.at(0).tcpFlags[TCP_SYN] && !comm.at(0).tcpFlags[TCP_ACK] &&
+    else if (comm.size() > 3 && (comm.at(0).tcpFlags[TCP_SYN] && !comm.at(0).tcpFlags[TCP_ACK] &&
              comm.at(1).tcpFlags[TCP_SYN] && !comm.at(1).tcpFlags[TCP_ACK] &&
              !comm.at(2).tcpFlags[TCP_SYN] && comm.at(2).tcpFlags[TCP_ACK] &&
-             !comm.at(3).tcpFlags[TCP_SYN] && comm.at(3).tcpFlags[TCP_ACK])
+             !comm.at(3).tcpFlags[TCP_SYN] && comm.at(3).tcpFlags[TCP_ACK]))
         validStart = true;
 
-    
-    ///check if connection began correctly with 3 way hs
-    if (comm.at(0).tcpFlags[TCP_SYN] && !comm.at(0).tcpFlags[TCP_ACK] &&
-        comm.at(1).tcpFlags[TCP_SYN] && comm.at(1).tcpFlags[TCP_ACK] &&
-        !comm.at(2).tcpFlags[TCP_SYN] && comm.at(2).tcpFlags[TCP_ACK])
-        validStart = true;
-    ///check if connection began correctly with 4 way hs
-    else if (comm.at(0).tcpFlags[TCP_SYN] && !comm.at(0).tcpFlags[TCP_ACK] &&
-        comm.at(1).tcpFlags[TCP_SYN] && !comm.at(1).tcpFlags[TCP_ACK] &&
-        !comm.at(2).tcpFlags[TCP_SYN] && comm.at(2).tcpFlags[TCP_ACK] &&
-        !comm.at(3).tcpFlags[TCP_SYN] && comm.at(3).tcpFlags[TCP_ACK])
-        validStart = true;
+    //validate connection ending
+    //reverse the vector to analyze connection ending
+    std::reverse(comm.begin(), comm.end());
 
-
+    //check if connection was terminated with [RST,ACK]
+    if (comm.at(0).tcpFlags[TCP_RST])
+        validEnd = true;
+    //check if connection was terminated with [FIN,ACK] -> [ACK] -> [FIN,ACK] -> [ACK] (normal 4 way hs)
+    else if (comm.size() > 3 && (comm.at(0).tcpFlags[TCP_ACK] && !comm.at(0).tcpFlags[TCP_FIN] &&
+        comm.at(1).tcpFlags[TCP_ACK] && comm.at(1).tcpFlags[TCP_FIN] &&
+        comm.at(2).tcpFlags[TCP_ACK] && !comm.at(2).tcpFlags[TCP_FIN] &&
+        comm.at(3).tcpFlags[TCP_ACK] && comm.at(3).tcpFlags[TCP_FIN]))
+        validEnd = true;
+    //check if connection was terminated with [FIN,ACK] -> [ACK] synchronized TCP connection termination 1
+    else if (comm.size() > 2 && (comm.at(1).tcpFlags[TCP_ACK] && comm.at(1).tcpFlags[TCP_FIN] &&
+        comm.at(2).tcpFlags[TCP_ACK] || comm.at(2).tcpFlags[TCP_FIN]))
+        validEnd = true;
+    //check if connection was terminated with [FIN,ACK] -> [FIN,ACK] -> [ACK] ->  [ACK] synchronized TCP connection termination 2
+    else if (comm.size() > 3 && (comm.at(0).tcpFlags[TCP_ACK] && !comm.at(0).tcpFlags[TCP_FIN] &&
+        comm.at(1).tcpFlags[TCP_ACK] && !comm.at(1).tcpFlags[TCP_FIN] &&
+        comm.at(2).tcpFlags[TCP_ACK] && comm.at(2).tcpFlags[TCP_FIN] &&
+        comm.at(3).tcpFlags[TCP_ACK] && comm.at(3).tcpFlags[TCP_FIN]))
+        validEnd = true;
+    //reverse the vectors back before adding
+    std::reverse(comm.begin(), comm.end());
+    if (validStart && validEnd)
+        _completeComms.push_back(comm);
+    else
+        _notCompleteComms.push_back(comm);
 }
 
 void TcpFilter::serializeTcpYaml() {
@@ -259,7 +212,7 @@ void TcpFilter::serializeTcpYaml() {
                 char  hex_string[20];
                 sprintf_s(hex_string, "%.2X", packet.hexFrame.at(23));
                 output << YAML::Key << "protocol" << YAML::Value << _parent->_protocolMap[std::stoi(hex_string, 0, 16)];
-                if (_parent->_protocolMap[std::stoi(hex_string, 0, 16)] == "UDP") {
+                if (_parent->_protocolMap[std::stoi(hex_string, 0, 16)] == "TCP") {
                     output << YAML::Key << "src_port" << YAML::Value << packet.srcPort;
                     output << YAML::Key << "dst_port" << YAML::Value << packet.dstPort;
 
@@ -271,10 +224,6 @@ void TcpFilter::serializeTcpYaml() {
                         output << YAML::Key << "app_protocol" << YAML::Value << _parent->_portMap[packet.srcPort];
                     else if (dstKnown)
                         output << YAML::Key << "app_protocol" << YAML::Value << _parent->_portMap[packet.dstPort];
-
-                    output << YAML::Key << "tftp_opcode" << YAML::Value << packet.tftpOptcode;
-                    if (packet.tftpBlockCount != SIZE_MAX)
-                        output << YAML::Key << "tftp_block" << YAML::Value << packet.tftpBlockCount;
                 }
             }
 
@@ -306,22 +255,20 @@ void TcpFilter::serializeTcpYaml() {
     };
 
     output << YAML::Key << "complete_comms" << YAML::Value << YAML::BeginSeq;
-    //for (auto comm : _completeComms) {
-    //    comIndex++;
-    //    addComm(comm.frames);
-    //}
+    for (auto comm : _completeComms) {
+        comIndex++;
+        addComm(comm);
+    }
     output << YAML::EndSeq;
 
     comIndex = 0;
     output << YAML::Key << "partial_comms" << YAML::Value << YAML::BeginSeq;
-    //for (auto comm : _notCompleteComms) {
-    //    comIndex++;
-    //    addComm(comm.frames);
-    //}
+    if(!_notCompleteComms.empty())
+        addComm(_notCompleteComms.at(0));
     output << YAML::EndSeq;
 
     std::fstream yamlFile;
-    yamlFile.open("yaml_output//" + _parent->_fileName.erase(_parent->_fileName.find('.'), _parent->_fileName.size() - 1) + "-TFTP.yaml", std::ios_base::out);
+    yamlFile.open("yaml_output//TCP//" + _parent->_fileName.erase(_parent->_fileName.find('.'), _parent->_fileName.size() - 1) + "-HTTP.yaml", std::ios_base::out);
     if (yamlFile.is_open())
     {
         yamlFile << output.c_str();

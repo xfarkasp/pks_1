@@ -41,7 +41,7 @@ std::map<unsigned int, std::string> PcapParser::setProtocolMap(std::string proto
     }
     catch (int error) {
         if(error == -1)
-            std::cout << "error opening file, terminating" << endl;
+            std::cout << "error opening protocol file, terminating" << endl;
         exit(0);
     }
     catch (...) {

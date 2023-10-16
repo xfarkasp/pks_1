@@ -329,7 +329,7 @@ void IcmpFilter::serializeIcmpYaml() {
     output << YAML::EndSeq;
 
     std::fstream yamlFile;
-    yamlFile.open("yaml_output//" + _parent->_fileName.erase(_parent->_fileName.find('.'), _parent->_fileName.size() - 1) + "-ICMP.yaml", std::ios_base::out);
+    yamlFile.open("yaml_output//ICMP//" + _parent->_fileName.erase(_parent->_fileName.find('.'), _parent->_fileName.size() - 1) + "-ICMP.yaml", std::ios_base::out);
     if (yamlFile.is_open())
     {
         yamlFile << output.c_str();
