@@ -34,7 +34,7 @@ void IcmpFilter::findComms() {
                     }
                 }
 
-                sprintf_s(hex_string, "%.2X", packet.hexFrame[FRAG_OFFSET_END]);
+                sprintf_s(hex_string, "%.2X", packet.hexFrame[FRAG_OFFSET_END + packet.ihlOffset]);
                 packet.fragID = std::stoi(idBuffer.str(), 0, 16);
                 packet.fragOffSet = (std::stoi(hex_string, 0, 16) * 8);
                 //if the last frame had true mf flag, ad this frame to frag lis
@@ -123,9 +123,6 @@ void IcmpFilter::findComms() {
 
     _notCompleteComms = std::move(replyQue);
 }
-//std::vector<Frame>completeFregments() {
-//
-//}
 
 void IcmpFilter::serializeIcmpYaml() {
     findComms();

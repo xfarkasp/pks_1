@@ -11,7 +11,7 @@ void TftpFilter::findComms() {
     std::vector<Frame> tftpQue;
     size_t indexOfFound = 0;
     bool delFlag = false;
-    bool lastMfFlag = false; //flag to identify if previous frame was fraged
+
     for (auto packet : _parent->_frames) {
         std::vector<std::string> frameTypes = _parent->getFrameType(packet.typeSize, packet.hexFrame, packet.isISL);
         if (frameTypes.size() >= 2 && frameTypes.at(1) == "IPv4") {
@@ -22,7 +22,7 @@ void TftpFilter::findComms() {
                 if (_parent->_portMap.find(packet.dstPort) != _parent->_portMap.end())
                     portName = _parent->_portMap[packet.dstPort];
 
-                    std::stringstream udpPayloadSize; //buffer to read frag offset
+                    std::stringstream udpPayloadSize; 
                     char  hex_string[20];
                     for (size_t i = (UDP_PAYLOAD_SIZE_START + packet.ihlOffset); i <= (UDP_PAYLOAD_SIZE_END + packet.ihlOffset); i++) {
                         if ((UDP_PAYLOAD_SIZE_START + packet.ihlOffset) <= i && i <= (UDP_PAYLOAD_SIZE_END + packet.ihlOffset)) {
@@ -37,7 +37,6 @@ void TftpFilter::findComms() {
                         tftpQue.push_back(packet);
                     else
                         tftpStartQue.push_back(packet);
-                
             }
         }
     }
@@ -227,24 +226,27 @@ void TftpFilter::serializeTftpYaml() {
         output << YAML::EndSeq;
         output << YAML::EndMap;
     };
-    
-    output << YAML::Key << "complete_comms" << YAML::Value << YAML::BeginSeq;
-    for (auto comm : _completeComms) {
-        comIndex++;
-        addComm(comm.frames);
+    if (!_completeComms.empty()) {
+        output << YAML::Key << "complete_comms" << YAML::Value << YAML::BeginSeq;
+        for (auto comm : _completeComms) {
+            comIndex++;
+            addComm(comm.frames);
+        }
+        output << YAML::EndSeq;
     }
-    output << YAML::EndSeq;
 
-    comIndex = 0;
-    output << YAML::Key << "partial_comms" << YAML::Value << YAML::BeginSeq;
-    for (auto comm : _notCompleteComms) {
-        comIndex++;
-        addComm(comm.frames);
+    if (!_notCompleteComms.empty()) {
+        comIndex = 0;
+        output << YAML::Key << "partial_comms" << YAML::Value << YAML::BeginSeq;
+        for (auto comm : _notCompleteComms) {
+            comIndex++;
+            addComm(comm.frames);
+        }
+        output << YAML::EndSeq;
     }
-    output << YAML::EndSeq;
 
     std::fstream yamlFile;
-    yamlFile.open("yaml_output//" + _parent->_fileName.erase(_parent->_fileName.find('.'), _parent->_fileName.size() - 1) + "-TFTP.yaml", std::ios_base::out);
+    yamlFile.open("yaml_output//TFTP//" + _parent->_fileName.erase(_parent->_fileName.find('.'), _parent->_fileName.size() - 1) + "-TFTP.yaml", std::ios_base::out);
     if (yamlFile.is_open())
     {
         yamlFile << output.c_str();

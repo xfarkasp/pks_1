@@ -405,12 +405,34 @@ void PcapParser::serializeYaml() {
                 output << YAML::Key << "icmp_type" << YAML::Value << _icmpMap[packet.hexFrame.at(ICMP_TYPE + packet.ihlOffset)];
             }
 
+
             //count ipv4 packet senders
             if (_packetSenders.find(srcString) != _packetSenders.end())
                 _packetSenders[srcString]++;
             else {
                 _packetSenders.insert({ srcString, 1 });
             }
+        }
+        else if (frameTypes.size() > 1 && frameTypes.at(1) == "IPv6") {
+            sBuffer.str("");
+            sBuffer.clear();
+            //source ip
+            for (size_t i = 22; i <= 37; i++) {
+                char  hex_string[20];
+                sprintf_s(hex_string, "%.2X", packet.hexFrame[i]);
+                sBuffer << hex_string << ":";
+            }
+            output << YAML::Key << "src_ip" << YAML::Key << sBuffer.str().erase(sBuffer.str().size() - 1);
+
+            sBuffer.str("");
+            sBuffer.clear();
+            //dst ip
+            for (size_t i = 38; i <= 53; i++) {
+                char  hex_string[20];
+                sprintf_s(hex_string, "%.2X", packet.hexFrame[i]);
+                sBuffer << hex_string << ":";
+            }
+            output << YAML::Key << "dst_ip" << YAML::Key << sBuffer.str().erase(sBuffer.str().size() - 1);
         }
 
         sBuffer.str("");
