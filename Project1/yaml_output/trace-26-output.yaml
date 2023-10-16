@@ -7,9 +7,7 @@ packets:
     frame_type: ETHERNET II
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:80:C2:00:00:0E
-    ether_type: Link Layer Discovery Protocol (LLDP)
-    src_ip: 70.97.48.47
-    dst_ip: 50.52.6.2
+    ether_type: LLDP
     hexa_frame: |
       01 80 C2 00 00 0E 00 16 47 02 24 1A 88 CC 02 07
       04 00 16 47 02 24 00 04 07 05 46 61 30 2F 32 34
@@ -41,8 +39,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:80:C2:00:00:00
     sap: STP
-    src_ip: 71.2.36.0
-    dst_ip: 0.0.0.0
     hexa_frame: |
       01 80 C2 00 00 00 00 16 47 02 24 1A 00 26 42 42
       03 00 00 00 00 00 80 01 00 16 47 02 24 00 00 00
@@ -56,8 +52,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 00:16:47:02:24:1A
     ether_type: Loopback
-    src_ip: 0.0.0.0
-    dst_ip: 0.0.0.0
     hexa_frame: |
       00 16 47 02 24 1A 00 16 47 02 24 1A 90 00 00 00
       01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -71,8 +65,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:80:C2:00:00:00
     sap: STP
-    src_ip: 71.2.36.0
-    dst_ip: 0.0.0.0
     hexa_frame: |
       01 80 C2 00 00 00 00 16 47 02 24 1A 00 26 42 42
       03 00 00 00 00 00 80 01 00 16 47 02 24 00 00 00
@@ -85,9 +77,7 @@ packets:
     frame_type: ETHERNET II
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:80:C2:00:00:0E
-    ether_type: Link Layer Discovery Protocol (LLDP)
-    src_ip: 70.97.48.47
-    dst_ip: 50.52.6.2
+    ether_type: LLDP
     hexa_frame: |
       01 80 C2 00 00 0E 00 16 47 02 24 1A 88 CC 02 07
       04 00 16 47 02 24 00 04 07 05 46 61 30 2F 32 34
@@ -119,8 +109,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:80:C2:00:00:00
     sap: STP
-    src_ip: 71.2.36.0
-    dst_ip: 0.0.0.0
     hexa_frame: |
       01 80 C2 00 00 00 00 16 47 02 24 1A 00 26 42 42
       03 00 00 00 00 00 80 01 00 16 47 02 24 00 00 00
@@ -134,8 +122,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:80:C2:00:00:00
     sap: STP
-    src_ip: 71.2.36.0
-    dst_ip: 0.0.0.0
     hexa_frame: |
       01 80 C2 00 00 00 00 16 47 02 24 1A 00 26 42 42
       03 00 00 00 00 00 80 01 00 16 47 02 24 00 00 00
@@ -229,8 +215,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:80:C2:00:00:00
     sap: STP
-    src_ip: 71.2.36.0
-    dst_ip: 0.0.0.0
     hexa_frame: |
       01 80 C2 00 00 00 00 16 47 02 24 1A 00 26 42 42
       03 00 00 00 00 00 80 01 00 16 47 02 24 00 00 00
@@ -264,9 +248,7 @@ packets:
     frame_type: ETHERNET II
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:80:C2:00:00:0E
-    ether_type: Link Layer Discovery Protocol (LLDP)
-    src_ip: 70.97.48.47
-    dst_ip: 50.52.6.2
+    ether_type: LLDP
     hexa_frame: |
       01 80 C2 00 00 0E 00 16 47 02 24 1A 88 CC 02 07
       04 00 16 47 02 24 00 04 07 05 46 61 30 2F 32 34
@@ -298,8 +280,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:80:C2:00:00:00
     sap: STP
-    src_ip: 71.2.36.0
-    dst_ip: 0.0.0.0
     hexa_frame: |
       01 80 C2 00 00 00 00 16 47 02 24 1A 00 26 42 42
       03 00 00 00 00 00 80 01 00 16 47 02 24 00 00 00
@@ -313,8 +293,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 00:16:47:02:24:1A
     ether_type: Loopback
-    src_ip: 0.0.0.0
-    dst_ip: 0.0.0.0
     hexa_frame: |
       00 16 47 02 24 1A 00 16 47 02 24 1A 90 00 00 00
       01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -328,8 +306,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:00:0C:CC:CC:CC
     pid: DTP
-    src_ip: 5.0.0.2
-    dst_ip: 0.5.4.0
     hexa_frame: |
       01 00 0C CC CC CC 00 16 47 02 24 1A 00 22 AA AA
       03 00 00 0C 20 04 01 00 01 00 05 00 00 02 00 05
@@ -358,8 +334,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:80:C2:00:00:00
     sap: STP
-    src_ip: 71.2.36.0
-    dst_ip: 0.0.0.0
     hexa_frame: |
       01 80 C2 00 00 00 00 16 47 02 24 1A 00 26 42 42
       03 00 00 00 00 00 80 01 00 16 47 02 24 00 00 00
@@ -372,9 +346,7 @@ packets:
     frame_type: ETHERNET II
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:80:C2:00:00:0E
-    ether_type: Link Layer Discovery Protocol (LLDP)
-    src_ip: 70.97.48.47
-    dst_ip: 50.52.6.2
+    ether_type: LLDP
     hexa_frame: |
       01 80 C2 00 00 0E 00 16 47 02 24 1A 88 CC 02 07
       04 00 16 47 02 24 00 04 07 05 46 61 30 2F 32 34
@@ -406,8 +378,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:80:C2:00:00:00
     sap: STP
-    src_ip: 71.2.36.0
-    dst_ip: 0.0.0.0
     hexa_frame: |
       01 80 C2 00 00 00 00 16 47 02 24 1A 00 26 42 42
       03 00 00 00 00 00 80 01 00 16 47 02 24 00 00 00
@@ -421,8 +391,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:80:C2:00:00:00
     sap: STP
-    src_ip: 71.2.36.0
-    dst_ip: 0.0.0.0
     hexa_frame: |
       01 80 C2 00 00 00 00 16 47 02 24 1A 00 26 42 42
       03 00 00 00 00 00 80 01 00 16 47 02 24 00 00 00
@@ -436,8 +404,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:80:C2:00:00:00
     sap: STP
-    src_ip: 71.2.36.0
-    dst_ip: 0.0.0.0
     hexa_frame: |
       01 80 C2 00 00 00 00 16 47 02 24 1A 00 26 42 42
       03 00 00 00 00 00 80 01 00 16 47 02 24 00 00 00
@@ -450,9 +416,7 @@ packets:
     frame_type: ETHERNET II
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:80:C2:00:00:0E
-    ether_type: Link Layer Discovery Protocol (LLDP)
-    src_ip: 70.97.48.47
-    dst_ip: 50.52.6.2
+    ether_type: LLDP
     hexa_frame: |
       01 80 C2 00 00 0E 00 16 47 02 24 1A 88 CC 02 07
       04 00 16 47 02 24 00 04 07 05 46 61 30 2F 32 34
@@ -504,8 +468,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:80:C2:00:00:00
     sap: STP
-    src_ip: 71.2.36.0
-    dst_ip: 0.0.0.0
     hexa_frame: |
       01 80 C2 00 00 00 00 16 47 02 24 1A 00 26 42 42
       03 00 00 00 00 00 80 01 00 16 47 02 24 00 00 00
@@ -519,8 +481,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 00:16:47:02:24:1A
     ether_type: Loopback
-    src_ip: 0.0.0.0
-    dst_ip: 0.0.0.0
     hexa_frame: |
       00 16 47 02 24 1A 00 16 47 02 24 1A 90 00 00 00
       01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -534,8 +494,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:80:C2:00:00:00
     sap: STP
-    src_ip: 71.2.36.0
-    dst_ip: 0.0.0.0
     hexa_frame: |
       01 80 C2 00 00 00 00 16 47 02 24 1A 00 26 42 42
       03 00 00 00 00 00 80 01 00 16 47 02 24 00 00 00
@@ -548,9 +506,7 @@ packets:
     frame_type: ETHERNET II
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:80:C2:00:00:0E
-    ether_type: Link Layer Discovery Protocol (LLDP)
-    src_ip: 70.97.48.47
-    dst_ip: 50.52.6.2
+    ether_type: LLDP
     hexa_frame: |
       01 80 C2 00 00 0E 00 16 47 02 24 1A 88 CC 02 07
       04 00 16 47 02 24 00 04 07 05 46 61 30 2F 32 34
@@ -582,8 +538,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:80:C2:00:00:00
     sap: STP
-    src_ip: 71.2.36.0
-    dst_ip: 0.0.0.0
     hexa_frame: |
       01 80 C2 00 00 00 00 16 47 02 24 1A 00 26 42 42
       03 00 00 00 00 00 80 01 00 16 47 02 24 00 00 00
@@ -627,8 +581,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:80:C2:00:00:00
     sap: STP
-    src_ip: 71.2.36.0
-    dst_ip: 0.0.0.0
     hexa_frame: |
       01 80 C2 00 00 00 00 16 47 02 24 1A 00 26 42 42
       03 00 00 00 00 00 80 01 00 16 47 02 24 00 00 00
@@ -641,9 +593,7 @@ packets:
     frame_type: ETHERNET II
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:80:C2:00:00:0E
-    ether_type: Link Layer Discovery Protocol (LLDP)
-    src_ip: 70.97.48.47
-    dst_ip: 50.52.6.2
+    ether_type: LLDP
     hexa_frame: |
       01 80 C2 00 00 0E 00 16 47 02 24 1A 88 CC 02 07
       04 00 16 47 02 24 00 04 07 05 46 61 30 2F 32 34
@@ -675,8 +625,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:00:0C:CC:CC:CC
     pid: CDP
-    src_ip: 0.1.0.10
-    dst_ip: 83.119.105.116
     hexa_frame: |
       01 00 0C CC CC CC 00 16 47 02 24 1A 01 B3 AA AA
       03 00 00 0C 20 00 02 B4 DF A3 00 01 00 0A 53 77
@@ -715,8 +663,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:80:C2:00:00:00
     sap: STP
-    src_ip: 71.2.36.0
-    dst_ip: 0.0.0.0
     hexa_frame: |
       01 80 C2 00 00 00 00 16 47 02 24 1A 00 26 42 42
       03 00 00 00 00 00 80 01 00 16 47 02 24 00 00 00
@@ -730,8 +676,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:80:C2:00:00:00
     sap: STP
-    src_ip: 71.2.36.0
-    dst_ip: 0.0.0.0
     hexa_frame: |
       01 80 C2 00 00 00 00 16 47 02 24 1A 00 26 42 42
       03 00 00 00 00 00 80 01 00 16 47 02 24 00 00 00
@@ -745,8 +689,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 00:16:47:02:24:1A
     ether_type: Loopback
-    src_ip: 0.0.0.0
-    dst_ip: 0.0.0.0
     hexa_frame: |
       00 16 47 02 24 1A 00 16 47 02 24 1A 90 00 00 00
       01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -760,8 +702,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:80:C2:00:00:00
     sap: STP
-    src_ip: 71.2.36.0
-    dst_ip: 0.0.0.0
     hexa_frame: |
       01 80 C2 00 00 00 00 16 47 02 24 1A 00 26 42 42
       03 00 00 00 00 00 80 01 00 16 47 02 24 00 00 00
@@ -774,9 +714,7 @@ packets:
     frame_type: ETHERNET II
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:80:C2:00:00:0E
-    ether_type: Link Layer Discovery Protocol (LLDP)
-    src_ip: 70.97.48.47
-    dst_ip: 50.52.6.2
+    ether_type: LLDP
     hexa_frame: |
       01 80 C2 00 00 0E 00 16 47 02 24 1A 88 CC 02 07
       04 00 16 47 02 24 00 04 07 05 46 61 30 2F 32 34
@@ -808,8 +746,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:80:C2:00:00:00
     sap: STP
-    src_ip: 71.2.36.0
-    dst_ip: 0.0.0.0
     hexa_frame: |
       01 80 C2 00 00 00 00 16 47 02 24 1A 00 26 42 42
       03 00 00 00 00 00 80 01 00 16 47 02 24 00 00 00
@@ -857,8 +793,7 @@ packets:
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
     protocol: ICMP
-    src_port: 2048
-    dst_port: 61761
+    icmp_type: ECHO REQUEST
     hexa_frame: |
       00 16 47 02 24 40 00 10 18 33 CF 44 08 00 45 00
       05 DC 04 4D 20 00 80 01 00 00 0A 14 1E 01 0A 14
@@ -966,8 +901,7 @@ packets:
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
     protocol: ICMP
-    src_port: 24930
-    dst_port: 25444
+    icmp_type: ""
     hexa_frame: |
       00 16 47 02 24 40 00 10 18 33 CF 44 08 00 45 00
       04 54 04 4D 00 B9 80 01 00 00 0A 14 1E 01 0A 14
@@ -1051,9 +985,7 @@ packets:
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
     protocol: ICMP
-    src_port: 0
-    dst_port: 63809
-    app_protocol: "Reserved; do not use "
+    icmp_type: ECHO REPLY
     hexa_frame: |
       00 10 18 33 CF 44 00 16 47 02 24 40 08 00 45 00
       05 DC 04 4D 20 00 FF 01 40 AD 0A 14 1E FE 0A 14
@@ -1161,8 +1093,7 @@ packets:
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
     protocol: ICMP
-    src_port: 24930
-    dst_port: 25444
+    icmp_type: ""
     hexa_frame: |
       00 10 18 33 CF 44 00 16 47 02 24 40 08 00 45 00
       04 54 04 4D 00 B9 FF 01 61 7C 0A 14 1E FE 0A 14
@@ -1246,8 +1177,7 @@ packets:
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
     protocol: ICMP
-    src_port: 2048
-    dst_port: 61760
+    icmp_type: ECHO REQUEST
     hexa_frame: |
       00 16 47 02 24 40 00 10 18 33 CF 44 08 00 45 00
       05 DC 04 4E 20 00 80 01 00 00 0A 14 1E 01 0A 14
@@ -1355,8 +1285,7 @@ packets:
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
     protocol: ICMP
-    src_port: 24930
-    dst_port: 25444
+    icmp_type: ""
     hexa_frame: |
       00 16 47 02 24 40 00 10 18 33 CF 44 08 00 45 00
       04 54 04 4E 00 B9 80 01 00 00 0A 14 1E 01 0A 14
@@ -1440,9 +1369,7 @@ packets:
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
     protocol: ICMP
-    src_port: 0
-    dst_port: 63808
-    app_protocol: "Reserved; do not use "
+    icmp_type: ECHO REPLY
     hexa_frame: |
       00 10 18 33 CF 44 00 16 47 02 24 40 08 00 45 00
       05 DC 04 4E 20 00 FF 01 40 AC 0A 14 1E FE 0A 14
@@ -1550,8 +1477,7 @@ packets:
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
     protocol: ICMP
-    src_port: 24930
-    dst_port: 25444
+    icmp_type: ""
     hexa_frame: |
       00 10 18 33 CF 44 00 16 47 02 24 40 08 00 45 00
       04 54 04 4E 00 B9 FF 01 61 7B 0A 14 1E FE 0A 14
@@ -1632,8 +1558,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:80:C2:00:00:00
     sap: STP
-    src_ip: 71.2.36.0
-    dst_ip: 0.0.0.0
     hexa_frame: |
       01 80 C2 00 00 00 00 16 47 02 24 1A 00 26 42 42
       03 00 00 00 00 00 80 01 00 16 47 02 24 00 00 00
@@ -1650,8 +1574,7 @@ packets:
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
     protocol: ICMP
-    src_port: 2048
-    dst_port: 61759
+    icmp_type: ECHO REQUEST
     hexa_frame: |
       00 16 47 02 24 40 00 10 18 33 CF 44 08 00 45 00
       05 DC 04 4F 20 00 80 01 00 00 0A 14 1E 01 0A 14
@@ -1759,8 +1682,7 @@ packets:
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
     protocol: ICMP
-    src_port: 24930
-    dst_port: 25444
+    icmp_type: ""
     hexa_frame: |
       00 16 47 02 24 40 00 10 18 33 CF 44 08 00 45 00
       04 54 04 4F 00 B9 80 01 00 00 0A 14 1E 01 0A 14
@@ -1844,9 +1766,7 @@ packets:
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
     protocol: ICMP
-    src_port: 0
-    dst_port: 63807
-    app_protocol: "Reserved; do not use "
+    icmp_type: ECHO REPLY
     hexa_frame: |
       00 10 18 33 CF 44 00 16 47 02 24 40 08 00 45 00
       05 DC 04 4F 20 00 FF 01 40 AB 0A 14 1E FE 0A 14
@@ -1954,8 +1874,7 @@ packets:
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
     protocol: ICMP
-    src_port: 24930
-    dst_port: 25444
+    icmp_type: ""
     hexa_frame: |
       00 10 18 33 CF 44 00 16 47 02 24 40 08 00 45 00
       04 54 04 4F 00 B9 FF 01 61 7A 0A 14 1E FE 0A 14
@@ -2039,8 +1958,7 @@ packets:
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
     protocol: ICMP
-    src_port: 2048
-    dst_port: 61758
+    icmp_type: ECHO REQUEST
     hexa_frame: |
       00 16 47 02 24 40 00 10 18 33 CF 44 08 00 45 00
       05 DC 04 50 20 00 80 01 00 00 0A 14 1E 01 0A 14
@@ -2148,8 +2066,7 @@ packets:
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
     protocol: ICMP
-    src_port: 24930
-    dst_port: 25444
+    icmp_type: ""
     hexa_frame: |
       00 16 47 02 24 40 00 10 18 33 CF 44 08 00 45 00
       04 54 04 50 00 B9 80 01 00 00 0A 14 1E 01 0A 14
@@ -2233,9 +2150,7 @@ packets:
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
     protocol: ICMP
-    src_port: 0
-    dst_port: 63806
-    app_protocol: "Reserved; do not use "
+    icmp_type: ECHO REPLY
     hexa_frame: |
       00 10 18 33 CF 44 00 16 47 02 24 40 08 00 45 00
       05 DC 04 50 20 00 FF 01 40 AA 0A 14 1E FE 0A 14
@@ -2343,8 +2258,7 @@ packets:
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
     protocol: ICMP
-    src_port: 24930
-    dst_port: 25444
+    icmp_type: ""
     hexa_frame: |
       00 10 18 33 CF 44 00 16 47 02 24 40 08 00 45 00
       04 54 04 50 00 B9 FF 01 61 79 0A 14 1E FE 0A 14
@@ -2455,9 +2369,7 @@ packets:
     frame_type: ETHERNET II
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:80:C2:00:00:0E
-    ether_type: Link Layer Discovery Protocol (LLDP)
-    src_ip: 70.97.48.47
-    dst_ip: 50.52.6.2
+    ether_type: LLDP
     hexa_frame: |
       01 80 C2 00 00 0E 00 16 47 02 24 1A 88 CC 02 07
       04 00 16 47 02 24 00 04 07 05 46 61 30 2F 32 34
@@ -2489,8 +2401,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:80:C2:00:00:00
     sap: STP
-    src_ip: 71.2.36.0
-    dst_ip: 0.0.0.0
     hexa_frame: |
       01 80 C2 00 00 00 00 16 47 02 24 1A 00 26 42 42
       03 00 00 00 00 00 80 01 00 16 47 02 24 00 00 00
@@ -2507,8 +2417,7 @@ packets:
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
     protocol: ICMP
-    src_port: 2048
-    dst_port: 61757
+    icmp_type: ECHO REQUEST
     hexa_frame: |
       00 16 47 02 24 40 00 10 18 33 CF 44 08 00 45 00
       05 DC 04 52 20 00 80 01 00 00 0A 14 1E 01 0A 14
@@ -2616,8 +2525,7 @@ packets:
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
     protocol: ICMP
-    src_port: 24930
-    dst_port: 25444
+    icmp_type: ""
     hexa_frame: |
       00 16 47 02 24 40 00 10 18 33 CF 44 08 00 45 00
       04 54 04 52 00 B9 80 01 00 00 0A 14 1E 01 0A 14
@@ -2701,9 +2609,7 @@ packets:
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
     protocol: ICMP
-    src_port: 0
-    dst_port: 63805
-    app_protocol: "Reserved; do not use "
+    icmp_type: ECHO REPLY
     hexa_frame: |
       00 10 18 33 CF 44 00 16 47 02 24 40 08 00 45 00
       05 DC 04 52 20 00 FF 01 40 A8 0A 14 1E FE 0A 14
@@ -2811,8 +2717,7 @@ packets:
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
     protocol: ICMP
-    src_port: 24930
-    dst_port: 25444
+    icmp_type: ""
     hexa_frame: |
       00 10 18 33 CF 44 00 16 47 02 24 40 08 00 45 00
       04 54 04 52 00 B9 FF 01 61 77 0A 14 1E FE 0A 14
@@ -2896,8 +2801,7 @@ packets:
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
     protocol: ICMP
-    src_port: 2048
-    dst_port: 61756
+    icmp_type: ECHO REQUEST
     hexa_frame: |
       00 16 47 02 24 40 00 10 18 33 CF 44 08 00 45 00
       05 DC 04 53 20 00 80 01 00 00 0A 14 1E 01 0A 14
@@ -3005,8 +2909,7 @@ packets:
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
     protocol: ICMP
-    src_port: 24930
-    dst_port: 25444
+    icmp_type: ""
     hexa_frame: |
       00 16 47 02 24 40 00 10 18 33 CF 44 08 00 45 00
       04 54 04 53 00 B9 80 01 00 00 0A 14 1E 01 0A 14
@@ -3090,9 +2993,7 @@ packets:
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
     protocol: ICMP
-    src_port: 0
-    dst_port: 63804
-    app_protocol: "Reserved; do not use "
+    icmp_type: ECHO REPLY
     hexa_frame: |
       00 10 18 33 CF 44 00 16 47 02 24 40 08 00 45 00
       05 DC 04 53 20 00 FF 01 40 A7 0A 14 1E FE 0A 14
@@ -3200,8 +3101,7 @@ packets:
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
     protocol: ICMP
-    src_port: 24930
-    dst_port: 25444
+    icmp_type: ""
     hexa_frame: |
       00 10 18 33 CF 44 00 16 47 02 24 40 08 00 45 00
       04 54 04 53 00 B9 FF 01 61 76 0A 14 1E FE 0A 14
@@ -3282,8 +3182,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:80:C2:00:00:00
     sap: STP
-    src_ip: 71.2.36.0
-    dst_ip: 0.0.0.0
     hexa_frame: |
       01 80 C2 00 00 00 00 16 47 02 24 1A 00 26 42 42
       03 00 00 00 00 00 80 01 00 16 47 02 24 00 00 00
@@ -3300,8 +3198,7 @@ packets:
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
     protocol: ICMP
-    src_port: 2048
-    dst_port: 61755
+    icmp_type: ECHO REQUEST
     hexa_frame: |
       00 16 47 02 24 40 00 10 18 33 CF 44 08 00 45 00
       05 DC 04 54 20 00 80 01 00 00 0A 14 1E 01 0A 14
@@ -3409,8 +3306,7 @@ packets:
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
     protocol: ICMP
-    src_port: 24930
-    dst_port: 25444
+    icmp_type: ""
     hexa_frame: |
       00 16 47 02 24 40 00 10 18 33 CF 44 08 00 45 00
       04 54 04 54 00 B9 80 01 00 00 0A 14 1E 01 0A 14
@@ -3494,9 +3390,7 @@ packets:
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
     protocol: ICMP
-    src_port: 0
-    dst_port: 63803
-    app_protocol: "Reserved; do not use "
+    icmp_type: ECHO REPLY
     hexa_frame: |
       00 10 18 33 CF 44 00 16 47 02 24 40 08 00 45 00
       05 DC 04 54 20 00 FF 01 40 A6 0A 14 1E FE 0A 14
@@ -3604,8 +3498,7 @@ packets:
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
     protocol: ICMP
-    src_port: 24930
-    dst_port: 25444
+    icmp_type: ""
     hexa_frame: |
       00 10 18 33 CF 44 00 16 47 02 24 40 08 00 45 00
       04 54 04 54 00 B9 FF 01 61 75 0A 14 1E FE 0A 14
@@ -3686,8 +3579,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 00:16:47:02:24:1A
     ether_type: Loopback
-    src_ip: 0.0.0.0
-    dst_ip: 0.0.0.0
     hexa_frame: |
       00 16 47 02 24 1A 00 16 47 02 24 1A 90 00 00 00
       01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -3704,8 +3595,7 @@ packets:
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
     protocol: ICMP
-    src_port: 2048
-    dst_port: 61754
+    icmp_type: ECHO REQUEST
     hexa_frame: |
       00 16 47 02 24 40 00 10 18 33 CF 44 08 00 45 00
       05 DC 04 55 20 00 80 01 00 00 0A 14 1E 01 0A 14
@@ -3813,8 +3703,7 @@ packets:
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
     protocol: ICMP
-    src_port: 24930
-    dst_port: 25444
+    icmp_type: ""
     hexa_frame: |
       00 16 47 02 24 40 00 10 18 33 CF 44 08 00 45 00
       04 54 04 55 00 B9 80 01 00 00 0A 14 1E 01 0A 14
@@ -3898,9 +3787,7 @@ packets:
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
     protocol: ICMP
-    src_port: 0
-    dst_port: 63802
-    app_protocol: "Reserved; do not use "
+    icmp_type: ECHO REPLY
     hexa_frame: |
       00 10 18 33 CF 44 00 16 47 02 24 40 08 00 45 00
       05 DC 04 55 20 00 FF 01 40 A5 0A 14 1E FE 0A 14
@@ -4008,8 +3895,7 @@ packets:
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
     protocol: ICMP
-    src_port: 24930
-    dst_port: 25444
+    icmp_type: ""
     hexa_frame: |
       00 10 18 33 CF 44 00 16 47 02 24 40 08 00 45 00
       04 54 04 55 00 B9 FF 01 61 74 0A 14 1E FE 0A 14
@@ -4090,8 +3976,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:00:0C:CC:CC:CC
     pid: DTP
-    src_ip: 5.0.0.2
-    dst_ip: 0.5.4.0
     hexa_frame: |
       01 00 0C CC CC CC 00 16 47 02 24 1A 00 22 AA AA
       03 00 00 0C 20 04 01 00 01 00 05 00 00 02 00 05
@@ -4120,8 +4004,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:80:C2:00:00:00
     sap: STP
-    src_ip: 71.2.36.0
-    dst_ip: 0.0.0.0
     hexa_frame: |
       01 80 C2 00 00 00 00 16 47 02 24 1A 00 26 42 42
       03 00 00 00 00 00 80 01 00 16 47 02 24 00 00 00
@@ -4138,8 +4020,7 @@ packets:
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
     protocol: ICMP
-    src_port: 2048
-    dst_port: 61753
+    icmp_type: ECHO REQUEST
     hexa_frame: |
       00 16 47 02 24 40 00 10 18 33 CF 44 08 00 45 00
       05 DC 04 56 20 00 80 01 00 00 0A 14 1E 01 0A 14
@@ -4247,8 +4128,7 @@ packets:
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
     protocol: ICMP
-    src_port: 24930
-    dst_port: 25444
+    icmp_type: ""
     hexa_frame: |
       00 16 47 02 24 40 00 10 18 33 CF 44 08 00 45 00
       04 54 04 56 00 B9 80 01 00 00 0A 14 1E 01 0A 14
@@ -4332,9 +4212,7 @@ packets:
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
     protocol: ICMP
-    src_port: 0
-    dst_port: 63801
-    app_protocol: "Reserved; do not use "
+    icmp_type: ECHO REPLY
     hexa_frame: |
       00 10 18 33 CF 44 00 16 47 02 24 40 08 00 45 00
       05 DC 04 56 20 00 FF 01 40 A4 0A 14 1E FE 0A 14
@@ -4442,8 +4320,7 @@ packets:
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
     protocol: ICMP
-    src_port: 24930
-    dst_port: 25444
+    icmp_type: ""
     hexa_frame: |
       00 10 18 33 CF 44 00 16 47 02 24 40 08 00 45 00
       04 54 04 56 00 B9 FF 01 61 73 0A 14 1E FE 0A 14
@@ -4523,9 +4400,7 @@ packets:
     frame_type: ETHERNET II
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:80:C2:00:00:0E
-    ether_type: Link Layer Discovery Protocol (LLDP)
-    src_ip: 70.97.48.47
-    dst_ip: 50.52.6.2
+    ether_type: LLDP
     hexa_frame: |
       01 80 C2 00 00 0E 00 16 47 02 24 1A 88 CC 02 07
       04 00 16 47 02 24 00 04 07 05 46 61 30 2F 32 34
@@ -4560,8 +4435,7 @@ packets:
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
     protocol: ICMP
-    src_port: 2048
-    dst_port: 61752
+    icmp_type: ECHO REQUEST
     hexa_frame: |
       00 16 47 02 24 40 00 10 18 33 CF 44 08 00 45 00
       05 DC 04 57 20 00 80 01 00 00 0A 14 1E 01 0A 14
@@ -4669,8 +4543,7 @@ packets:
     src_ip: 10.20.30.1
     dst_ip: 10.20.30.254
     protocol: ICMP
-    src_port: 24930
-    dst_port: 25444
+    icmp_type: ""
     hexa_frame: |
       00 16 47 02 24 40 00 10 18 33 CF 44 08 00 45 00
       04 54 04 57 00 B9 80 01 00 00 0A 14 1E 01 0A 14
@@ -4754,9 +4627,7 @@ packets:
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
     protocol: ICMP
-    src_port: 0
-    dst_port: 63800
-    app_protocol: "Reserved; do not use "
+    icmp_type: ECHO REPLY
     hexa_frame: |
       00 10 18 33 CF 44 00 16 47 02 24 40 08 00 45 00
       05 DC 04 57 20 00 FF 01 40 A3 0A 14 1E FE 0A 14
@@ -4864,8 +4735,7 @@ packets:
     src_ip: 10.20.30.254
     dst_ip: 10.20.30.1
     protocol: ICMP
-    src_port: 24930
-    dst_port: 25444
+    icmp_type: ""
     hexa_frame: |
       00 10 18 33 CF 44 00 16 47 02 24 40 08 00 45 00
       04 54 04 57 00 B9 FF 01 61 72 0A 14 1E FE 0A 14
@@ -5045,9 +4915,6 @@ packets:
     src_ip: 10.20.30.1
     dst_ip: 224.0.0.22
     protocol: LLC Sublayer Management / Individual
-    src_port: 37892
-    dst_port: 0
-    app_protocol: "Reserved; do not use "
     hexa_frame: |
       01 00 5E 00 00 16 00 10 18 33 CF 44 08 00 46 00
       00 28 04 64 00 00 01 02 00 00 0A 14 1E 01 E0 00
@@ -5064,9 +4931,6 @@ packets:
     src_ip: 10.20.30.1
     dst_ip: 224.0.0.22
     protocol: LLC Sublayer Management / Individual
-    src_port: 37892
-    dst_port: 0
-    app_protocol: "Reserved; do not use "
     hexa_frame: |
       01 00 5E 00 00 16 00 10 18 33 CF 44 08 00 46 00
       00 28 04 65 00 00 01 02 00 00 0A 14 1E 01 E0 00
@@ -5143,8 +5007,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 00:16:47:02:24:1A
     ether_type: Loopback
-    src_ip: 0.0.0.0
-    dst_ip: 0.0.0.0
     hexa_frame: |
       00 16 47 02 24 1A 00 16 47 02 24 1A 90 00 00 00
       01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -5161,9 +5023,6 @@ packets:
     src_ip: 10.20.30.1
     dst_ip: 224.0.0.22
     protocol: LLC Sublayer Management / Individual
-    src_port: 37892
-    dst_port: 0
-    app_protocol: "Reserved; do not use "
     hexa_frame: |
       01 00 5E 00 00 16 00 10 18 33 CF 44 08 00 46 00
       00 30 04 69 00 00 01 02 00 00 0A 14 1E 01 E0 00
@@ -5177,8 +5036,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:00:0C:CC:CC:CC
     pid: CDP
-    src_ip: 0.1.0.10
-    dst_ip: 83.119.105.116
     hexa_frame: |
       01 00 0C CC CC CC 00 16 47 02 24 1A 01 A1 AA AA
       03 00 00 0C 20 00 02 B4 D5 DE 00 01 00 0A 53 77
@@ -5215,8 +5072,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:80:C2:00:00:00
     sap: STP
-    src_ip: 71.2.36.0
-    dst_ip: 0.0.0.0
     hexa_frame: |
       01 80 C2 00 00 00 00 16 47 02 24 1A 00 26 42 42
       03 00 00 00 00 00 80 01 00 16 47 02 24 00 00 00
@@ -5314,9 +5169,6 @@ packets:
     src_ip: 10.20.30.1
     dst_ip: 224.0.0.22
     protocol: LLC Sublayer Management / Individual
-    src_port: 37892
-    dst_port: 0
-    app_protocol: "Reserved; do not use "
     hexa_frame: |
       01 00 5E 00 00 16 00 10 18 33 CF 44 08 00 46 00
       00 28 04 6C 00 00 01 02 00 00 0A 14 1E 01 E0 00
@@ -5348,9 +5200,6 @@ packets:
     src_ip: 10.20.30.1
     dst_ip: 224.0.0.22
     protocol: LLC Sublayer Management / Individual
-    src_port: 37892
-    dst_port: 0
-    app_protocol: "Reserved; do not use "
     hexa_frame: |
       01 00 5E 00 00 16 00 10 18 33 CF 44 08 00 46 00
       00 28 04 6E 00 00 01 02 00 00 0A 14 1E 01 E0 00
@@ -5448,9 +5297,6 @@ packets:
     src_ip: 10.20.30.1
     dst_ip: 224.0.0.22
     protocol: LLC Sublayer Management / Individual
-    src_port: 37892
-    dst_port: 0
-    app_protocol: "Reserved; do not use "
     hexa_frame: |
       01 00 5E 00 00 16 00 10 18 33 CF 44 08 00 46 00
       00 28 04 73 00 00 01 02 00 00 0A 14 1E 01 E0 00
@@ -5464,8 +5310,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:80:C2:00:00:00
     sap: STP
-    src_ip: 71.2.36.0
-    dst_ip: 0.0.0.0
     hexa_frame: |
       01 80 C2 00 00 00 00 16 47 02 24 1A 00 26 42 42
       03 00 00 00 00 00 80 01 00 16 47 02 24 00 00 00
@@ -5824,9 +5668,6 @@ packets:
     src_ip: 10.20.30.1
     dst_ip: 224.0.0.22
     protocol: LLC Sublayer Management / Individual
-    src_port: 37892
-    dst_port: 0
-    app_protocol: "Reserved; do not use "
     hexa_frame: |
       01 00 5E 00 00 16 00 10 18 33 CF 44 08 00 46 00
       00 28 04 83 00 00 01 02 00 00 0A 14 1E 01 E0 00
@@ -5976,9 +5817,6 @@ packets:
     src_ip: 10.20.30.1
     dst_ip: 224.0.0.22
     protocol: LLC Sublayer Management / Individual
-    src_port: 37892
-    dst_port: 0
-    app_protocol: "Reserved; do not use "
     hexa_frame: |
       01 00 5E 00 00 16 00 10 18 33 CF 44 08 00 46 00
       00 28 04 8A 00 00 01 02 00 00 0A 14 1E 01 E0 00
@@ -6035,8 +5873,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:80:C2:00:00:00
     sap: STP
-    src_ip: 71.2.36.0
-    dst_ip: 0.0.0.0
     hexa_frame: |
       01 80 C2 00 00 00 00 16 47 02 24 1A 00 26 42 42
       03 00 00 00 00 00 80 01 00 16 47 02 24 00 00 00
@@ -6211,9 +6047,7 @@ packets:
     frame_type: ETHERNET II
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:80:C2:00:00:0E
-    ether_type: Link Layer Discovery Protocol (LLDP)
-    src_ip: 70.97.48.47
-    dst_ip: 50.52.6.2
+    ether_type: LLDP
     hexa_frame: |
       01 80 C2 00 00 0E 00 16 47 02 24 1A 88 CC 02 07
       04 00 16 47 02 24 00 04 07 05 46 61 30 2F 32 34
@@ -6451,8 +6285,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:80:C2:00:00:00
     sap: STP
-    src_ip: 71.2.36.0
-    dst_ip: 0.0.0.0
     hexa_frame: |
       01 80 C2 00 00 00 00 16 47 02 24 1A 00 26 42 42
       03 00 00 00 00 00 80 01 00 16 47 02 24 00 00 00
@@ -6568,8 +6400,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:00:0C:CC:CC:CC
     pid: CDP
-    src_ip: 0.1.0.10
-    dst_ip: 83.119.105.116
     hexa_frame: |
       01 00 0C CC CC CC 00 16 47 02 24 1A 01 A1 AA AA
       03 00 00 0C 20 00 02 B4 D5 DE 00 01 00 0A 53 77
@@ -6725,8 +6555,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:80:C2:00:00:00
     sap: STP
-    src_ip: 71.2.36.0
-    dst_ip: 0.0.0.0
     hexa_frame: |
       01 80 C2 00 00 00 00 16 47 02 24 1A 00 26 42 42
       03 00 00 00 00 00 80 01 00 16 47 02 24 00 00 00
@@ -6740,8 +6568,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:00:0C:CC:CC:CC
     pid: CDP
-    src_ip: 0.1.0.10
-    dst_ip: 83.119.105.116
     hexa_frame: |
       01 00 0C CC CC CC 00 16 47 02 24 1A 01 A1 AA AA
       03 00 00 0C 20 00 02 B4 D5 DE 00 01 00 0A 53 77
@@ -6885,8 +6711,6 @@ packets:
     src_mac: 00:16:47:02:24:1A
     dst_mac: 01:00:0C:CC:CC:CC
     pid: CDP
-    src_ip: 0.1.0.10
-    dst_ip: 83.119.105.116
     hexa_frame: |
       01 00 0C CC CC CC 00 16 47 02 24 1A 01 A1 AA AA
       03 00 00 0C 20 00 02 B4 D5 DE 00 01 00 0A 53 77

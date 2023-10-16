@@ -21,7 +21,7 @@ int main(int argc, char* argv[])
     std::chrono::time_point<std::chrono::system_clock> m_StartTime = std::chrono::system_clock::now();;
     PcapParser *parser = new PcapParser();
     parser->parseFrame(file);
-    if (!parameter.empty()) {
+    if (parameter == "-p") {
         if (filterName == "HTTP")
             parser->tcpFilter("HTTP");
         else if (filterName == "HTTPS")

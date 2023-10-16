@@ -121,6 +121,7 @@ class PcapParser {
             ARP_DST_IP_OFFSET = 8,
 
             //ISL frame
+            ISL_OFFSET = 26,
             ISL_DEST_MAC_START = 26,
             ISL_DEST_MAC_END = 32,
             ISL_SRC_MAC_START = 32,

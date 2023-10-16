@@ -148,7 +148,6 @@ void TcpFilter::serializeTcpYaml() {
         << YAML::Value << _parent->_fileName
         << YAML::Key << "filter_name"
         << YAML::Value << _filterName;
-
     auto addComm = [&](std::vector<Frame>comms) {
         output << YAML::BeginMap << YAML::Key << "number_com" << YAML::Value << comIndex;
         std::stringstream sBuffer;
@@ -259,21 +258,30 @@ void TcpFilter::serializeTcpYaml() {
         output << YAML::EndMap;
     };
 
-    output << YAML::Key << "complete_comms" << YAML::Value << YAML::BeginSeq;
-    for (auto comm : _completeComms) {
-        comIndex++;
-        addComm(comm);
+    if (!_completeComms.empty()) {
+        output << YAML::Key << "complete_comms" << YAML::Value << YAML::BeginSeq;
+        for (auto comm : _completeComms) {
+            comIndex++;
+            addComm(comm);
+        }
+        output << YAML::EndSeq;
     }
-    output << YAML::EndSeq;
+    else
+        output << YAML::Key << "complete_comms" << YAML::Value << YAML::BeginSeq << YAML::EndSeq;;
 
-    comIndex = 0;
-    output << YAML::Key << "partial_comms" << YAML::Value << YAML::BeginSeq;
-    if(!_notCompleteComms.empty())
-        addComm(_notCompleteComms.at(0));
-    output << YAML::EndSeq;
-
+    if (!_notCompleteComms.empty()) {
+        comIndex = 0;
+        output << YAML::Key << "partial_comms" << YAML::Value << YAML::BeginSeq;
+        if (!_notCompleteComms.empty())
+            addComm(_notCompleteComms.at(0));
+        output << YAML::EndSeq;
+    }
+    else
+        output  << YAML::Key << "partial_comms" << YAML::Value << YAML::BeginSeq << YAML::EndSeq;;
+    
+    output << YAML::EndMap;
     std::fstream yamlFile;
-    yamlFile.open("yaml_output//" + _filterName + "//" + _parent->_fileName.erase(_parent->_fileName.find('.'), _parent->_fileName.size() - 1) + "-HTTP.yaml", std::ios_base::out);
+    yamlFile.open("yaml_output//" + _filterName + "//" + _parent->_fileName.erase(_parent->_fileName.find('.'), _parent->_fileName.size() - 1) + "-" + _filterName + ".yaml", std::ios_base::out);
     if (yamlFile.is_open())
     {
         yamlFile << output.c_str();

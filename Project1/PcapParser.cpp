@@ -345,6 +345,27 @@ void PcapParser::serializeYaml() {
 
         sBuffer.str("");
         sBuffer.clear();
+        //source ip
+        for (auto byte : packet.srcIp) {
+            sBuffer << byte << ".";
+        }
+        std::string srcString = "";
+        if (sBuffer.str().length() > 0)
+            srcString = sBuffer.str().erase(sBuffer.str().size() - 1);
+
+        sBuffer.str("");
+        sBuffer.clear();
+        //dst ip
+        std::string dstString = "";
+        for (auto byte : packet.dstIp) {
+            sBuffer << byte << ".";
+        }
+        if (sBuffer.str().length() > 0)
+            dstString = sBuffer.str().erase(sBuffer.str().size() - 1);
+            
+
+        sBuffer.str("");
+        sBuffer.clear();
         if (frameTypes.size() > 1 && frameTypes.at(1) == "ARP") {
             char  hex_string[20];
             for (size_t i = ARP_OPCODE_START; i <= ARP_OPCODE_END; i++) {
@@ -352,30 +373,17 @@ void PcapParser::serializeYaml() {
                 sBuffer << hex_string;
             }
             output << YAML::Key << "arp_opcode" << YAML::Value << _arpMap[stoi(hex_string, 0, 16)];
-        }
-
-        sBuffer.str("");
-        sBuffer.clear();
-        //source ip
-        for(auto byte : packet.srcIp){
-            sBuffer << byte << ".";
-        }
-        std::string srcString = "";
-        if (sBuffer.str().length() > 0) {
-            srcString = sBuffer.str().erase(sBuffer.str().size() - 1); //src adress is used more times than dst to count senders
             output << YAML::Key << "src_ip" << YAML::Key << srcString;
+            output << YAML::Key << "dst_ip" << YAML::Key << dstString;
         }
-        
+
         sBuffer.str("");
         sBuffer.clear();
-        //dst ip
-        for (auto byte : packet.dstIp) {
-            sBuffer << byte << ".";
-        }
-        if (sBuffer.str().length() > 0)
-            output << YAML::Key << "dst_ip" << YAML::Key << sBuffer.str().erase(sBuffer.str().size() - 1);
-
         if (frameTypes.size() > 1 && frameTypes.at(1) == "IPv4") {
+            //ipv4 adress
+            output << YAML::Key << "src_ip" << YAML::Key << srcString;
+            output << YAML::Key << "dst_ip" << YAML::Key << dstString;
+
             char  hex_string[20];
             sprintf_s(hex_string, "%.2X", packet.hexFrame.at(23));
             output << YAML::Key << "protocol" << YAML::Value << _protocolMap[stoi(hex_string, 0, 16)];

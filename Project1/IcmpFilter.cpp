@@ -18,7 +18,7 @@ void IcmpFilter::findComms() {
                 sprintf_s(hex_string, "%.2X", packet.hexFrame.at(FRAG_FLAG + packet.ihlOffset));
 
                 //ad frag params to frame struct
-                std::bitset<3> fragFlags(std::stoi(hex_string, 0 , 16));
+                std::bitset<3> fragFlags(std::stoi(hex_string));
                 packet.MF = fragFlags[MF_Flag];
                 std::stringstream idBuffer; //buffer to read frag id
                 std::stringstream offSetBuffer; //buffer to read frag offset
@@ -60,7 +60,7 @@ void IcmpFilter::findComms() {
                 if (packet.icmpType != "TIME EXCEEDED") {
                     identStart = ICMP_IDENT_START;
                     identEnd = ICMP_IDENT_END;
-                    
+
                     seqStart = ICMP_SEQ_START;
                     seqEnd = ICMP_SEQ_END;
                 }
@@ -97,7 +97,7 @@ void IcmpFilter::findComms() {
                         std::stringstream newFrameBuffer;
                         char  hex_string[20];
 
-                        if (quedFrame.icmpType == "ECHO REQUEST" && (packet.icmpType == "ECHO REPLY" || packet.icmpType== "TIME EXCEEDED")) {
+                        if (quedFrame.icmpType == "ECHO REQUEST" && (packet.icmpType == "ECHO REPLY" || packet.icmpType == "TIME EXCEEDED")) {
                             std::pair<Frame, Frame> newPair;
                             newPair.first = quedFrame;
                             newPair.second = packet;
@@ -157,7 +157,7 @@ void IcmpFilter::serializeIcmpYaml() {
         sBuffer.str("");
         sBuffer.clear();
         output << YAML::Key << "packets" << YAML::Value << YAML::BeginSeq;
-        
+
         // find the next frame to the fragmented frame
         //iterate through the frames of the comm list
         for (size_t i = 0; i < comms.size(); i++) {
@@ -175,7 +175,7 @@ void IcmpFilter::serializeIcmpYaml() {
                         comms.insert(comms.begin() + (i + 1), frag);
                         delFlag = true; // set delete flag to true
                         //if this was the last frag, break for
-                        if (frag.MF == false) 
+                        if (frag.MF == false)
                             break;
                     }
                     //if frag was matched from _fragQue, delete it by its index from 
@@ -233,7 +233,7 @@ void IcmpFilter::serializeIcmpYaml() {
                     sBuffer << byte << ".";
                 }
                 output << YAML::Key << "dst_ip" << YAML::Key << sBuffer.str().erase(sBuffer.str().size() - 1);
-                
+
 
                 if (frameTypes.at(1) == "IPv4") {
                     if (packet.MF || packet.fragID == previousFragId) {
@@ -278,7 +278,7 @@ void IcmpFilter::serializeIcmpYaml() {
                 output << YAML::Key << "hexa_frame" << YAML::Value << YAML::Literal << sBuffer.str();
                 output << YAML::EndMap;
 
-                
+
             }
         }
         output << YAML::EndSeq;
